@@ -4,9 +4,20 @@ Codex SwiftUI Developer Kit is an open-source Codex skill pack for building, aud
 
 It includes `liquid-glass-placement-auditor`, a dedicated skill for reviewing where Apple Liquid Glass should be applied or avoided in SwiftUI, iOS, iPadOS, and macOS apps.
 
-## Why This Exists
+## Why SwiftUI Developers Need This
 
 Apple app work often repeats the same review loops: inspect SwiftUI state, check navigation, debug Xcode schemes, review Simulator screenshots, decide where Liquid Glass belongs, audit SwiftData risk, and prepare App Store releases. This repository packages those workflows as reusable Codex skills so the same checks can be run consistently across projects.
+
+SwiftUI developers need this because the hard parts are rarely one isolated file. A useful audit usually crosses architecture, SwiftData persistence, Xcode schemes, screenshots, accessibility, App Store checks, and design-system choices. This pack gives Codex a repeatable checklist for those repeated reviews instead of starting from a blank prompt every time.
+
+## Proof From Real Audits
+
+The workflows have already been used on a private iPad SwiftUI app audit. The public summary below removes app names, file paths, and private project details while keeping the useful signal:
+
+- `liquid-glass-placement-auditor` plus `swiftui-liquid-glass` identified the best Liquid Glass targets as floating canvas chrome, compact board switching controls, transient tool inspectors, search fields, and popovers.
+- The same audit recommended avoiding glass on reading, writing, recall, PDF, error, and destructive-action surfaces where stable contrast matters more than depth.
+- `swiftui-architecture-auditor` found concrete engineering risks: a resize commit path that could persist old dimensions, board write errors being swallowed, and oversized board/root files concentrating gesture, persistence, and rendering responsibilities.
+- The recommended fix order separated immediate correctness bugs from larger refactors, then tied the result to simulator-based verification before UI confidence was treated as high.
 
 ## What Codex Skills Are
 
@@ -29,6 +40,20 @@ Codex skills are structured workflow folders. Each skill has a `SKILL.md` file w
 | `pr-draft-generator` | Draft pull request material | PR titles, summaries, testing checklists, risks, and release notes |
 
 The repository also includes `scripts/validate-skills.sh` and a GitHub Actions workflow to validate skill frontmatter, required references, shell syntax, examples, and safety gates.
+
+## Demo
+
+![Demo flow](docs/assets/demo-flow.svg)
+
+Example:
+
+| Step | Example |
+| --- | --- |
+| Before prompt | `Audit my iPad SwiftUI app. Check architecture, SwiftData, screenshots, accessibility, and Liquid Glass placement.` |
+| Codex chooses skill | `swiftui-project-router` selects the specialist audits, such as `swiftui-architecture-auditor`, `swiftdata-persistence-auditor`, `simulator-screenshot-reviewer`, `accessibility-auditor`, and `liquid-glass-placement-auditor`. |
+| Output checklist/result | Codex returns prioritized findings, evidence, recommended fix order, apply/avoid guidance for Liquid Glass, and verification steps. |
+
+The key behavior is not a generic answer. The skills push Codex toward structured output with severity, confidence, file evidence when available, and a practical next action.
 
 ## Installation
 
@@ -99,6 +124,12 @@ Do not capture screenshots, Appshots, or use Computer Use without asking first. 
 
 See [docs/safety-and-privacy.md](docs/safety-and-privacy.md).
 
+## AI Usage Policy
+
+AI is used in this project to help with review, documentation, examples, tests, issue triage, and maintenance. AI output must be reviewed before it becomes project guidance or code.
+
+This project does not accept unreviewed generated code, unsafe automation, secret-handling shortcuts, or screenshot capture without explicit user consent. Human review is required for behavior changes, release decisions, safety policy changes, and any workflow that could affect private user data or local projects.
+
 ## Apple Documentation Policy
 
 Reference files link to official Apple documentation and summarize practical review points. They do not copy large Apple documentation pages. When Apple guidance matters, prefer official links and short summaries.
@@ -123,10 +154,11 @@ Use the appstore-release-reviewer skill. Check whether my iOS app is ready for T
 
 ## Roadmap
 
-- Add more platform-specific examples for visionOS and watchOS when the workflows are proven.
-- Add optional metadata for skill marketplaces where supported.
-- Add more deterministic validators for skill frontmatter and script safety.
-- Add sample CI that validates Markdown, shell syntax, and required skill files.
+- Add a watchOS skill for watch app audits and release readiness.
+- Add visionOS examples that show spatial UI review prompts and output contracts.
+- Add a sample SwiftUI app audit that demonstrates the full router-to-specialist workflow without private project details.
+- Add `SECURITY.md` with supported reporting channels and safe disclosure expectations.
+- Improve the skill validator with stricter checks for output contracts, examples, and script safety.
 
 ## Contributing
 
