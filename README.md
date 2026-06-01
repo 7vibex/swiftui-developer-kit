@@ -66,6 +66,14 @@ cd codex-swiftui-developer-kit
 
 Use the skills by pointing Codex at this repository, or copy `.agents/skills/` into a Codex-compatible skills location if your environment supports local skill discovery.
 
+You can also give Codex the repository link and ask it to install the pack for local use:
+
+```text
+Install the Codex skills from https://github.com/7vibex/codex-swiftui-developer-kit so I can use them locally.
+```
+
+Codex should clone or inspect the repository, run the local installer, and confirm the skills are available in `${CODEX_HOME:-$HOME/.codex}/skills`.
+
 For local Codex installs, use the installer:
 
 ```bash
