@@ -2,6 +2,8 @@
 
 Codex SwiftUI Developer Kit is an open-source Codex skill pack for building, auditing, debugging, redesigning, testing, screenshot-reviewing, and releasing SwiftUI, iOS, iPadOS, macOS, SwiftData, and Apple app projects.
 
+It includes `liquid-glass-placement-auditor`, a dedicated skill for reviewing where Apple Liquid Glass should be applied or avoided in SwiftUI, iOS, iPadOS, and macOS apps.
+
 ## Why This Exists
 
 Apple app work often repeats the same review loops: inspect SwiftUI state, check navigation, debug Xcode schemes, review Simulator screenshots, decide where Liquid Glass belongs, audit SwiftData risk, and prepare App Store releases. This repository packages those workflows as reusable Codex skills so the same checks can be run consistently across projects.
