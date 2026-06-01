@@ -1,0 +1,19 @@
+name: Validate Skill Pack
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  validate:
+    name: Validate skills and scripts
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Validate skill pack
+        run: ./scripts/validate-skills.sh

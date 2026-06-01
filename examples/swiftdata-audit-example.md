@@ -6,18 +6,18 @@ StudyOS uses SwiftData for notes, flashcards, and planner tasks. The biggest ris
 
 ## Data Loss Risks
 
-- Deleting a notebook cascades to flashcards without a visible confirmation.
-- Seed data import can create duplicates when run twice.
+- Deleting a notebook cascades to flashcards without a visible confirmation. Severity: critical. Evidence: notebook delete flow reaches related decks before a user-facing confirmation step.
+- Seed data import can create duplicates when run twice. Severity: high. Evidence: import path matches on display title instead of stable external ID.
 
 ## Performance Risks
 
-- Notebook search fetches all notes and filters in memory.
-- Planner fetches all tasks before grouping by week.
+- Notebook search fetches all notes and filters in memory. Query improvement: use a `#Predicate` scoped to notebook ID and search text.
+- Planner fetches all tasks before grouping by week. Query improvement: fetch only visible date range and sort by due date.
 
 ## Migration Risks
 
-- `StudyNote.title` was renamed from `name` without a documented migration.
-- New required `createdAt` fields need defaults for existing stores.
+- `StudyNote.title` was renamed from `name` without a documented migration. Existing-store scenario: users upgrading from v0.1 may lose visible note titles.
+- New required `createdAt` fields need defaults for existing stores. Existing-store scenario: migration fails or assigns misleading dates.
 
 ## Model Relationship Issues
 

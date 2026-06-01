@@ -32,9 +32,23 @@ Audit SwiftUI architecture for correctness, maintainability, and production read
 1. Inspect project structure and likely app entry points.
 2. Collect SwiftUI files manually or with `scripts/collect-swiftui-files.sh`.
 3. Read high-risk files before reporting.
-4. Classify findings by severity.
-5. Recommend a fix order that reduces risk first.
-6. Generate actionable Codex fix prompts.
+4. Trace state from source of truth to rendered view and mutation sites.
+5. Trace navigation ownership for tabs, stacks, sheets, popovers, and split views.
+6. Trace async work from trigger to cancellation, error handling, and UI update.
+7. Classify findings by severity.
+8. Recommend a fix order that reduces risk first.
+9. Generate actionable Codex fix prompts.
+
+## Severity Standards
+
+- Critical: User data loss, crashes, broken navigation, or async state corruption likely in normal use.
+- High: Architecture makes common feature work risky, duplicates sources of truth, or hides dependencies.
+- Medium: Maintainability or testability issue that will compound but has a safe local fix.
+- Low: Cleanup that should wait until higher-risk issues are handled.
+
+## Evidence Standards
+
+Every finding should cite a file path, symbol, or search result. Do not report generic SwiftUI advice unless it is tied to this project.
 
 ## Output
 

@@ -20,18 +20,18 @@ Screenshot-plus-code example.
 
 ## Best Places to Use Liquid Glass
 
-- Floating Canvas tool palette.
-- Notebook search and mode switcher.
-- AI Tutor compact prompt bar.
-- Sheet headers for study set actions.
+- Floating Canvas tool palette. Confidence: high. Accessibility risk: medium until labels are verified.
+- Notebook search and mode switcher. Confidence: medium. Keep the writing page opaque.
+- AI Tutor compact prompt bar. Confidence: medium. Do not apply glass behind generated answer text.
+- Sheet headers for study set actions. Confidence: high when the sheet body remains solid.
 
 ## Places to Avoid Liquid Glass
 
-- Notebook writing area.
-- PDF reading pane.
-- Flashcard question and answer text.
-- Planner task forms.
-- Error and destructive action areas.
+- Notebook writing area. Severity: high because text entry needs stable contrast.
+- PDF reading pane. Severity: high because document content is the primary task.
+- Flashcard question and answer text. Severity: high because memorization depends on readability.
+- Planner task forms. Severity: medium because dense form fields lose hierarchy over blur.
+- Error and destructive action areas. Severity: critical because user intent must be unmistakable.
 
 ## Screen-by-Screen Recommendations
 
@@ -46,6 +46,13 @@ Screenshot-plus-code example.
 ## SwiftUI Implementation Plan
 
 Replace custom blur backgrounds on content cards with solid system backgrounds. Introduce a reusable chrome style only for compact toolbars and transient panels.
+
+Likely file targets in a real app:
+
+- `CanvasToolbar`: apply Liquid Glass or system material to compact controls.
+- `NotebookPageView`: remove custom material from writing surface.
+- `FlashcardReviewView`: use solid card backgrounds.
+- `AITutorPanel`: separate header chrome from generated answer body.
 
 ## User Feedback Signals
 
