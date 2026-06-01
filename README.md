@@ -28,6 +28,8 @@ Codex skills are structured workflow folders. Each skill has a `SKILL.md` file w
 | `test-coverage-improver` | Improve test coverage | Finding high-impact tests for ViewModels, repositories, services, and regressions |
 | `pr-draft-generator` | Draft pull request material | PR titles, summaries, testing checklists, risks, and release notes |
 
+The repository also includes `scripts/validate-skills.sh` and a GitHub Actions workflow to validate skill frontmatter, required references, shell syntax, examples, and safety gates.
+
 ## Installation
 
 Clone the repository:
