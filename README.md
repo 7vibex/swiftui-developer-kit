@@ -37,6 +37,14 @@ cd codex-swiftui-developer-kit
 
 Use the skills by pointing Codex at this repository, or copy `.agents/skills/` into a Codex-compatible skills location if your environment supports local skill discovery.
 
+For local Codex installs, use the installer:
+
+```bash
+./scripts/install-local.sh
+```
+
+It symlinks the 11 skills into `${CODEX_HOME:-$HOME/.codex}/skills` by default, skips existing skills, and prints the next prompt to try. Restart Codex after installing.
+
 See [docs/installation.md](docs/installation.md) for more detail.
 
 ## Using The Router Skill

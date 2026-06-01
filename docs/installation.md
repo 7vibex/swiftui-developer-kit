@@ -15,7 +15,39 @@ This repository is structured as a Codex skill repository. Skills live under:
 .agents/skills/
 ```
 
-Use the repository from a Codex workspace, or copy `.agents/skills/` into the local skill directory supported by your Codex environment.
+For local Codex installs, install the skill folders into the local Codex skills directory:
+
+```bash
+./scripts/install-local.sh
+```
+
+By default, the script symlinks every folder in `.agents/skills/` into:
+
+```text
+${CODEX_HOME:-$HOME/.codex}/skills
+```
+
+That means future `git pull` updates apply to the installed skills. If a user prefers a physical copy instead of symlinks:
+
+```bash
+./scripts/install-local.sh --copy
+```
+
+To install into a custom directory:
+
+```bash
+./scripts/install-local.sh --target /path/to/codex/skills
+```
+
+The script is non-destructive. If a skill already exists at the target path, it skips that skill instead of replacing it.
+
+After installing, restart Codex so the new skills are discovered. Then use a prompt like:
+
+```text
+Use the swiftui-project-router skill. I want to audit my SwiftUI app and decide which workflows are needed.
+```
+
+Users can also manually copy or symlink `.agents/skills/*` into the Codex skills directory supported by their environment.
 
 ## Verify The Pack
 
