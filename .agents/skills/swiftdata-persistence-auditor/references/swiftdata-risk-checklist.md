@@ -9,3 +9,20 @@
 - Save failures are handled.
 - Seed/demo data cannot overwrite user data.
 - Tests or fixtures cover destructive flows.
+
+## Data Loss Anti-Patterns
+
+- Delete buttons directly mutate `ModelContext` without confirmation for user-created data.
+- Cascades remove related study history that users expect to keep.
+- Import flows overwrite existing records by title or date alone.
+- Startup seeding runs outside an idempotent guard.
+- Save errors are ignored after important edits.
+- Migration defaults silently change user-visible meaning.
+
+## Evidence To Collect
+
+- Model definitions and relationship delete rules.
+- User actions that call delete or overwrite.
+- Import and seed paths.
+- Save and error handling paths.
+- Existing migration schema or lack of one.

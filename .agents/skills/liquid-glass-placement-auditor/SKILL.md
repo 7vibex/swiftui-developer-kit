@@ -63,6 +63,18 @@ Inspect SwiftUI files for glass candidates. State lower confidence because scree
 
 Search for `NavigationStack`, `NavigationSplitView`, `TabView`, `.toolbar`, `.sheet`, `.popover`, `.inspector`, `safeAreaInset`, sidebars, bottom bars, floating action buttons, canvas toolbars, Apple Pencil tools, PDF viewers, flashcards, settings/forms, dense text, custom blur/material backgrounds, hardcoded opacity, hardcoded colors, and missing accessibility labels.
 
+## Finding Standards
+
+Every recommendation must include:
+
+- Evidence source: screenshot, code path, or both.
+- Confidence: high, medium, or low.
+- Placement decision: use, use carefully, avoid, or needs screenshot verification.
+- Accessibility risk: none, low, medium, or high.
+- A concrete SwiftUI direction, not just visual advice.
+
+Prioritize readability and control discoverability over decorative effect. A good Liquid Glass recommendation should explain what remains opaque, what becomes chrome, and how the design behaves with Reduce Transparency.
+
 ## Output
 
 Use `references/output-contract.md`.
