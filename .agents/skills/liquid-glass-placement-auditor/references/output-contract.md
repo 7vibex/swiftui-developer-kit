@@ -36,7 +36,9 @@
 ## SwiftUI Implementation Plan
 - Files or components likely affected:
 - Minimal change:
+- OS availability:
 - Fallback for Reduce Transparency:
+- iOS 17 fallback:
 
 ## User Feedback Signals
 - What users may report if the recommendation is wrong.

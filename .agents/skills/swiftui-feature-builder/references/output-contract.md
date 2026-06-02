@@ -8,6 +8,7 @@
 - User flow:
 - State owner:
 - Data dependencies:
+- OS support strategy:
 
 ## Files Changed
 - `path`: reason
@@ -15,6 +16,7 @@
 ## Implementation Notes
 - Key decisions:
 - Tradeoffs:
+- iOS 17/older OS fallback:
 
 ## Accessibility Considerations
 - Labels:

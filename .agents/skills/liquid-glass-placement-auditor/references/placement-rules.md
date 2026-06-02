@@ -4,6 +4,16 @@
 
 Use Liquid Glass for controls and chrome. Avoid it for primary content.
 
+## OS Availability Rule
+
+Liquid Glass and iOS 26 UI changes need an explicit older-OS decision before implementation. If the project still supports iOS 17 or similar older targets, ask the user whether to:
+
+- Keep the existing iOS 17 UI path and add Liquid Glass only for iOS 26.
+- Build a separate non-glass iOS 17 fallback for the new feature.
+- Raise the minimum OS and replace the old UI path intentionally.
+
+Do not silently delete the older implementation or assume the fallback is unwanted.
+
 ## Decision Matrix
 
 | Surface | Default Decision | Reason |

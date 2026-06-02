@@ -71,9 +71,10 @@ Every recommendation must include:
 - Confidence: high, medium, or low.
 - Placement decision: use, use carefully, avoid, or needs screenshot verification.
 - Accessibility risk: none, low, medium, or high.
+- OS support decision: ask before implementation whether iOS 17 keeps its existing UI, gets a new non-glass fallback, or is intentionally dropped by raising the minimum OS.
 - A concrete SwiftUI direction, not just visual advice.
 
-Prioritize readability and control discoverability over decorative effect. A good Liquid Glass recommendation should explain what remains opaque, what becomes chrome, and how the design behaves with Reduce Transparency.
+Prioritize readability and control discoverability over decorative effect. A good Liquid Glass recommendation should explain what remains opaque, what becomes chrome, how the design behaves with Reduce Transparency, and what older OS users see.
 
 ## Output
 
