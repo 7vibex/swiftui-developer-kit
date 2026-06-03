@@ -20,6 +20,7 @@ tmp/
 temp/
 .tmp/
 .cache/
+dist/
 
 # Environment and secrets
 .env

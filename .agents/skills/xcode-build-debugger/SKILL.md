@@ -13,6 +13,8 @@ Diagnose Xcode build issues with safe detection first. Do not build when the com
 - `references/scheme-detection-notes.md`
 - `references/output-contract.md`
 
+Prefer targeted detection scripts before reading many project files.
+
 ## Workflow
 
 1. Detect `.xcodeproj`, `.xcworkspace`, and `Package.swift`.

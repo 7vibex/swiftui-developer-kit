@@ -59,4 +59,16 @@ Update:
 ```bash
 find .agents/skills -name SKILL.md -print
 find .agents/skills -name "*.sh" -print -exec bash -n {} \;
+scripts/swiftui-kit.sh validate
 ```
+
+## 8. Update Command Vocabulary When Needed
+
+If the skill creates a new user-facing workflow, update:
+
+- `.agents/skills/swiftui-project-router/SKILL.md`
+- `docs/commands.md`
+- `docs/skill-index.md`
+- `README.md`
+
+Only add a new command when it helps users choose a workflow faster. Do not add aliases for every narrow task.

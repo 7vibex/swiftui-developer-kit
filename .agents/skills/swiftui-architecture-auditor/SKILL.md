@@ -15,6 +15,8 @@ Audit SwiftUI architecture for correctness, maintainability, and production read
 - `references/async-concurrency-checklist.md`
 - `references/output-contract.md`
 
+Prefer targeted search, project maps, and bundled scripts before reading many files.
+
 ## Check
 
 - Huge views and files doing too much.

@@ -1,5 +1,32 @@
 # Usage
 
+## Command Menu
+
+The router accepts short commands:
+
+```text
+Use the swiftui-project-router skill. audit this app.
+Use the swiftui-project-router skill. fix-build this compiler error.
+Use the swiftui-project-router skill. review-screenshots for the Canvas screen.
+Use the swiftui-project-router skill. prepare-release for TestFlight.
+Use the swiftui-project-router skill. modernize-ui and review Apple UI fit, state, sheets, and Liquid Glass placement.
+Use the swiftui-project-router skill. improve-tests around SwiftData deletes.
+Use the swiftui-project-router skill. draft-pr for my current branch.
+Use the swiftui-project-router skill. detect-risks in this SwiftUI project.
+```
+
+See [commands.md](commands.md) for the full command vocabulary.
+
+## Local CLI
+
+```bash
+scripts/swiftui-kit.sh list
+scripts/swiftui-kit.sh detect --format markdown .
+scripts/swiftui-kit.sh doctor
+```
+
+The deterministic detector is useful before deeper Codex review because it points the agent at concrete SwiftUI risk signals.
+
 ## Router Skill Usage
 
 Use the router when the task is broad:
@@ -21,6 +48,14 @@ Use a specialist skill when the workflow is already clear:
 
 ```text
 Use the swiftui-architecture-auditor skill. Review my SwiftUI project for state management, navigation, async, and maintainability problems.
+```
+
+```text
+Use the swiftui-ui-patterns skill. Review this SwiftUI screen's state ownership, sheets, async loading, previews, and subview structure.
+```
+
+```text
+Use the swiftui-design-system-auditor skill. Review whether this iPad app feels native, readable, and ergonomic.
 ```
 
 ## Screenshot Mode

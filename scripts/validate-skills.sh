@@ -19,12 +19,38 @@ require_dir() {
 
 require_file README.md
 require_file AGENTS.md
+require_file CLAUDE.md
 require_file CONTRIBUTING.md
 require_file CODE_OF_CONDUCT.md
 require_file LICENSE
+require_file SECURITY.md
+require_file docs/claude-code-usage.md
+require_file docs/commands.md
+require_file docs/demo-site/index.html
 require_dir .agents/skills
 require_dir docs
 require_dir examples
+require_dir tests
+
+required_skills=(
+  accessibility-auditor
+  appstore-release-reviewer
+  liquid-glass-placement-auditor
+  pr-draft-generator
+  simulator-screenshot-reviewer
+  swiftdata-persistence-auditor
+  swiftui-architecture-auditor
+  swiftui-design-system-auditor
+  swiftui-feature-builder
+  swiftui-project-router
+  swiftui-ui-patterns
+  test-coverage-improver
+  xcode-build-debugger
+)
+
+for skill_name in "${required_skills[@]}"; do
+  require_file ".agents/skills/$skill_name/SKILL.md"
+done
 
 skill_count=0
 
@@ -77,13 +103,14 @@ RUBY
   grep -q "$skill_name" docs/skill-index.md || fail "docs/skill-index.md does not mention $skill_name"
 done
 
-[[ "$skill_count" -eq 11 ]] || fail "expected 11 skills, found $skill_count"
+expected_skill_count="${#required_skills[@]}"
+[[ "$skill_count" -eq "$expected_skill_count" ]] || fail "expected $expected_skill_count skills, found $skill_count"
 
 while IFS= read -r script; do
   head -n 1 "$script" | grep -qx '#!/usr/bin/env bash' || fail "$script missing bash shebang"
   sed -n '2p' "$script" | grep -qx 'set -euo pipefail' || fail "$script missing set -euo pipefail"
   bash -n "$script"
-done < <(find .agents/skills scripts -name "*.sh" -type f | sort)
+done < <(find .agents/skills scripts tests -name "*.sh" -type f | sort)
 
 if grep -RInE --exclude validate-skills.sh '\b(rm -rf|git reset|git checkout --|simctl boot|simctl launch|xcodebuild .* clean|xcodebuild .* build|open -a)\b' .agents/skills scripts; then
   fail "potentially destructive or side-effectful script command found"
@@ -96,7 +123,13 @@ grep -q "Do not capture" .agents/skills/simulator-screenshot-reviewer/SKILL.md |
 
 for example in \
   studyos-liquid-glass-audit.md \
+  studyos-liquid-glass-before-after.md \
+  studyos-screenshot-inventory.md \
+  studyos-swiftui-code-findings.md \
+  full-studyos-design-audit.md \
   simulator-screenshot-review-example.md \
+  claude-prompts.md \
+  swiftui-ui-patterns-example.md \
   swiftui-architecture-audit-example.md \
   swiftdata-audit-example.md \
   accessibility-audit-example.md \
@@ -110,9 +143,19 @@ done
 
 grep -q "developer.apple.com" docs/apple-doc-links.md || fail "Apple docs file lacks official Apple links"
 grep -q "developers.openai.com" docs/openai-codex-doc-links.md || fail "OpenAI docs file lacks official OpenAI links"
+grep -q "detect-risks" docs/commands.md || fail "Command docs lack detect-risks"
+grep -q "review-screenshots" .agents/skills/swiftui-project-router/SKILL.md || fail "Router lacks command vocabulary"
+grep -q "swiftui-design-system-auditor" README.md || fail "README lacks design-system auditor"
+grep -q "swiftui-design-system-auditor" CLAUDE.md || fail "CLAUDE.md lacks design-system auditor prompt"
+grep -q "Do not capture" SECURITY.md || fail "SECURITY.md lacks capture safety language"
+grep -q "Pass / Fail Criteria" .agents/skills/liquid-glass-placement-auditor/references/output-contract.md || fail "Liquid Glass output contract lacks pass/fail criteria"
+grep -q "implementation-recipes.md" .agents/skills/liquid-glass-placement-auditor/SKILL.md || fail "Liquid Glass skill lacks implementation recipe reference"
+grep -q "platform-version-matrix.md" .agents/skills/liquid-glass-placement-auditor/SKILL.md || fail "Liquid Glass skill lacks platform version matrix reference"
 
 if grep -RInE --exclude validate-skills.sh '\b(TBD|TODO|FIXME|placeholder)\b' README.md AGENTS.md CONTRIBUTING.md docs .agents examples scripts; then
   fail "placeholder text found"
 fi
+
+bash tests/run-tests.sh
 
 echo "Validated $skill_count skills, shell scripts, docs, and examples."

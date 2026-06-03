@@ -20,12 +20,14 @@
 - Confidence:
 - Accessibility risk:
 - SwiftUI direction:
+- Pass criteria:
 
 ## Places to Avoid Liquid Glass
 - Surface:
 - Reason:
 - Severity:
 - Safer alternative:
+- Fail signal:
 
 ## Screen-by-Screen Recommendations
 - Screen:
@@ -36,7 +38,14 @@
 ## SwiftUI Implementation Plan
 - Files or components likely affected:
 - Minimal change:
+- OS availability:
 - Fallback for Reduce Transparency:
+- iOS 17 fallback:
+- API verification needed:
+
+## Pass / Fail Criteria
+- Pass:
+- Fail:
 
 ## User Feedback Signals
 - What users may report if the recommendation is wrong.

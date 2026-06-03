@@ -1,6 +1,6 @@
 ---
 name: liquid-glass-placement-auditor
-description: Audit a SwiftUI, iOS, iPadOS, or macOS app and recommend where Apple Liquid Glass should be applied or avoided. Use for UI modernization, Simulator screenshot review, Appshots/Computer Use review, SwiftUI toolbar/sidebar/tab/canvas audits, accessibility checks, or Liquid Glass redesign planning.
+description: Audit SwiftUI/iOS/iPadOS/macOS UI for Apple Liquid Glass placement in toolbars, tabs, sidebars, panels, chrome, canvas controls, and OS fallback decisions.
 ---
 
 # Liquid Glass Placement Auditor
@@ -28,8 +28,15 @@ Do not capture or operate anything until the user answers.
 - Use `references/screenshot-review-checklist.md` when screenshots are available.
 - Use `references/accessibility-checklist.md` before recommending transparency.
 - Use `references/swiftui-patterns.md` for code search signals.
+- Use `references/swiftui-liquid-glass-recipes.md` when the user asks for implementation guidance or concrete SwiftUI directions.
+- Use `references/implementation-recipes.md` when the request names implementation recipes directly.
+- Use `references/platform-compatibility.md` before recommending availability guards or older-OS behavior.
+- Use `references/platform-version-matrix.md` when the request names platform version rules directly.
+- Use `references/studyos-placement-map.md` when the project resembles StudyOS or the user asks for StudyOS-specific placement.
 - Use `references/apple-liquid-glass-links.md` for official links.
 - Use `references/output-contract.md` for the report.
+
+Prefer targeted search, project maps, and bundled scripts before reading many files.
 
 ## Workflows
 
@@ -59,9 +66,20 @@ Ask the user to attach screenshots. Mark recommendations as screenshot-based if 
 
 Inspect SwiftUI files for glass candidates. State lower confidence because screenshots were not reviewed.
 
-## Code Scanning Patterns
+### Implementation Mode
 
-Search for `NavigationStack`, `NavigationSplitView`, `TabView`, `.toolbar`, `.sheet`, `.popover`, `.inspector`, `safeAreaInset`, sidebars, bottom bars, floating action buttons, canvas toolbars, Apple Pencil tools, PDF viewers, flashcards, settings/forms, dense text, custom blur/material backgrounds, hardcoded opacity, hardcoded colors, and missing accessibility labels.
+Use this mode when the user asks to apply Liquid Glass, convert a surface, or provide implementation-ready guidance.
+
+1. Complete the placement audit first, even if it is code-only.
+2. Create a minimal file-by-file implementation plan.
+3. Check current Apple or Xcode documentation for exact API names before editing.
+4. Add availability guards for Liquid Glass-only APIs.
+5. Add Reduce Transparency and older-OS fallback behavior.
+6. Build the latest app version after code changes.
+7. Run the app in Simulator after a successful iOS or iPadOS build.
+8. Ask before screenshots, Appshots, Computer Use, or Simulator capture.
+
+If another specialist skill would be a better next step, recommend an explicit handoff prompt instead of claiming this skill automatically invokes it.
 
 ## Finding Standards
 
@@ -71,9 +89,10 @@ Every recommendation must include:
 - Confidence: high, medium, or low.
 - Placement decision: use, use carefully, avoid, or needs screenshot verification.
 - Accessibility risk: none, low, medium, or high.
+- OS support decision: ask before implementation whether iOS 17 keeps its existing UI, gets a new non-glass fallback, or is intentionally dropped by raising the minimum OS.
 - A concrete SwiftUI direction, not just visual advice.
 
-Prioritize readability and control discoverability over decorative effect. A good Liquid Glass recommendation should explain what remains opaque, what becomes chrome, and how the design behaves with Reduce Transparency.
+Prioritize readability and control discoverability over decorative effect. A good Liquid Glass recommendation should explain what remains opaque, what becomes chrome, how the design behaves with Reduce Transparency, and what older OS users see.
 
 ## Output
 

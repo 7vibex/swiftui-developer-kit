@@ -1,6 +1,6 @@
 ---
 name: simulator-screenshot-reviewer
-description: Capture, organize, and review iOS/iPadOS Simulator screenshots for SwiftUI UI problems, layout issues, visual hierarchy, clipping, spacing, readability, and screenshot-based design feedback. Use when the user asks Codex to look at the app running in Simulator.
+description: Review user-approved iOS/iPadOS Simulator screenshots for SwiftUI layout, clipping, spacing, readability, visual hierarchy, and screenshot-based UI feedback.
 ---
 
 # Simulator Screenshot Reviewer
