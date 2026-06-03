@@ -8,7 +8,7 @@ These command words give users a short way to ask for the right SwiftUI workflow
 | `fix-build` | `xcode-build-debugger` | `Use the swiftui-project-router skill. fix-build this Xcode error.` |
 | `review-screenshots` | `simulator-screenshot-reviewer` | `Use the swiftui-project-router skill. review-screenshots for the Home and Canvas screens.` |
 | `prepare-release` | `appstore-release-reviewer` | `Use the swiftui-project-router skill. prepare-release for TestFlight.` |
-| `modernize-ui` | `swiftui-ui-patterns` or `liquid-glass-placement-auditor` | `Use the swiftui-project-router skill. modernize-ui and clean up this screen's state, sheets, and Liquid Glass placement.` |
+| `modernize-ui` | `swiftui-design-system-auditor`, `swiftui-ui-patterns`, or `liquid-glass-placement-auditor` | `Use the swiftui-project-router skill. modernize-ui and review Apple UI fit, state, sheets, and Liquid Glass placement.` |
 | `improve-tests` | `test-coverage-improver` | `Use the swiftui-project-router skill. improve-tests for my ViewModels and SwiftData layer.` |
 | `draft-pr` | `pr-draft-generator` | `Use the swiftui-project-router skill. draft-pr for my current branch.` |
 | `detect-risks` | `swiftui-architecture-auditor` | `Use the swiftui-project-router skill. detect-risks in this SwiftUI project.` |

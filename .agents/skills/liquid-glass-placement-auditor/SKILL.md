@@ -29,7 +29,9 @@ Do not capture or operate anything until the user answers.
 - Use `references/accessibility-checklist.md` before recommending transparency.
 - Use `references/swiftui-patterns.md` for code search signals.
 - Use `references/swiftui-liquid-glass-recipes.md` when the user asks for implementation guidance or concrete SwiftUI directions.
+- Use `references/implementation-recipes.md` when the request names implementation recipes directly.
 - Use `references/platform-compatibility.md` before recommending availability guards or older-OS behavior.
+- Use `references/platform-version-matrix.md` when the request names platform version rules directly.
 - Use `references/studyos-placement-map.md` when the project resembles StudyOS or the user asks for StudyOS-specific placement.
 - Use `references/apple-liquid-glass-links.md` for official links.
 - Use `references/output-contract.md` for the report.

@@ -30,6 +30,7 @@ Codex skills are structured workflow folders. Each skill has a `SKILL.md` file w
 | `swiftui-project-router` | Select the right specialist workflow | The request is broad or spans multiple Apple app tasks |
 | `swiftui-feature-builder` | Plan and build SwiftUI features | Adding or modifying app functionality |
 | `swiftui-ui-patterns` | Shape SwiftUI screen composition | Choosing state ownership, navigation, sheets, async loading, previews, and view refactors |
+| `swiftui-design-system-auditor` | Audit Apple UI design quality | Layout hierarchy, typography, spacing, SF Symbols, toolbars, empty states, iPad/macOS fit, keyboard, pointer, and Apple Pencil workflows |
 | `liquid-glass-placement-auditor` | Audit where Liquid Glass belongs | Modernizing UI, reviewing chrome, toolbars, panels, or screenshots |
 | `simulator-screenshot-reviewer` | Capture and review Simulator screenshots | Looking for visual, layout, hierarchy, or readability issues |
 | `swiftui-architecture-auditor` | Review architecture and maintainability | State ownership, navigation, async, huge views, and boundaries |
@@ -52,7 +53,7 @@ For broad requests, use `swiftui-project-router` with a short command:
 | `fix-build` | Diagnose Xcode, SwiftPM, scheme, simulator, signing, and compiler failures |
 | `review-screenshots` | Review Simulator screenshots after consent and privacy checks |
 | `prepare-release` | Check TestFlight, App Store, metadata, privacy, screenshots, and signing |
-| `modernize-ui` | Review SwiftUI UI modernization and Liquid Glass placement |
+| `modernize-ui` | Review SwiftUI design quality, UI patterns, and Liquid Glass placement |
 | `improve-tests` | Find high-impact missing ViewModel, repository, service, and regression tests |
 | `draft-pr` | Draft PR title, body, testing checklist, risks, and release notes |
 | `detect-risks` | Run deterministic SwiftUI source checks, then route findings to the right audit |
@@ -120,7 +121,7 @@ For local Codex installs, use the installer:
 ./scripts/install-local.sh
 ```
 
-It symlinks the 12 skills into `~/.agents/skills` by default, skips existing skills, and prints the next prompt to try. Restart Codex after installing.
+It symlinks the 13 skills into `~/.agents/skills` by default, skips existing skills, and prints the next prompt to try. Restart Codex after installing.
 
 See [docs/installation.md](docs/installation.md) for more detail.
 
@@ -155,6 +156,10 @@ Use the swiftui-ui-patterns skill. Refactor this SwiftUI screen's state, sheets,
 ```
 
 ```text
+Use the swiftui-design-system-auditor skill. Review whether this iPad UI feels native and usable.
+```
+
+```text
 Use the appstore-release-reviewer skill. Check whether my iOS app is ready for TestFlight and App Store submission.
 ```
 
@@ -182,7 +187,7 @@ Appshots may capture the frontmost app window. The user must bring the intended 
 
 Do not capture screenshots, Appshots, or use Computer Use without asking first. Do not capture sensitive windows. Do not upload secrets, private production data, or personal documents. Scripts in this repository are intended to be non-destructive: they inspect, list, create folders, and capture only after user approval.
 
-See [docs/safety-and-privacy.md](docs/safety-and-privacy.md).
+See [docs/safety-and-privacy.md](docs/safety-and-privacy.md) and [SECURITY.md](SECURITY.md).
 
 ## AI Usage Policy
 
@@ -216,8 +221,6 @@ Use the appstore-release-reviewer skill. Check whether my iOS app is ready for T
 
 - Add a watchOS skill for watch app audits and release readiness.
 - Add visionOS examples that show spatial UI review prompts and output contracts.
-- Add a sample SwiftUI app audit that demonstrates the full router-to-specialist workflow without private project details.
-- Add `SECURITY.md` with supported reporting channels and safe disclosure expectations.
 - Expand deterministic SwiftUI risk detection with additional rules once the first scanner rules prove useful.
 
 ## Contributing

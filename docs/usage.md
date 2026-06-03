@@ -9,7 +9,7 @@ Use the swiftui-project-router skill. audit this app.
 Use the swiftui-project-router skill. fix-build this compiler error.
 Use the swiftui-project-router skill. review-screenshots for the Canvas screen.
 Use the swiftui-project-router skill. prepare-release for TestFlight.
-Use the swiftui-project-router skill. modernize-ui and clean up this screen's state, sheets, and Liquid Glass placement.
+Use the swiftui-project-router skill. modernize-ui and review Apple UI fit, state, sheets, and Liquid Glass placement.
 Use the swiftui-project-router skill. improve-tests around SwiftData deletes.
 Use the swiftui-project-router skill. draft-pr for my current branch.
 Use the swiftui-project-router skill. detect-risks in this SwiftUI project.
@@ -52,6 +52,10 @@ Use the swiftui-architecture-auditor skill. Review my SwiftUI project for state 
 
 ```text
 Use the swiftui-ui-patterns skill. Review this SwiftUI screen's state ownership, sheets, async loading, previews, and subview structure.
+```
+
+```text
+Use the swiftui-design-system-auditor skill. Review whether this iPad app feels native, readable, and ergonomic.
 ```
 
 ## Screenshot Mode

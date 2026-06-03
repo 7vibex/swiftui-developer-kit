@@ -75,4 +75,13 @@ for provider in "${providers[@]}"; do
   echo "bundle: $provider -> $target"
 done
 
+if [[ -f "$repo_root/CLAUDE.md" ]]; then
+  cp "$repo_root/CLAUDE.md" "$output_dir/.claude/CLAUDE.md"
+fi
+
+if [[ -d "$repo_root/.claude/commands" ]]; then
+  mkdir -p "$output_dir/.claude/commands"
+  cp -R "$repo_root/.claude/commands/." "$output_dir/.claude/commands/"
+fi
+
 echo "Generated provider bundles in $output_dir"
