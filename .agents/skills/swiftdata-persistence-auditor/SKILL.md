@@ -14,6 +14,8 @@ Audit SwiftData usage for data loss, migration, query performance, relationship 
 - `references/query-performance-checklist.md`
 - `references/output-contract.md`
 
+Prefer targeted search, project maps, and bundled scripts before reading many files.
+
 ## Check
 
 - Full-table fetches.

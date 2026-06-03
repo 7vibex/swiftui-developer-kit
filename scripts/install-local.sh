@@ -5,10 +5,10 @@ usage() {
   cat <<'USAGE'
 Usage: scripts/install-local.sh [--copy] [--target DIR]
 
-Installs all skills from .agents/skills into the local Codex skills directory.
+Installs all skills from .agents/skills into the local Codex user skills directory.
 
 Default target:
-  ${CODEX_HOME:-$HOME/.codex}/skills
+  $HOME/.agents/skills
 
 Default mode:
   symlink each skill folder so git pulls update the installed skills.
@@ -23,7 +23,7 @@ USAGE
 }
 
 mode="symlink"
-target_dir="${CODEX_HOME:-$HOME/.codex}/skills"
+target_dir="$HOME/.agents/skills"
 
 while [[ $# -gt 0 ]]; do
   case "$1" in

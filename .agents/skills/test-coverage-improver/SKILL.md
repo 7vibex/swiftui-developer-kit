@@ -15,6 +15,8 @@ Find high-impact missing tests and propose focused additions.
 - `references/regression-test-checklist.md`
 - `references/output-contract.md`
 
+Prefer targeted search, project maps, and bundled scripts before reading many files.
+
 ## Check
 
 - Test targets and test frameworks.

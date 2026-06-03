@@ -13,6 +13,8 @@ Use this workflow to plan and implement Apple app features without large unrevie
 - Read `references/swiftui-component-guidelines.md` before changing SwiftUI view structure.
 - Use `references/output-contract.md` for final reporting.
 
+Prefer targeted search, project maps, and bundled scripts before reading many files.
+
 ## Workflow
 
 1. Understand the requested feature and success criteria.
@@ -36,12 +38,4 @@ Use this workflow to plan and implement Apple app features without large unrevie
 
 ## Output
 
-Use the output contract:
-
-- Feature plan
-- Files changed
-- Implementation notes
-- Accessibility considerations
-- Tests
-- Verification
-- Follow-up improvements
+Use `references/output-contract.md`.

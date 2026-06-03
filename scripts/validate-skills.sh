@@ -22,9 +22,12 @@ require_file AGENTS.md
 require_file CONTRIBUTING.md
 require_file CODE_OF_CONDUCT.md
 require_file LICENSE
+require_file docs/commands.md
+require_file docs/demo-site/index.html
 require_dir .agents/skills
 require_dir docs
 require_dir examples
+require_dir tests
 
 skill_count=0
 
@@ -77,13 +80,13 @@ RUBY
   grep -q "$skill_name" docs/skill-index.md || fail "docs/skill-index.md does not mention $skill_name"
 done
 
-[[ "$skill_count" -eq 11 ]] || fail "expected 11 skills, found $skill_count"
+[[ "$skill_count" -eq 12 ]] || fail "expected 12 skills, found $skill_count"
 
 while IFS= read -r script; do
   head -n 1 "$script" | grep -qx '#!/usr/bin/env bash' || fail "$script missing bash shebang"
   sed -n '2p' "$script" | grep -qx 'set -euo pipefail' || fail "$script missing set -euo pipefail"
   bash -n "$script"
-done < <(find .agents/skills scripts -name "*.sh" -type f | sort)
+done < <(find .agents/skills scripts tests -name "*.sh" -type f | sort)
 
 if grep -RInE --exclude validate-skills.sh '\b(rm -rf|git reset|git checkout --|simctl boot|simctl launch|xcodebuild .* clean|xcodebuild .* build|open -a)\b' .agents/skills scripts; then
   fail "potentially destructive or side-effectful script command found"
@@ -97,6 +100,7 @@ grep -q "Do not capture" .agents/skills/simulator-screenshot-reviewer/SKILL.md |
 for example in \
   studyos-liquid-glass-audit.md \
   simulator-screenshot-review-example.md \
+  swiftui-ui-patterns-example.md \
   swiftui-architecture-audit-example.md \
   swiftdata-audit-example.md \
   accessibility-audit-example.md \
@@ -110,9 +114,13 @@ done
 
 grep -q "developer.apple.com" docs/apple-doc-links.md || fail "Apple docs file lacks official Apple links"
 grep -q "developers.openai.com" docs/openai-codex-doc-links.md || fail "OpenAI docs file lacks official OpenAI links"
+grep -q "detect-risks" docs/commands.md || fail "Command docs lack detect-risks"
+grep -q "review-screenshots" .agents/skills/swiftui-project-router/SKILL.md || fail "Router lacks command vocabulary"
 
 if grep -RInE --exclude validate-skills.sh '\b(TBD|TODO|FIXME|placeholder)\b' README.md AGENTS.md CONTRIBUTING.md docs .agents examples scripts; then
   fail "placeholder text found"
 fi
+
+bash tests/run-tests.sh
 
 echo "Validated $skill_count skills, shell scripts, docs, and examples."

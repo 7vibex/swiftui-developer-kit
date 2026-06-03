@@ -29,6 +29,7 @@ Codex skills are structured workflow folders. Each skill has a `SKILL.md` file w
 | --- | --- | --- |
 | `swiftui-project-router` | Select the right specialist workflow | The request is broad or spans multiple Apple app tasks |
 | `swiftui-feature-builder` | Plan and build SwiftUI features | Adding or modifying app functionality |
+| `swiftui-ui-patterns` | Shape SwiftUI screen composition | Choosing state ownership, navigation, sheets, async loading, previews, and view refactors |
 | `liquid-glass-placement-auditor` | Audit where Liquid Glass belongs | Modernizing UI, reviewing chrome, toolbars, panels, or screenshots |
 | `simulator-screenshot-reviewer` | Capture and review Simulator screenshots | Looking for visual, layout, hierarchy, or readability issues |
 | `swiftui-architecture-auditor` | Review architecture and maintainability | State ownership, navigation, async, huge views, and boundaries |
@@ -40,6 +41,39 @@ Codex skills are structured workflow folders. Each skill has a `SKILL.md` file w
 | `pr-draft-generator` | Draft pull request material | PR titles, summaries, testing checklists, risks, and release notes |
 
 The repository also includes `scripts/validate-skills.sh` and a GitHub Actions workflow to validate skill frontmatter, required references, shell syntax, examples, and safety gates.
+
+## Command Vocabulary And CLI
+
+For broad requests, use `swiftui-project-router` with a short command:
+
+| Command | What It Does |
+| --- | --- |
+| `audit` | Review project quality and route to the right specialist audits |
+| `fix-build` | Diagnose Xcode, SwiftPM, scheme, simulator, signing, and compiler failures |
+| `review-screenshots` | Review Simulator screenshots after consent and privacy checks |
+| `prepare-release` | Check TestFlight, App Store, metadata, privacy, screenshots, and signing |
+| `modernize-ui` | Review SwiftUI UI modernization and Liquid Glass placement |
+| `improve-tests` | Find high-impact missing ViewModel, repository, service, and regression tests |
+| `draft-pr` | Draft PR title, body, testing checklist, risks, and release notes |
+| `detect-risks` | Run deterministic SwiftUI source checks, then route findings to the right audit |
+
+Example:
+
+```text
+Use the swiftui-project-router skill. detect-risks in this SwiftUI project.
+```
+
+The repo-local CLI wraps common maintenance workflows:
+
+```bash
+scripts/swiftui-kit.sh list
+scripts/swiftui-kit.sh detect --format markdown .
+scripts/swiftui-kit.sh doctor
+scripts/swiftui-kit.sh bundle --output /tmp/swiftui-kit-dist
+scripts/swiftui-kit.sh validate
+```
+
+`scripts/detect-swiftui-antipatterns.sh` is read-only. It flags deterministic SwiftUI risk signals such as oversized SwiftUI view files, unlabeled symbol-only buttons, lifecycle-created unstructured tasks, hardcoded colors, and suspicious SwiftData delete paths.
 
 ## Demo
 
@@ -64,7 +98,13 @@ git clone https://github.com/7vibex/codex-swiftui-developer-kit.git
 cd codex-swiftui-developer-kit
 ```
 
-Use the skills by pointing Codex at this repository, or copy `.agents/skills/` into a Codex-compatible skills location if your environment supports local skill discovery.
+Use the skills by pointing Codex at this repository, or copy `.agents/skills/` into a Codex-compatible skills location if your environment supports local skill discovery. Current Codex skill locations are:
+
+```text
+Repo-local: .agents/skills
+User-local: ~/.agents/skills
+Admin: /etc/codex/skills
+```
 
 You can also give Codex the repository link and ask it to install the pack for local use:
 
@@ -72,7 +112,7 @@ You can also give Codex the repository link and ask it to install the pack for l
 Install the Codex skills from https://github.com/7vibex/codex-swiftui-developer-kit so I can use them locally.
 ```
 
-Codex should clone or inspect the repository, run the local installer, and confirm the skills are available in `${CODEX_HOME:-$HOME/.codex}/skills`.
+Codex should clone or inspect the repository, run the local installer, and confirm the skills are available in `~/.agents/skills`.
 
 For local Codex installs, use the installer:
 
@@ -80,9 +120,17 @@ For local Codex installs, use the installer:
 ./scripts/install-local.sh
 ```
 
-It symlinks the 11 skills into `${CODEX_HOME:-$HOME/.codex}/skills` by default, skips existing skills, and prints the next prompt to try. Restart Codex after installing.
+It symlinks the 12 skills into `~/.agents/skills` by default, skips existing skills, and prints the next prompt to try. Restart Codex after installing.
 
 See [docs/installation.md](docs/installation.md) for more detail.
+
+Provider bundles can be generated for Codex/generic agents, Claude Code, Cursor, Gemini CLI, GitHub Copilot, and OpenCode:
+
+```bash
+scripts/swiftui-kit.sh bundle --output /tmp/swiftui-kit-providers
+```
+
+The generated output is intended for distribution and should not be committed back into this repository.
 
 ## Using The Router Skill
 
@@ -100,6 +148,10 @@ Use a specialist skill when the workflow is clear:
 
 ```text
 Use the swiftui-architecture-auditor skill. Review my SwiftUI project for state management, navigation, async, and maintainability problems.
+```
+
+```text
+Use the swiftui-ui-patterns skill. Refactor this SwiftUI screen's state, sheets, previews, and view structure.
 ```
 
 ```text
@@ -166,7 +218,7 @@ Use the appstore-release-reviewer skill. Check whether my iOS app is ready for T
 - Add visionOS examples that show spatial UI review prompts and output contracts.
 - Add a sample SwiftUI app audit that demonstrates the full router-to-specialist workflow without private project details.
 - Add `SECURITY.md` with supported reporting channels and safe disclosure expectations.
-- Improve the skill validator with stricter checks for output contracts, examples, and script safety.
+- Expand deterministic SwiftUI risk detection with additional rules once the first scanner rules prove useful.
 
 ## Contributing
 
