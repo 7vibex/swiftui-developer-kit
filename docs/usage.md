@@ -6,6 +6,7 @@ The router accepts short commands:
 
 ```text
 Use the swiftui-project-router skill. audit this app.
+Use the swiftui-project-router skill. canvas-audit this iPad drawing canvas.
 Use the swiftui-project-router skill. fix-build this compiler error.
 Use the swiftui-project-router skill. review-screenshots for the Canvas screen.
 Use the swiftui-project-router skill. prepare-release for TestFlight.
@@ -26,6 +27,8 @@ scripts/swiftui-kit.sh doctor
 ```
 
 The deterministic detector is useful before deeper Codex review because it points the agent at concrete SwiftUI risk signals.
+
+For a worked code-only scan with markdown output and follow-up prompts, see [../examples/detect-risks-example.md](../examples/detect-risks-example.md).
 
 ## Router Skill Usage
 
@@ -56,6 +59,10 @@ Use the swiftui-ui-patterns skill. Review this SwiftUI screen's state ownership,
 
 ```text
 Use the swiftui-design-system-auditor skill. Review whether this iPad app feels native, readable, and ergonomic.
+```
+
+```text
+Use the canvas-engine-auditor skill. Audit my canvas for PencilKit drawing bugs, coordinate drift after zoom/pan, highlighter opacity, gesture conflicts, layer save/reopen, undo/redo, performance, and missing regression tests.
 ```
 
 ## Screenshot Mode

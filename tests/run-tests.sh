@@ -3,11 +3,27 @@ set -euo pipefail
 
 repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$repo_root"
+source scripts/temp-dir.sh
+
+if [[ -n "${SWIFTUI_KIT_TEST_INVOCATION_LOG:-}" ]]; then
+  printf 'run-tests\n' >> "$SWIFTUI_KIT_TEST_INVOCATION_LOG"
+  if [[ "${SWIFTUI_KIT_TEST_STUB_ONLY:-0}" == "1" ]]; then
+    exit 0
+  fi
+fi
 
 fail() {
   echo "fail: $*" >&2
   exit 1
 }
+
+if [[ "${SWIFTUI_KIT_TEST_TEMP_PROBE:-0}" == "1" ]]; then
+  probe_dir="$(swiftui_kit_mktemp_dir "$repo_root" "swiftui-kit-temp-probe")" || fail "could not create probe temp directory"
+  [[ -d "$probe_dir" ]] || fail "probe temp directory was not created"
+  rm -rf "$probe_dir"
+  echo "Temp probe passed."
+  exit 0
+fi
 
 assert_contains() {
   local needle="$1"
@@ -17,12 +33,19 @@ assert_contains() {
   fi
 }
 
-tmp_dir="$(mktemp -d "${TMPDIR:-/tmp}/swiftui-kit-tests.XXXXXX")"
+tmp_dir="$(swiftui_kit_mktemp_dir "$repo_root" "swiftui-kit-tests")" || fail "could not create test temp directory"
 trap 'rm -rf "$tmp_dir"' EXIT
+
+echo "test: temp directory falls back when TMPDIR is unavailable"
+TMPDIR="$tmp_dir/missing-tmp-base" \
+  SWIFTUI_KIT_TEST_TEMP_PROBE=1 \
+  bash tests/run-tests.sh > "$tmp_dir/temp-probe.txt"
+assert_contains "Temp probe passed." "$tmp_dir/temp-probe.txt"
 
 echo "test: cli lists skills"
 scripts/swiftui-kit.sh list > "$tmp_dir/list.txt"
 assert_contains "swiftui-project-router" "$tmp_dir/list.txt"
+assert_contains "canvas-engine-auditor" "$tmp_dir/list.txt"
 assert_contains "swiftui-design-system-auditor" "$tmp_dir/list.txt"
 assert_contains "swiftui-ui-patterns" "$tmp_dir/list.txt"
 assert_contains "liquid-glass-placement-auditor" "$tmp_dir/list.txt"
@@ -60,9 +83,11 @@ assert_contains '"rule":"unstructured-task-in-view-lifecycle"' "$tmp_dir/detect.
 assert_contains '"rule":"hardcoded-foreground-color"' "$tmp_dir/detect.json"
 
 echo "test: provider bundles are generated"
-scripts/build-provider-bundles.sh --output "$tmp_dir/dist" > "$tmp_dir/bundle.txt"
+TMPDIR="$tmp_dir/missing-bundle-tmp-base" \
+  scripts/build-provider-bundles.sh --output "$tmp_dir/dist" > "$tmp_dir/bundle.txt"
 for provider_dir in .agents .claude .cursor .gemini .github .opencode; do
   [[ -f "$tmp_dir/dist/$provider_dir/skills/swiftui-project-router/SKILL.md" ]] || fail "missing $provider_dir bundle"
+  [[ -f "$tmp_dir/dist/$provider_dir/skills/canvas-engine-auditor/SKILL.md" ]] || fail "missing $provider_dir canvas bundle"
 done
 [[ -f "$tmp_dir/dist/.claude/CLAUDE.md" ]] || fail "missing Claude adapter manifest"
 [[ -f "$tmp_dir/dist/.claude/commands/audit.md" ]] || fail "missing Claude command bundle"
@@ -78,7 +103,9 @@ echo "test: command vocabulary exists"
 assert_contains "review-screenshots" docs/commands.md
 assert_contains "prepare-release" docs/commands.md
 assert_contains "detect-risks" docs/commands.md
+assert_contains "canvas-audit" docs/commands.md
 assert_contains "review-screenshots" .agents/skills/swiftui-project-router/SKILL.md
+assert_contains "canvas-audit" .agents/skills/swiftui-project-router/SKILL.md
 
 echo "test: Liquid Glass implementation guidance exists"
 assert_contains "Implementation Mode" .agents/skills/liquid-glass-placement-auditor/SKILL.md
@@ -100,6 +127,55 @@ assert_contains "Canvas floating tool palette" .agents/skills/liquid-glass-place
 echo "test: behavior checks pass"
 scripts/test-skill-behavior.sh > "$tmp_dir/behavior.txt"
 assert_contains "Behavior checks passed" "$tmp_dir/behavior.txt"
+
+echo "test: canvas engine auditor exists"
+[[ -f examples/canvas-engine-auditor-example.md ]] || fail "missing canvas engine auditor example"
+assert_contains "Canvas Architecture Map" examples/canvas-engine-auditor-example.md
+assert_contains "canvas-engine-auditor" README.md
+assert_contains "canvas-engine-auditor" docs/skill-index.md
+assert_contains "canvas-engine-auditor" CLAUDE.md
+assert_contains "canvas-engine-auditor" examples/claude-prompts.md
+
+echo "test: canvas risk scanner flags PencilKit and coordinate hotspots"
+mkdir -p "$tmp_dir/Canvas App"
+cat > "$tmp_dir/Canvas App/CanvasView.swift" <<'SWIFT'
+import PencilKit
+import SwiftUI
+
+struct CanvasView: UIViewRepresentable {
+  func makeUIView(context: Context) -> PKCanvasView {
+    PKCanvasView()
+  }
+
+  func updateUIView(_ canvasView: PKCanvasView, context: Context) {
+    canvasView.drawing = PKDrawing()
+  }
+
+  var drag: some Gesture {
+    DragGesture(coordinateSpace: .global)
+  }
+}
+SWIFT
+.agents/skills/canvas-engine-auditor/scripts/detect-canvas-risks.sh "$tmp_dir/Canvas App" > "$tmp_dir/canvas-scan.txt"
+assert_contains "PKCanvasView" "$tmp_dir/canvas-scan.txt"
+assert_contains "DragGesture" "$tmp_dir/canvas-scan.txt"
+
+echo "test: detect-risks worked example exists"
+[[ -f examples/detect-risks-example.md ]] || fail "missing detect-risks example"
+assert_contains "Findings: 5" examples/detect-risks-example.md
+assert_contains "examples/detect-risks-example.md" README.md
+assert_contains "detect-risks-example.md" docs/commands.md
+assert_contains "detect-risks-example.md" docs/usage.md
+
+echo "test: validate command runs local tests once"
+validate_log="$tmp_dir/validate-test-invocations.txt"
+: > "$validate_log"
+SWIFTUI_KIT_TEST_INVOCATION_LOG="$validate_log" \
+  SWIFTUI_KIT_TEST_STUB_ONLY=1 \
+  scripts/swiftui-kit.sh validate > "$tmp_dir/validate.txt"
+test_invocations="$(wc -l < "$validate_log" | tr -d ' ')"
+[[ "$test_invocations" -eq 1 ]] || fail "expected validate to run local tests once, ran $test_invocations times"
+assert_contains "Validated " "$tmp_dir/validate.txt"
 
 echo "test: SwiftUI UI patterns skill exists"
 assert_contains "state-ownership.md" .agents/skills/swiftui-ui-patterns/SKILL.md

@@ -31,6 +31,7 @@ Codex skills are structured workflow folders. Each skill has a `SKILL.md` file w
 | `swiftui-feature-builder` | Plan and build SwiftUI features | Adding or modifying app functionality |
 | `swiftui-ui-patterns` | Shape SwiftUI screen composition | Choosing state ownership, navigation, sheets, async loading, previews, and view refactors |
 | `swiftui-design-system-auditor` | Audit Apple UI design quality | Layout hierarchy, typography, spacing, SF Symbols, toolbars, empty states, iPad/macOS fit, keyboard, pointer, and Apple Pencil workflows |
+| `canvas-engine-auditor` | Audit iPad canvas engines | PencilKit, Apple Pencil, drawing, handwriting, zoom/pan, coordinates, highlighter opacity, layers, PDF annotation, persistence, undo/redo, and canvas performance bugs |
 | `liquid-glass-placement-auditor` | Audit where Liquid Glass belongs | Modernizing UI, reviewing chrome, toolbars, panels, or screenshots |
 | `simulator-screenshot-reviewer` | Capture and review Simulator screenshots | Looking for visual, layout, hierarchy, or readability issues |
 | `swiftui-architecture-auditor` | Review architecture and maintainability | State ownership, navigation, async, huge views, and boundaries |
@@ -50,6 +51,7 @@ For broad requests, use `swiftui-project-router` with a short command:
 | Command | What It Does |
 | --- | --- |
 | `audit` | Review project quality and route to the right specialist audits |
+| `canvas-audit` | Audit drawing, PencilKit, zoom/pan, gestures, layers, persistence, undo/redo, and canvas performance |
 | `fix-build` | Diagnose Xcode, SwiftPM, scheme, simulator, signing, and compiler failures |
 | `review-screenshots` | Review Simulator screenshots after consent and privacy checks |
 | `prepare-release` | Check TestFlight, App Store, metadata, privacy, screenshots, and signing |
@@ -64,17 +66,32 @@ Example:
 Use the swiftui-project-router skill. detect-risks in this SwiftUI project.
 ```
 
+```text
+Use the swiftui-project-router skill. canvas-audit my iPad drawing canvas for coordinate drift, PencilKit state, highlighter opacity, save/reopen, and gesture conflicts.
+```
+
 The repo-local CLI wraps common maintenance workflows:
 
 ```bash
 scripts/swiftui-kit.sh list
 scripts/swiftui-kit.sh detect --format markdown .
 scripts/swiftui-kit.sh doctor
-scripts/swiftui-kit.sh bundle --output /tmp/swiftui-kit-dist
+scripts/swiftui-kit.sh bundle --output .tmp/swiftui-kit-dist
 scripts/swiftui-kit.sh validate
 ```
 
 `scripts/detect-swiftui-antipatterns.sh` is read-only. It flags deterministic SwiftUI risk signals such as oversized SwiftUI view files, unlabeled symbol-only buttons, lifecycle-created unstructured tasks, hardcoded colors, and suspicious SwiftData delete paths.
+
+Worked output:
+
+```markdown
+- **image-button-missing-accessibility-label** `StudyOS/Sources/StudyPlanDashboard.swift:42` [high]: A button appears to rely on an SF Symbol without an accessibility label. Add a clear .accessibilityLabel or use a Label with visible text.
+- **swiftdata-delete-without-recovery-signal** `StudyOS/Sources/StudyPlanDashboard.swift:112` [high]: SwiftData delete path has no nearby confirmation or recovery signal. Verify destructive actions have confirmation, undo, or a clear recovery path.
+
+Findings: 5
+```
+
+See [examples/detect-risks-example.md](examples/detect-risks-example.md) for a full `detect-risks` example with prompt, command, scanner output, and follow-up fix prompt.
 
 See [docs/detector-roadmap.md](docs/detector-roadmap.md) for planned scanner rules that should stay low-noise before being added.
 
@@ -87,12 +104,14 @@ Example:
 | Step | Example |
 | --- | --- |
 | Before prompt | `Audit my iPad SwiftUI app. Check architecture, SwiftData, screenshots, accessibility, and Liquid Glass placement.` |
-| Codex chooses skill | `swiftui-project-router` selects the specialist audits, such as `swiftui-architecture-auditor`, `swiftdata-persistence-auditor`, `simulator-screenshot-reviewer`, `accessibility-auditor`, and `liquid-glass-placement-auditor`. |
+| Codex chooses skill | `swiftui-project-router` selects the specialist audits, such as `swiftui-architecture-auditor`, `canvas-engine-auditor`, `swiftdata-persistence-auditor`, `simulator-screenshot-reviewer`, `accessibility-auditor`, and `liquid-glass-placement-auditor`. |
 | Output checklist/result | Codex returns prioritized findings, evidence, recommended fix order, apply/avoid guidance for Liquid Glass, and verification steps. |
 
 The key behavior is not a generic answer. The skills push Codex toward structured output with severity, confidence, file evidence when available, and a practical next action.
 
 The StudyOS examples are fictional. See [docs/demo-roadmap.md](docs/demo-roadmap.md) for the next step toward a public sample-app screenshot demo.
+
+For a code-only static scan, see the worked [`detect-risks` example](examples/detect-risks-example.md).
 
 ## Installation
 
@@ -125,14 +144,14 @@ For local Codex installs, use the installer:
 ./scripts/install-local.sh
 ```
 
-It symlinks the 13 skills into `~/.agents/skills` by default, skips existing skills, and prints the next prompt to try. Restart Codex after installing.
+It symlinks the 14 skills into `~/.agents/skills` by default, skips existing skills, and prints the next prompt to try. Restart Codex after installing.
 
 See [docs/installation.md](docs/installation.md) for more detail.
 
 Provider bundles can be generated for Codex/generic agents, Claude Code, Cursor, Gemini CLI, GitHub Copilot, and OpenCode:
 
 ```bash
-scripts/swiftui-kit.sh bundle --output /tmp/swiftui-kit-providers
+scripts/swiftui-kit.sh bundle --output .tmp/swiftui-kit-providers
 ```
 
 The generated output is intended for distribution and should not be committed back into this repository.
@@ -211,6 +230,10 @@ Use the swiftui-project-router skill. I want to audit my SwiftUI app and decide 
 
 ```text
 Use the liquid-glass-placement-auditor skill. My SwiftUI app is running in the iPad Simulator. Ask me before taking screenshots, then review the main screens and tell me where Liquid Glass should be used or avoided.
+```
+
+```text
+Use the canvas-engine-auditor skill. Audit my iPad canvas for PencilKit drawing bugs, coordinate drift after zooming, highlighter opacity, layers reopening in old positions, gesture conflicts, persistence loss, performance, and missing regression tests.
 ```
 
 ```text

@@ -6,6 +6,7 @@
 | `swiftui-feature-builder` | Plan and implement SwiftUI features | Building or modifying iOS, iPadOS, or macOS app features | `Use the swiftui-feature-builder skill. Add a planner detail screen.` | Feature plan, files changed, accessibility, tests, verification |
 | `swiftui-ui-patterns` | Shape SwiftUI screen composition | State ownership, navigation, sheets, async loading, previews, performance, and view refactors | `Use the swiftui-ui-patterns skill. Clean up this editor screen's state and sheets.` | Recommended pattern, risks avoided, files to change, verification |
 | `swiftui-design-system-auditor` | Audit Apple UI design quality | Layout hierarchy, typography, spacing, symbols, toolbars, empty states, platform fit, keyboard, pointer, and Pencil flows | `Use the swiftui-design-system-auditor skill. Review whether this iPad UI feels native.` | Pass criteria, findings, platform fit, fix order, verification |
+| `canvas-engine-auditor` | Audit canvas/ink/gesture/persistence correctness | Canvas, PencilKit, drawing, annotation, zoom/pan, Apple Pencil, highlighter, PDF annotation, layer, persistence, undo/redo, or infinite-board bugs | `Use the canvas-engine-auditor skill. Audit my StudyOS Canvas.` | Architecture map, findings, fix order, regression tests, Codex fix prompts |
 | `liquid-glass-placement-auditor` | Recommend where Liquid Glass should be used or avoided | UI modernization, chrome review, toolbars, sidebars, Simulator screenshots | `Use the liquid-glass-placement-auditor skill. Review where Liquid Glass belongs.` | Executive summary, screen recommendations, implementation plan |
 | `simulator-screenshot-reviewer` | Capture, inventory, and review Simulator screenshots | Visual UI review of a running app | `Use the simulator-screenshot-reviewer skill. Review the Canvas screen in Simulator.` | Capture mode, screenshots, visual issues, layout fixes |
 | `swiftui-architecture-auditor` | Audit architecture and maintainability | State, navigation, async, huge views, dead code, service boundaries | `Use the swiftui-architecture-auditor skill. Audit my app architecture.` | Critical/high/medium issues, fix order, Codex fix prompts |
@@ -23,6 +24,7 @@ Use these with `swiftui-project-router` when you want a concise command vocabula
 | Command | Routes To | Use When |
 | --- | --- | --- |
 | `audit` | Architecture and related specialist audits | Broad project quality review |
+| `canvas-audit` | `canvas-engine-auditor` | Drawing, handwriting, PencilKit, zoom/pan, gestures, layers, PDF annotation, persistence, undo/redo, or canvas performance bugs |
 | `fix-build` | `xcode-build-debugger` | Xcode, SwiftPM, scheme, simulator, signing, or compiler failures |
 | `review-screenshots` | `simulator-screenshot-reviewer` | Simulator visual review after consent |
 | `prepare-release` | `appstore-release-reviewer` | TestFlight and App Store readiness |

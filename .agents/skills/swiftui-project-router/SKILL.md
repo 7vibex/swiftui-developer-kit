@@ -1,6 +1,6 @@
 ---
 name: swiftui-project-router
-description: Route broad Apple app requests or named workflow commands like audit, fix-build, review-screenshots, prepare-release, modernize-ui, improve-tests, draft-pr, and detect-risks.
+description: Route broad Apple app requests or named workflow commands like audit, canvas-audit, fix-build, review-screenshots, prepare-release, modernize-ui, improve-tests, draft-pr, and detect-risks.
 ---
 
 # SwiftUI Project Router
@@ -14,6 +14,7 @@ Use these command words when the user wants a concise workflow menu or names one
 | Command | Route To | Use When |
 | --- | --- | --- |
 | `audit` | `swiftui-architecture-auditor`, then related specialist audits as needed | Broad project quality review across architecture, persistence, accessibility, tests, release, or UI |
+| `canvas-audit` | `canvas-engine-auditor` | Drawing, handwriting, PencilKit, Apple Pencil, zoom/pan, layer, PDF annotation, gesture, persistence, undo/redo, or canvas performance bugs |
 | `fix-build` | `xcode-build-debugger` | Xcode, SwiftPM, scheme, simulator, signing, package, or compiler failures |
 | `review-screenshots` | `simulator-screenshot-reviewer` | Simulator screenshots, visual hierarchy, clipping, spacing, readability, layout, or screen-by-screen UI review |
 | `prepare-release` | `appstore-release-reviewer` | TestFlight, App Store, privacy, metadata, screenshots, signing, and go/no-go release checks |
@@ -27,6 +28,7 @@ If the user asks for the menu, show the commands above with one-line guidance an
 ## Routing Map
 
 - Build or modify a feature: `swiftui-feature-builder`
+- Canvas, drawing, handwriting, annotation, PencilKit, Apple Pencil, zoom/pan, coordinate drift, layers, PDF alignment, highlighter opacity, undo/redo, or canvas persistence bugs: `canvas-engine-auditor`
 - Apple UI design quality, layout hierarchy, typography, spacing, SF Symbols, platform fit, keyboard, pointer, or Apple Pencil review: `swiftui-design-system-auditor`
 - SwiftUI screen composition, state wrappers, sheets, previews, async UI state, or view refactors: `swiftui-ui-patterns`
 - Liquid Glass, modern UI, glass placement, chrome review: `liquid-glass-placement-auditor`
