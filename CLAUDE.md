@@ -2,7 +2,7 @@
 
 This repository is a SwiftUI agent workflow library, not a SwiftUI app.
 
-Use the skills under `.agents/skills/` as reusable workflows for SwiftUI, iOS, iPadOS, macOS, SwiftData, Liquid Glass, accessibility, testing, release, and PR work.
+Use the skills under `.agents/skills/` as reusable workflows for SwiftUI, iOS, iPadOS, macOS, SwiftData, canvas/PencilKit, Liquid Glass, accessibility, testing, release, and PR work.
 
 ## Working Rules
 
@@ -30,6 +30,7 @@ scripts/swiftui-kit.sh detect --format markdown /path/to/SwiftUIApp
 
 ```text
 Use the swiftui-project-router skill. audit this SwiftUI app.
+Use the canvas-engine-auditor skill. Audit this iPad canvas for PencilKit, zoom/pan, gestures, layers, persistence, undo/redo, and performance bugs.
 Use the swiftui-design-system-auditor skill. Review whether this iPad UI feels native and usable.
 Use the liquid-glass-placement-auditor skill. Review where Liquid Glass belongs or should be avoided.
 ```

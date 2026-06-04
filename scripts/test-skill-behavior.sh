@@ -21,7 +21,7 @@ commands="docs/commands.md"
 [[ -f "$router" ]] || fail "missing router skill"
 [[ -f "$commands" ]] || fail "missing command docs"
 
-for command in audit fix-build review-screenshots prepare-release modernize-ui improve-tests draft-pr detect-risks; do
+for command in audit canvas-audit fix-build review-screenshots prepare-release modernize-ui improve-tests draft-pr detect-risks; do
   require_contains "$router" "$command"
   require_contains "$commands" "$command"
 done

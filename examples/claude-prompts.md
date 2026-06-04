@@ -13,5 +13,9 @@ Use the swiftui-ui-patterns skill. Refactor this editor screen's state ownership
 ```
 
 ```text
+Use the canvas-engine-auditor skill. Audit my StudyOS-style iPad Canvas for PencilKit drawing bugs, coordinate drift after zoom/pan, highlighter opacity, layer save/reopen, gesture conflicts, persistence loss, undo/redo, performance, and missing regression tests.
+```
+
+```text
 Use the liquid-glass-placement-auditor skill. Ask before screenshots, then review where Liquid Glass belongs and where stable contrast matters more.
 ```

@@ -15,6 +15,15 @@ Use official Apple links and short summaries. Do not copy large Apple documentat
 | App Privacy Details | <https://developer.apple.com/app-store/app-privacy-details/> | App privacy labels and App Store metadata review |
 | SF Symbols | <https://developer.apple.com/sf-symbols/> | Icon selection, symbol consistency, and platform-native UI |
 | PencilKit | <https://developer.apple.com/documentation/pencilkit> | Apple Pencil canvas and drawing workflows |
+| PKCanvasView | <https://developer.apple.com/documentation/pencilkit/pkcanvasview> | UIKit drawing surface, touch capture, zoom/scroll behavior, and drawing data |
+| Drawing With PencilKit | <https://developer.apple.com/documentation/PencilKit/drawing-with-pencilkit> | Inspecting strokes, points, and PencilKit drawing behavior |
+| PKCanvasViewDelegate | <https://developer.apple.com/documentation/pencilkit/pkcanvasviewdelegate/canvasviewdrawingdidchange%28_%3A%29> | Detecting drawing changes and choosing safe persistence timing |
+| SwiftUI Canvas | <https://developer.apple.com/documentation/swiftui/canvas> | Immediate-mode 2D drawing and non-PencilKit overlays |
+| SwiftUI DragGesture Coordinate Space | <https://developer.apple.com/documentation/swiftui/draggesture/coordinatespace> | Keeping drag locations consistent across zoom, pan, and saved model space |
+| SwiftUI Coordinate Space | <https://developer.apple.com/documentation/swiftui/view/coordinatespace%28_%3A%29> | Naming view coordinate spaces for reliable geometry conversion |
+| Apple Pencil And Scribble HIG | <https://developer.apple.com/design/human-interface-guidelines/apple-pencil-and-scribble> | Apple Pencil ergonomics, handwriting, marking, and Scribble expectations |
+| Xcode Testing | <https://developer.apple.com/documentation/xcode/testing> | Unit, integration, performance, and UI test strategy |
+| WWDC24 Apple Pencil Updates | <https://developer.apple.com/videos/play/wwdc2024/10214/> | Modern PencilKit behavior, custom tool picker items, hover, roll, and squeeze |
 | Liquid Glass Announcement | <https://www.apple.com/newsroom/2025/06/apple-introduces-a-delightful-and-elegant-new-software-design/> | High-level context for Liquid Glass as a system design material |
 
 ## Reference Policy

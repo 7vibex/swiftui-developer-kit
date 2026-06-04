@@ -66,7 +66,7 @@ scripts/swiftui-kit.sh list
 scripts/swiftui-kit.sh install
 scripts/swiftui-kit.sh doctor
 scripts/swiftui-kit.sh detect --format markdown /path/to/App
-scripts/swiftui-kit.sh bundle --output /tmp/swiftui-kit-providers
+scripts/swiftui-kit.sh bundle --output .tmp/swiftui-kit-providers
 ```
 
 `detect` is read-only and scans Swift source files without building, launching, or capturing anything.
@@ -76,7 +76,7 @@ scripts/swiftui-kit.sh bundle --output /tmp/swiftui-kit-providers
 Generate provider-specific bundles when you want to copy the skills into another AI coding tool:
 
 ```bash
-scripts/build-provider-bundles.sh --output /tmp/swiftui-kit-providers
+scripts/build-provider-bundles.sh --output .tmp/swiftui-kit-providers
 ```
 
 The bundle includes:

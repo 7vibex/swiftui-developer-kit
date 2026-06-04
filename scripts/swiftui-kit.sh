@@ -11,7 +11,7 @@ Usage: scripts/swiftui-kit.sh <command> [options]
 Commands:
   list       List included skills.
   install    Install skills locally. Passes options to scripts/install-local.sh.
-  validate   Run repository validation and local tests.
+  validate   Run repository validation, including local tests.
   doctor     Check local skill-pack structure without changing files.
   detect     Scan SwiftUI files for deterministic anti-patterns.
   bundle     Generate provider install bundles.
@@ -41,7 +41,6 @@ case "$command" in
     ;;
   validate)
     scripts/validate-skills.sh
-    bash tests/run-tests.sh
     ;;
   doctor)
     [[ -d .agents/skills ]] || { echo "missing .agents/skills" >&2; exit 1; }
