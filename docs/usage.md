@@ -8,6 +8,7 @@ The router accepts short commands:
 Use the swiftui-project-router skill. audit this app.
 Use the swiftui-project-router skill. canvas-audit this iPad drawing canvas.
 Use the swiftui-project-router skill. fix-build this compiler error.
+Use the swiftui-project-router skill. diagnostics for canvas and SwiftData bug reports.
 Use the swiftui-project-router skill. review-screenshots for the Canvas screen.
 Use the swiftui-project-router skill. prepare-release for TestFlight.
 Use the swiftui-project-router skill. modernize-ui and review Apple UI fit, state, sheets, and Liquid Glass placement.
@@ -63,6 +64,10 @@ Use the swiftui-design-system-auditor skill. Review whether this iPad app feels 
 
 ```text
 Use the canvas-engine-auditor skill. Audit my canvas for PencilKit drawing bugs, coordinate drift after zoom/pan, highlighter opacity, gesture conflicts, layer save/reopen, undo/redo, performance, and missing regression tests.
+```
+
+```text
+Use the swiftui-diagnostics-builder skill. Add a privacy-safe Report Issue workflow with logs, breadcrumbs, snapshots, and export JSON.
 ```
 
 ## Screenshot Mode

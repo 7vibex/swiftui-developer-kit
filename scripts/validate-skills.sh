@@ -43,6 +43,7 @@ required_skills=(
   simulator-screenshot-reviewer
   swiftdata-persistence-auditor
   swiftui-architecture-auditor
+  swiftui-diagnostics-builder
   swiftui-design-system-auditor
   swiftui-feature-builder
   swiftui-project-router
@@ -140,6 +141,7 @@ for example in \
   canvas-engine-auditor-example.md \
   xcode-build-debug-example.md \
   detect-risks-example.md \
+  swiftui-diagnostics-example.md \
   test-coverage-plan-example.md \
   pr-summary-example.md \
   full-project-router-example.md; do
@@ -149,6 +151,7 @@ done
 grep -q "developer.apple.com" docs/apple-doc-links.md || fail "Apple docs file lacks official Apple links"
 grep -q "developers.openai.com" docs/openai-codex-doc-links.md || fail "OpenAI docs file lacks official OpenAI links"
 grep -q "detect-risks" docs/commands.md || fail "Command docs lack detect-risks"
+grep -q "diagnostics" docs/commands.md || fail "Command docs lack diagnostics"
 grep -q "canvas-audit" docs/commands.md || fail "Command docs lack canvas-audit"
 grep -q "review-screenshots" .agents/skills/swiftui-project-router/SKILL.md || fail "Router lacks command vocabulary"
 grep -q "canvas-engine-auditor" CLAUDE.md || fail "CLAUDE.md lacks canvas-engine-auditor prompt"

@@ -17,5 +17,9 @@ Use the canvas-engine-auditor skill. Audit my StudyOS-style iPad Canvas for Penc
 ```
 
 ```text
+Use the swiftui-diagnostics-builder skill. Plan a privacy-safe Report Issue workflow with Logger categories, breadcrumbs, app-state snapshots, MetricKit, and AI-readable export JSON.
+```
+
+```text
 Use the liquid-glass-placement-auditor skill. Ask before screenshots, then review where Liquid Glass belongs and where stable contrast matters more.
 ```
