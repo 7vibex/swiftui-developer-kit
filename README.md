@@ -1,12 +1,12 @@
 # Codex SwiftUI Developer Kit
 
-Codex SwiftUI Developer Kit is an open-source Codex skill pack for building, auditing, debugging, redesigning, testing, screenshot-reviewing, and releasing SwiftUI, iOS, iPadOS, macOS, SwiftData, and Apple app projects.
+Codex SwiftUI Developer Kit is an open-source Codex skill pack for building, auditing, debugging, diagnostics, redesigning, testing, screenshot-reviewing, and releasing SwiftUI, iOS, iPadOS, macOS, SwiftData, and Apple app projects.
 
 It includes `liquid-glass-placement-auditor`, a dedicated skill for reviewing where Apple Liquid Glass should be applied or avoided in SwiftUI, iOS, iPadOS, and macOS apps.
 
 ## Why SwiftUI Developers Need This
 
-Apple app work often repeats the same review loops: inspect SwiftUI state, check navigation, debug Xcode schemes, review Simulator screenshots, decide where Liquid Glass belongs, audit SwiftData risk, and prepare App Store releases. This repository packages those workflows as reusable Codex skills so the same checks can be run consistently across projects.
+Apple app work often repeats the same review loops: inspect SwiftUI state, check navigation, debug Xcode schemes, build useful diagnostics, review Simulator screenshots, decide where Liquid Glass belongs, audit SwiftData risk, and prepare App Store releases. This repository packages those workflows as reusable Codex skills so the same checks can be run consistently across projects.
 
 SwiftUI developers need this because the hard parts are rarely one isolated file. A useful audit usually crosses architecture, SwiftData persistence, Xcode schemes, screenshots, accessibility, App Store checks, and design-system choices. This pack gives Codex a repeatable checklist for those repeated reviews instead of starting from a blank prompt every time.
 
@@ -29,6 +29,7 @@ Codex skills are structured workflow folders. Each skill has a `SKILL.md` file w
 | --- | --- | --- |
 | `swiftui-project-router` | Select the right specialist workflow | The request is broad or spans multiple Apple app tasks |
 | `swiftui-feature-builder` | Plan and build SwiftUI features | Adding or modifying app functionality |
+| `swiftui-diagnostics-builder` | Build AI-readable app diagnostics | Logs, breadcrumbs, issue reports, MetricKit, signposts, TestFlight feedback, and privacy-safe bug reports |
 | `swiftui-ui-patterns` | Shape SwiftUI screen composition | Choosing state ownership, navigation, sheets, async loading, previews, and view refactors |
 | `swiftui-design-system-auditor` | Audit Apple UI design quality | Layout hierarchy, typography, spacing, SF Symbols, toolbars, empty states, iPad/macOS fit, keyboard, pointer, and Apple Pencil workflows |
 | `canvas-engine-auditor` | Audit iPad canvas engines | PencilKit, Apple Pencil, drawing, handwriting, zoom/pan, coordinates, highlighter opacity, layers, PDF annotation, persistence, undo/redo, and canvas performance bugs |
@@ -53,6 +54,7 @@ For broad requests, use `swiftui-project-router` with a short command:
 | `audit` | Review project quality and route to the right specialist audits |
 | `canvas-audit` | Audit drawing, PencilKit, zoom/pan, gestures, layers, persistence, undo/redo, and canvas performance |
 | `fix-build` | Diagnose Xcode, SwiftPM, scheme, simulator, signing, and compiler failures |
+| `diagnostics` | Build or review privacy-safe app diagnostics, issue reports, breadcrumbs, logs, MetricKit, and signposts |
 | `review-screenshots` | Review Simulator screenshots after consent and privacy checks |
 | `prepare-release` | Check TestFlight, App Store, metadata, privacy, screenshots, and signing |
 | `modernize-ui` | Review SwiftUI design quality, UI patterns, and Liquid Glass placement |
@@ -68,6 +70,10 @@ Use the swiftui-project-router skill. detect-risks in this SwiftUI project.
 
 ```text
 Use the swiftui-project-router skill. canvas-audit my iPad drawing canvas for coordinate drift, PencilKit state, highlighter opacity, save/reopen, and gesture conflicts.
+```
+
+```text
+Use the swiftui-project-router skill. diagnostics for canvas and SwiftData bug reports.
 ```
 
 The repo-local CLI wraps common maintenance workflows:
@@ -144,7 +150,7 @@ For local Codex installs, use the installer:
 ./scripts/install-local.sh
 ```
 
-It symlinks the 14 skills into `~/.agents/skills` by default, skips existing skills, and prints the next prompt to try. Restart Codex after installing.
+It symlinks the 15 skills into `~/.agents/skills` by default, skips existing skills, and prints the next prompt to try. Restart Codex after installing.
 
 See [docs/installation.md](docs/installation.md) for more detail.
 
@@ -180,6 +186,10 @@ Use the swiftui-ui-patterns skill. Refactor this SwiftUI screen's state, sheets,
 
 ```text
 Use the swiftui-design-system-auditor skill. Review whether this iPad UI feels native and usable.
+```
+
+```text
+Use the swiftui-diagnostics-builder skill. Add a privacy-safe Report Issue workflow with logs, breadcrumbs, app-state snapshots, and AI-readable export JSON.
 ```
 
 ```text

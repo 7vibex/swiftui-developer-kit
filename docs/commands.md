@@ -7,6 +7,7 @@ These command words give users a short way to ask for the right SwiftUI workflow
 | `audit` | `swiftui-architecture-auditor` | `Use the swiftui-project-router skill. audit this SwiftUI app.` |
 | `canvas-audit` | `canvas-engine-auditor` | `Use the swiftui-project-router skill. canvas-audit the StudyOS Canvas for PencilKit, zoom/pan, persistence, and gesture bugs.` |
 | `fix-build` | `xcode-build-debugger` | `Use the swiftui-project-router skill. fix-build this Xcode error.` |
+| `diagnostics` | `swiftui-diagnostics-builder` | `Use the swiftui-project-router skill. diagnostics for canvas, SwiftData, and AI tutor bug reports.` |
 | `review-screenshots` | `simulator-screenshot-reviewer` | `Use the swiftui-project-router skill. review-screenshots for the Home and Canvas screens.` |
 | `prepare-release` | `appstore-release-reviewer` | `Use the swiftui-project-router skill. prepare-release for TestFlight.` |
 | `modernize-ui` | `swiftui-design-system-auditor`, `swiftui-ui-patterns`, or `liquid-glass-placement-auditor` | `Use the swiftui-project-router skill. modernize-ui and review Apple UI fit, state, sheets, and Liquid Glass placement.` |
@@ -40,6 +41,8 @@ For canvas-specific apps, use `canvas-audit` directly or run the bundled canvas 
 ```bash
 .agents/skills/canvas-engine-auditor/scripts/detect-canvas-risks.sh .
 ```
+
+Use `diagnostics` when the app needs better bug evidence rather than one immediate fix. It routes toward logs, breadcrumbs, app-state snapshots, issue-report export, MetricKit, signposts, TestFlight feedback, and privacy-safe AI-readable reports.
 
 ## Worked `detect-risks` Output
 

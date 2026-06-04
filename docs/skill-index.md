@@ -4,6 +4,7 @@
 | --- | --- | --- | --- | --- |
 | `swiftui-project-router` | Route broad Apple app work to a specialist workflow | Broad build, audit, debug, test, redesign, screenshot, release, or PR requests | `Use the swiftui-project-router skill. I want to audit my SwiftUI app and decide which workflows are needed.` | Selected workflow, reason, inputs needed, next action |
 | `swiftui-feature-builder` | Plan and implement SwiftUI features | Building or modifying iOS, iPadOS, or macOS app features | `Use the swiftui-feature-builder skill. Add a planner detail screen.` | Feature plan, files changed, accessibility, tests, verification |
+| `swiftui-diagnostics-builder` | Build AI-readable app diagnostics | Logs, breadcrumbs, app-state snapshots, issue reports, MetricKit, signposts, TestFlight feedback, and privacy-safe bug reports | `Use the swiftui-diagnostics-builder skill. Add a diagnostics export for canvas bugs.` | Diagnostic design, privacy rules, implementation plan, verification |
 | `swiftui-ui-patterns` | Shape SwiftUI screen composition | State ownership, navigation, sheets, async loading, previews, performance, and view refactors | `Use the swiftui-ui-patterns skill. Clean up this editor screen's state and sheets.` | Recommended pattern, risks avoided, files to change, verification |
 | `swiftui-design-system-auditor` | Audit Apple UI design quality | Layout hierarchy, typography, spacing, symbols, toolbars, empty states, platform fit, keyboard, pointer, and Pencil flows | `Use the swiftui-design-system-auditor skill. Review whether this iPad UI feels native.` | Pass criteria, findings, platform fit, fix order, verification |
 | `canvas-engine-auditor` | Audit canvas/ink/gesture/persistence correctness | Canvas, PencilKit, drawing, annotation, zoom/pan, Apple Pencil, highlighter, PDF annotation, layer, persistence, undo/redo, or infinite-board bugs | `Use the canvas-engine-auditor skill. Audit my StudyOS Canvas.` | Architecture map, findings, fix order, regression tests, Codex fix prompts |
@@ -26,6 +27,7 @@ Use these with `swiftui-project-router` when you want a concise command vocabula
 | `audit` | Architecture and related specialist audits | Broad project quality review |
 | `canvas-audit` | `canvas-engine-auditor` | Drawing, handwriting, PencilKit, zoom/pan, gestures, layers, PDF annotation, persistence, undo/redo, or canvas performance bugs |
 | `fix-build` | `xcode-build-debugger` | Xcode, SwiftPM, scheme, simulator, signing, or compiler failures |
+| `diagnostics` | `swiftui-diagnostics-builder` | Logs, breadcrumbs, app-state snapshots, issue reports, MetricKit, signposts, TestFlight feedback, or AI-readable bug reports |
 | `review-screenshots` | `simulator-screenshot-reviewer` | Simulator visual review after consent |
 | `prepare-release` | `appstore-release-reviewer` | TestFlight and App Store readiness |
 | `modernize-ui` | `swiftui-design-system-auditor`, `swiftui-ui-patterns`, or `liquid-glass-placement-auditor` | Apple UI design quality, SwiftUI screen composition, view refactors, or Liquid Glass placement |
