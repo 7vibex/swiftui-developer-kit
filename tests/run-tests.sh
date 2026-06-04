@@ -82,6 +82,7 @@ assert_contains "review-screenshots" .agents/skills/swiftui-project-router/SKILL
 
 echo "test: Liquid Glass implementation guidance exists"
 assert_contains "Implementation Mode" .agents/skills/liquid-glass-placement-auditor/SKILL.md
+assert_contains "API Verification Required" .agents/skills/liquid-glass-placement-auditor/references/swiftui-liquid-glass-recipes.md
 assert_contains "swiftui-liquid-glass-recipes.md" .agents/skills/liquid-glass-placement-auditor/SKILL.md
 assert_contains "implementation-recipes.md" .agents/skills/liquid-glass-placement-auditor/SKILL.md
 assert_contains "platform-compatibility.md" .agents/skills/liquid-glass-placement-auditor/SKILL.md
@@ -121,5 +122,7 @@ echo "test: docs demo exists"
 [[ -f docs/demo-site/index.html ]] || fail "missing docs demo site"
 assert_contains "Codex SwiftUI Developer Kit" docs/demo-site/index.html
 assert_contains "detect-risks" docs/demo-site/index.html
+assert_contains "multiple booleans" docs/detector-roadmap.md
+assert_contains "public sample SwiftUI app" docs/demo-roadmap.md
 
 echo "All tests passed."

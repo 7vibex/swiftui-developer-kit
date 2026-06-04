@@ -34,6 +34,8 @@ scripts/swiftui-kit.sh detect --format json .
 
 The scanner is read-only. It does not build, launch, operate Simulator, capture screenshots, inspect private windows, or modify source files.
 
+See [detector-roadmap.md](detector-roadmap.md) for candidate static rules such as duplicate sheet booleans, unstable `.id(UUID())`, heavy `.onChange`, custom blur on long content, and ad hoc toolbar `HStack` patterns.
+
 ## What Not To Add Yet
 
 The project should not add a browser extension or live visual editor until the SwiftUI detector and command vocabulary prove useful in normal Apple app audits. Those ideas are powerful, but they would shift this repository away from being a practical Apple app workflow library.

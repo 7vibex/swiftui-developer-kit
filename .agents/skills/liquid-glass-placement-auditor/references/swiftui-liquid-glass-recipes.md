@@ -2,6 +2,19 @@
 
 Use these recipes when a Liquid Glass recommendation needs implementation-ready direction. Verify exact Liquid Glass API names in the current Xcode and Apple documentation before editing, because API spelling can change across seeds and SDK releases.
 
+## API Verification Required
+
+Before applying Liquid Glass code, complete these checks:
+
+1. Check the installed Xcode version and SDK with `xcodebuild -version`.
+2. Confirm the app's deployment target for iOS, iPadOS, macOS, and Catalyst if present.
+3. Inspect current SwiftUI documentation or SDK symbols for the exact Liquid Glass APIs available in that Xcode.
+4. Search the project for existing glass, material, blur, toolbar, and chrome wrappers before introducing a new helper.
+5. Confirm the older-OS behavior with the user: keep existing UI, add a new non-glass fallback, or intentionally raise the minimum OS.
+6. Build after code changes and exercise both the Liquid Glass path and fallback path when possible.
+
+Treat recipe snippets as shape guidance only until API names are verified.
+
 ## Shared Rules
 
 - Keep study, reading, writing, drawing, PDF, flashcard, table, and warning content opaque.

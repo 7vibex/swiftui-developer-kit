@@ -26,7 +26,9 @@ require_file LICENSE
 require_file SECURITY.md
 require_file docs/claude-code-usage.md
 require_file docs/commands.md
+require_file docs/demo-roadmap.md
 require_file docs/demo-site/index.html
+require_file docs/detector-roadmap.md
 require_dir .agents/skills
 require_dir docs
 require_dir examples
@@ -151,6 +153,9 @@ grep -q "Do not capture" SECURITY.md || fail "SECURITY.md lacks capture safety l
 grep -q "Pass / Fail Criteria" .agents/skills/liquid-glass-placement-auditor/references/output-contract.md || fail "Liquid Glass output contract lacks pass/fail criteria"
 grep -q "implementation-recipes.md" .agents/skills/liquid-glass-placement-auditor/SKILL.md || fail "Liquid Glass skill lacks implementation recipe reference"
 grep -q "platform-version-matrix.md" .agents/skills/liquid-glass-placement-auditor/SKILL.md || fail "Liquid Glass skill lacks platform version matrix reference"
+grep -q "API Verification Required" .agents/skills/liquid-glass-placement-auditor/references/swiftui-liquid-glass-recipes.md || fail "Liquid Glass recipes lack API verification workflow"
+grep -qi "multiple booleans" docs/detector-roadmap.md || fail "Detector roadmap lacks sheet boolean candidate"
+grep -q "public sample SwiftUI app" docs/demo-roadmap.md || fail "Demo roadmap lacks public sample app plan"
 
 if grep -RInE --exclude validate-skills.sh '\b(TBD|TODO|FIXME|placeholder)\b' README.md AGENTS.md CONTRIBUTING.md docs .agents examples scripts; then
   fail "placeholder text found"

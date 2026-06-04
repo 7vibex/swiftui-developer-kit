@@ -76,6 +76,8 @@ scripts/swiftui-kit.sh validate
 
 `scripts/detect-swiftui-antipatterns.sh` is read-only. It flags deterministic SwiftUI risk signals such as oversized SwiftUI view files, unlabeled symbol-only buttons, lifecycle-created unstructured tasks, hardcoded colors, and suspicious SwiftData delete paths.
 
+See [docs/detector-roadmap.md](docs/detector-roadmap.md) for planned scanner rules that should stay low-noise before being added.
+
 ## Demo
 
 ![Demo flow](docs/assets/demo-flow.svg)
@@ -89,6 +91,8 @@ Example:
 | Output checklist/result | Codex returns prioritized findings, evidence, recommended fix order, apply/avoid guidance for Liquid Glass, and verification steps. |
 
 The key behavior is not a generic answer. The skills push Codex toward structured output with severity, confidence, file evidence when available, and a practical next action.
+
+The StudyOS examples are fictional. See [docs/demo-roadmap.md](docs/demo-roadmap.md) for the next step toward a public sample-app screenshot demo.
 
 ## Installation
 
@@ -221,6 +225,7 @@ Use the appstore-release-reviewer skill. Check whether my iOS app is ready for T
 
 - Add a watchOS skill for watch app audits and release readiness.
 - Add visionOS examples that show spatial UI review prompts and output contracts.
+- Add a tiny public sample SwiftUI app demo with screenshot-backed audits.
 - Expand deterministic SwiftUI risk detection with additional rules once the first scanner rules prove useful.
 
 ## Contributing
