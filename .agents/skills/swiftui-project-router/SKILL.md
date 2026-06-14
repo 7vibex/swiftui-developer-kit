@@ -30,16 +30,16 @@ If the user asks for the menu, show the commands above with one-line guidance an
 
 - Build or modify a feature: `swiftui-feature-builder`
 - Diagnostics, issue reports, breadcrumbs, logs, MetricKit, signposts, TestFlight feedback, or AI-readable bug reports: `swiftui-diagnostics-builder`
-- Canvas, drawing, handwriting, annotation, PencilKit, Apple Pencil, zoom/pan, coordinate drift, layers, PDF alignment, highlighter opacity, undo/redo, or canvas persistence bugs: `canvas-engine-auditor`
-- Apple UI design quality, layout hierarchy, typography, spacing, SF Symbols, platform fit, keyboard, pointer, or Apple Pencil review: `swiftui-design-system-auditor`
-- SwiftUI screen composition, state wrappers, sheets, previews, async UI state, or view refactors: `swiftui-ui-patterns`
+- Canvas, drawing, handwriting, annotation, PencilKit, PaperKit, Apple Pencil Pro, zoom/pan, coordinate drift, layers, PDF alignment, highlighter opacity, undo/redo, or canvas persistence bugs: `canvas-engine-auditor`
+- Apple UI design quality, layout hierarchy, typography, spacing, SF Symbols, platform fit, adaptive navigation, keyboard, pointer, menus, windows, or Apple Pencil review: `swiftui-design-system-auditor`
+- SwiftUI screen composition, state wrappers, sheets, previews, async UI state, adaptive navigation, multiwindow behavior, or view refactors: `swiftui-ui-patterns`
 - Liquid Glass, modern UI, glass placement, chrome review: `liquid-glass-placement-auditor`
 - Simulator screenshots or visual UI review: `simulator-screenshot-reviewer`
 - Architecture, state, navigation, huge views: `swiftui-architecture-auditor`
 - SwiftData, persistence, migrations, slow queries: `swiftdata-persistence-auditor`
 - Xcode build errors, schemes, simulator build problems: `xcode-build-debugger`
 - Accessibility, VoiceOver, Dynamic Type, contrast: `accessibility-auditor`
-- App Store, TestFlight, release readiness: `appstore-release-reviewer`
+- App Store, TestFlight, release readiness, Accessibility Nutrition Labels, privacy metadata: `appstore-release-reviewer`
 - Tests, coverage, missing tests: `test-coverage-improver`
 - PR title, body, checklist, release notes: `pr-draft-generator`
 
@@ -50,8 +50,9 @@ If the user asks for the menu, show the commands above with one-line guidance an
 3. Pick the narrowest matching workflow.
 4. If multiple workflows are needed, order them by dependency. Example: build debug before screenshot review.
 5. For `detect-risks`, run `scripts/swiftui-kit.sh detect` only when local Swift files are available and the user did not request a code-free answer.
-6. Ask only for missing routing information that changes the workflow choice.
-7. Return the selected command, selected workflow, and next action.
+6. For broad audits, list the evidence needed for each selected specialist: code, screenshots, build logs, diagnostic bundle, store metadata, or manual device proof.
+7. Ask only for missing routing information that changes the workflow choice.
+8. Return the selected command, selected workflow, and next action.
 
 ## Output
 
@@ -63,6 +64,10 @@ If the user asks for the menu, show the commands above with one-line guidance an
 ## Selected Workflow
 
 ## Why Selected
+
+## Evidence Needed
+
+## Explicit Unknowns
 
 ## Inputs Needed
 

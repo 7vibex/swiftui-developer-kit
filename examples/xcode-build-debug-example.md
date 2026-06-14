@@ -8,7 +8,7 @@
 ## Build Command Used
 
 ```bash
-xcodebuild -workspace StudyOS.xcworkspace -scheme StudyOS -destination 'platform=iOS Simulator,name=iPad Pro (11-inch)' build
+xcodebuild -workspace StudyOS.xcworkspace -scheme StudyOS -destination 'platform=iOS Simulator,name=iPad mini (A17 Pro)' build
 ```
 
 ## Error Summary
@@ -28,5 +28,5 @@ The enum case was renamed to `all` in the search model, but one view still uses 
 ## Verification Steps
 
 ```bash
-xcodebuild -workspace StudyOS.xcworkspace -scheme StudyOS -destination 'platform=iOS Simulator,name=iPad Pro (11-inch)' build
+xcodebuild -workspace StudyOS.xcworkspace -scheme StudyOS -destination 'platform=iOS Simulator,name=iPad mini (A17 Pro)' build
 ```

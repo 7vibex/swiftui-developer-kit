@@ -18,7 +18,7 @@ Generate clear pull request material from the actual diff and project context.
 1. Inspect branch name, status, and diff.
 2. Summarize user-visible and developer-facing changes.
 3. List tests and verification actually run.
-4. Call out risks and screenshots needed.
+4. Call out risks, screenshots needed, accessibility impact, release metadata impact, and Apple-source claims.
 5. Draft reviewer checklist and release notes.
 
 ## Output

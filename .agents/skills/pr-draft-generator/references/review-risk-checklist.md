@@ -8,3 +8,6 @@
 - Accessibility may be affected.
 - Screenshots are needed for UI changes.
 - Release notes are needed for user-facing changes.
+- Apple-source claims are made about platform behavior or API availability.
+- Store-facing Accessibility Nutrition Label evidence may change.
+- Liquid Glass, PaperKit, PDF overlays, MetricKit, or future-looking APIs are touched.

@@ -14,12 +14,17 @@ Return diagnostics work in this shape.
 - Breadcrumb events.
 - Snapshot fields.
 - Report issue flow.
+- Report Issue schema version.
 - Export bundle files.
 - MetricKit, signpost, TestFlight, or third-party tooling decisions.
+- Correlation strategy across feature, state snapshot, breadcrumbs, logs, signposts, and feedback ids.
 
 ## Privacy And Consent
 
 - Data excluded by default.
+- Redacted fields.
+- Hashed fields.
+- Never-collected fields.
 - User consent points.
 - Redaction strategy.
 - Remote upload or SDK implications, if any.

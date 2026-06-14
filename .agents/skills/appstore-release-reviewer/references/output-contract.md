@@ -15,6 +15,13 @@
 
 ## TestFlight Checklist
 
+## Accessibility Nutrition Labels
+- Common tasks reviewed:
+- Claimed features:
+- Unsupported or untested features:
+- Blocking bugs:
+- Metadata risk:
+
 ## App Store Checklist
 
 ## Release Notes Draft

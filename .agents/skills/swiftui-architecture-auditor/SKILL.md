@@ -13,6 +13,7 @@ Audit SwiftUI architecture for correctness, maintainability, and production read
 - `references/state-management-rules.md`
 - `references/navigation-checklist.md`
 - `references/async-concurrency-checklist.md`
+- `../../../docs/apple-api-inventory.md`
 - `references/output-contract.md`
 
 Prefer targeted search, project maps, and bundled scripts before reading many files.
@@ -25,6 +26,9 @@ Prefer targeted search, project maps, and bundled scripts before reading many fi
 - Navigation structure and route ownership.
 - Async work, cancellation, and `MainActor` boundaries.
 - Repository/service boundaries.
+- SwiftData and document persistence boundaries.
+- Scene, window, and multiwindow ownership.
+- New or future-looking API adoption risks.
 - Duplicated logic.
 - Dead code and unused view paths.
 - Missing tests around important state transitions.
@@ -36,10 +40,12 @@ Prefer targeted search, project maps, and bundled scripts before reading many fi
 3. Read high-risk files before reporting.
 4. Trace state from source of truth to rendered view and mutation sites.
 5. Trace navigation ownership for tabs, stacks, sheets, popovers, and split views.
-6. Trace async work from trigger to cancellation, error handling, and UI update.
-7. Classify findings by severity.
-8. Recommend a fix order that reduces risk first.
-9. Generate actionable Codex fix prompts.
+6. Trace persistence boundaries between views, models, contexts, repositories, files, and diagnostics.
+7. Trace scene and multiwindow state if the app supports documents, sidebars, inspectors, or multiple windows.
+8. Trace async work from trigger to cancellation, error handling, and UI update.
+9. Classify findings by severity.
+10. Recommend a fix order that reduces risk first.
+11. Generate actionable Codex fix prompts.
 
 ## Severity Standards
 

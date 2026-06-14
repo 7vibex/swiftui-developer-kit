@@ -35,6 +35,14 @@ User-local: ~/.agents/skills
 Admin: /etc/codex/skills
 ```
 
+You can also give Codex the repository link and ask it to install the pack for local use:
+
+```text
+Install the Codex skills from https://github.com/7vibex/codex-swiftui-developer-kit so I can use them locally.
+```
+
+Codex should clone or inspect the repository, run `./scripts/install-local.sh`, and confirm the skills are available in `~/.agents/skills`.
+
 That means future `git pull` updates apply to the installed user skills. If a user prefers a physical copy instead of symlinks:
 
 ```bash
@@ -92,7 +100,13 @@ Use a fresh output directory for each bundle build.
 
 ## Verify The Pack
 
-Run the non-destructive checks:
+Run the release gate:
+
+```bash
+./scripts/validate-skills.sh
+```
+
+The repo-local wrapper runs the same validation command:
 
 ```bash
 find .agents/skills -name SKILL.md -print
@@ -104,6 +118,13 @@ scripts/swiftui-kit.sh validate
 
 ```bash
 git pull --ff-only
+./scripts/install-local.sh
+scripts/swiftui-kit.sh list
+./scripts/validate-skills.sh
 ```
+
+After pulling a new release, reinstall or refresh the skill symlinks and restart Codex so local skill discovery sees newly added skills.
+
+For release-specific upgrade notes, see [v0.2.0 - Canvas and Diagnostics Workflows](releases/v0.2.0.md).
 
 Do not commit generated screenshots, audit folders, logs, build products, or private project data.

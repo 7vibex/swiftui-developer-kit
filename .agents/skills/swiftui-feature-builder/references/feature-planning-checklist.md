@@ -10,6 +10,8 @@ Use before implementation.
 - Check platform targets: iOS, iPadOS, macOS, or multiplatform.
 - For Liquid Glass or iOS 26 UI, ask how to handle iOS 17 before editing: keep the existing iOS 17 UI path, add a separate non-glass fallback, or raise the minimum OS.
 - Check whether SwiftData, networking, file access, or permissions are involved.
+- Check whether Apple APIs are new, availability-guarded, beta, future-looking, or fallback-dependent.
+- Decide older-OS behavior for new SwiftUI, Liquid Glass, PaperKit, SwiftData, or MetricKit APIs.
 - List likely tests: ViewModel, repository, service, persistence, or UI state.
 - Decide verification: build, unit tests, UI snapshot, Simulator smoke test, or code-only review.
 

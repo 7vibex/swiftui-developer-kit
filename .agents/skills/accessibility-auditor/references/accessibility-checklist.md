@@ -9,3 +9,5 @@
 - Error messages are associated with affected fields.
 - Focus order follows visual and task order.
 - Color is not the only state indicator.
+- Common tasks remain perceivable, operable, and understandable before making store-facing accessibility claims.
+- Known accessibility bugs that block common tasks are treated as release and metadata risks, not only UI polish.

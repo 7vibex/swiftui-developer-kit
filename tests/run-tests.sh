@@ -76,11 +76,74 @@ struct ProblemView: View {
 SWIFT
 for i in $(seq 1 130); do echo "extension ProblemView { var filler$i: String { \"x\" } }" >> "$tmp_dir/App/ProblemView.swift"; done
 
+cat > "$tmp_dir/App/AdvancedRiskView.swift" <<'SWIFT'
+import OSLog
+import PDFKit
+import PencilKit
+import SwiftData
+import SwiftUI
+import UIKit
+
+struct AdvancedRiskView: View {
+  @Query var notes: [StudyNote]
+  @State private var showShare = false
+  @State private var showSettings = false
+  private let logger = Logger(subsystem: "StudyOS", category: "Tutor")
+
+  var body: some View {
+    ScrollView {
+      Text("Long transcript")
+        .glassEffect(.clear)
+    }
+    .sheet(isPresented: $showShare) {
+      Text("Share")
+    }
+    .sheet(isPresented: $showSettings) {
+      Text("Settings")
+    }
+  }
+
+  func record(email: String, promptText: String, documentTitle: String) {
+    logger.info("email \(email) prompt \(promptText) document \(documentTitle)")
+  }
+}
+
+struct StudyNote {}
+
+struct PencilHost: UIViewRepresentable {
+  func makeUIView(context: Context) -> PKCanvasView {
+    PKCanvasView()
+  }
+
+  func updateUIView(_ canvasView: PKCanvasView, context: Context) {}
+}
+
+final class StudyPDFOverlay: NSObject, PDFPageOverlayViewProvider {
+  func pdfView(_ view: PDFView, overlayViewFor page: PDFPage) -> UIView? {
+    nil
+  }
+}
+
+func oldToolPicker(window: UIWindow) {
+  _ = PKToolPicker.shared(for: window)
+}
+SWIFT
+for i in $(seq 1 130); do echo "extension AdvancedRiskView { var filler$i: String { \"x\" } }" >> "$tmp_dir/App/AdvancedRiskView.swift"; done
+
 scripts/detect-swiftui-antipatterns.sh --format json "$tmp_dir/App" > "$tmp_dir/detect.json"
 assert_contains '"rule":"large-swiftui-file"' "$tmp_dir/detect.json"
 assert_contains '"rule":"image-button-missing-accessibility-label"' "$tmp_dir/detect.json"
 assert_contains '"rule":"unstructured-task-in-view-lifecycle"' "$tmp_dir/detect.json"
 assert_contains '"rule":"hardcoded-foreground-color"' "$tmp_dir/detect.json"
+assert_contains '"rule":"glass-effect-missing-availability-guard"' "$tmp_dir/detect.json"
+assert_contains '"rule":"glass-on-scroll-content-surface"' "$tmp_dir/detect.json"
+assert_contains '"rule":"clear-glass-without-legibility-treatment"' "$tmp_dir/detect.json"
+assert_contains '"rule":"deprecated-pktoolpicker-shared-for-window"' "$tmp_dir/detect.json"
+assert_contains '"rule":"pkcanvasview-no-change-hook"' "$tmp_dir/detect.json"
+assert_contains '"rule":"pdf-overlay-without-roundtrip-save"' "$tmp_dir/detect.json"
+assert_contains '"rule":"query-in-heavy-root-view"' "$tmp_dir/detect.json"
+assert_contains '"rule":"logger-unsafe-interpolation"' "$tmp_dir/detect.json"
+assert_contains '"rule":"multiple-presentation-booleans"' "$tmp_dir/detect.json"
 
 echo "test: provider bundles are generated"
 TMPDIR="$tmp_dir/missing-bundle-tmp-base" \

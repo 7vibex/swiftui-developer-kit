@@ -20,7 +20,12 @@ Use a stable report format so a developer or AI assistant can reason from the sa
     "build": "142",
     "osVersion": "iPadOS 26.0",
     "device": "iPad Pro 13-inch",
-    "configuration": "Debug"
+    "configuration": "Debug",
+    "dynamicType": "AX3",
+    "reduceMotion": true,
+    "reduceTransparency": true,
+    "voiceOverRunning": false,
+    "inputMode": "apple-pencil-pro"
   },
   "snapshot": {
     "activeScreen": "Canvas",
@@ -34,10 +39,18 @@ Use a stable report format so a developer or AI assistant can reason from the sa
     "logs": true,
     "breadcrumbs": true,
     "screenshot": false,
+    "signpostSummary": true,
     "metricKitDiagnostics": false
+  },
+  "privacy": {
+    "redactedFields": ["noteText", "accountEmail"],
+    "hashedFields": ["documentID"],
+    "neverCollected": ["fullNoteBody", "clipboardContents"]
   }
 }
 ```
+
+For larger support exports or AI-debugging bundles, use `report-issue-schema.md`.
 
 ## AI Debugging Prompt
 
@@ -90,8 +103,11 @@ Find the most likely root cause. Keep the fix scoped. Propose tests that prove t
 - Describe observed and expected behavior separately.
 - Include exact reproduction steps.
 - Include environment and app-state snapshot.
+- Include accessibility state for visual, input, and layout bugs.
 - Include recent breadcrumbs and relevant logs.
+- Include signpost summaries for performance, save/load, render, export, or AI request bugs.
 - Include screenshots only after consent.
+- Include redaction and never-collected fields.
 - Point to likely files when known.
 
 ## Weak Reports

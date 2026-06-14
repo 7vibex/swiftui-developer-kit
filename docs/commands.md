@@ -58,9 +58,9 @@ The full example lives in [../examples/detect-risks-example.md](../examples/dete
 Findings: 5
 ```
 
-Use the result as a starting point for `swiftui-architecture-auditor`; route accessibility and SwiftData findings to those specialist skills when the source confirms the risk.
+Use the result as a starting point for `swiftui-architecture-auditor`; route accessibility, Liquid Glass, canvas/PDF, diagnostics, and SwiftData findings to those specialist skills when the source confirms the risk.
 
-See [detector-roadmap.md](detector-roadmap.md) for candidate static rules such as duplicate sheet booleans, unstable `.id(UUID())`, heavy `.onChange`, custom blur on long content, and ad hoc toolbar `HStack` patterns.
+See [detector-roadmap.md](detector-roadmap.md) for the current detector rule set and candidate static rules such as unstable `.id(UUID())`, heavy `.onChange`, ad hoc toolbar `HStack` patterns, dynamic menu removal, and missing multiwindow titles.
 
 ## What Not To Add Yet
 

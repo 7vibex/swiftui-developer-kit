@@ -16,14 +16,19 @@
 
 ## Best Places to Use Liquid Glass
 - Surface:
+- Surface classification:
+- Glass variant:
 - Reason:
 - Confidence:
 - Accessibility risk:
+- Older-OS fallback:
+- Reduce Transparency fallback:
 - SwiftUI direction:
 - Pass criteria:
 
 ## Places to Avoid Liquid Glass
 - Surface:
+- Surface classification:
 - Reason:
 - Severity:
 - Safer alternative:
@@ -32,7 +37,9 @@
 ## Screen-by-Screen Recommendations
 - Screen:
 - Use:
+- Use carefully:
 - Avoid:
+- Keep opaque:
 - Verification:
 
 ## SwiftUI Implementation Plan
@@ -46,6 +53,8 @@
 ## Pass / Fail Criteria
 - Pass:
 - Fail:
+- Older OS:
+- Reduce Transparency:
 
 ## User Feedback Signals
 - What users may report if the recommendation is wrong.

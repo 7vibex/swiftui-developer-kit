@@ -12,8 +12,13 @@
 ## Changes
 
 ## Testing
+- Commands:
+- Manual or device proof:
 
 ## Risks
+- Accessibility impact:
+- Release metadata impact:
+- Apple-source claims:
 
 ## Screenshots Needed
 

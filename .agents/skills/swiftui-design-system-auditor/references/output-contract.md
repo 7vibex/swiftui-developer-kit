@@ -42,6 +42,9 @@
 - iPhone:
 - iPad:
 - macOS:
+- Navigation model:
+- Resize/multiwindow behavior:
+- Menu and command behavior:
 - Keyboard/pointer/Pencil:
 
 ## Design-System Fix Order
