@@ -7,6 +7,8 @@
    - Coordinate spaces.
    - State owners.
    - Persistence path.
+   - PDF overlay or PaperKit path, if present.
+   - Hardware-only input paths, if present.
 
 2. **Findings Table**
    - Severity: Critical, High, Medium, Low.
@@ -14,21 +16,30 @@
    - Evidence: file path, symbol, test, screenshot, or reproducible step.
    - Impact: what breaks for the user.
    - Fix: concrete change.
-   - Verification: command/test/manual flow.
+   - Verification: command/test/manual flow/save-reopen matrix.
 
 3. **Fix Order**
    - First: data loss, restore, crashes, broken drawing.
    - Second: coordinate/gesture correctness.
    - Third: tool behavior and undo/redo.
-   - Fourth: performance.
-   - Fifth: visual polish and Liquid Glass placement.
+   - Fourth: tool behavior, Apple Pencil Pro behavior, and undo/redo.
+   - Fifth: performance.
+   - Sixth: visual polish and Liquid Glass placement.
 
 4. **Regression Tests To Add**
    - Test file names.
    - Test case names.
    - What bug each test prevents.
 
-5. **Codex Fix Prompts**
+5. **Canvas Verification Matrix**
+   - Zoom and pan.
+   - Persistence and reopen.
+   - PDF overlay export/reopen, if present.
+   - PaperKit save/load, if present.
+   - Apple Pencil hardware-only checks.
+   - Accessibility and non-Pencil input.
+
+6. **Codex Fix Prompts**
    - Separate prompts for safe, small patches.
    - Each prompt must include scope, files to inspect, constraints, tests, and verification.
 

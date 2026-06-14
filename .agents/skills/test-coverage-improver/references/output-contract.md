@@ -8,6 +8,11 @@
 ## Major Gaps
 
 ## Highest-Impact Tests
+- Test:
+- Risk addressed:
+- Type:
+- CI tier:
+- Flakiness risk:
 
 ## Suggested Test Files
 

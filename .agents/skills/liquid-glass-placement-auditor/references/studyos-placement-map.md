@@ -43,6 +43,15 @@ Use this reference for StudyOS-style learning, note-taking, flashcard, planner, 
 | AI Tutor | Header chrome and action strip | Generated answer, citations, transcript body |
 | Planner | Top filters and compact navigation | Task rows, deadlines, calendar text |
 | Library | Sidebar and sort/filter controls | Document cards with dense metadata |
+| Settings | Toolbar accessory controls only when useful | Lists, forms, account, privacy, billing, and destructive actions |
+
+## Before / After Patterns
+
+- **Tutor**: replace glass chat bubbles with stable transcript rows; keep only composer chrome, mode picker, and session controls glass-aware.
+- **Flashcards**: keep the card face opaque; use normal buttons or compact chrome for grading and navigation.
+- **Canvas**: remove frosted containers behind the drawing plane; keep the tool palette, page scrubber, and minimap as floating chrome.
+- **Notebook**: keep the page body and text editor opaque; use glass only for mode switching, page navigation, or transient search.
+- **Planner**: keep event rows and long agenda text opaque; use glass-aware filters or date controls only at chrome level.
 
 ## Fix Prompt Example
 

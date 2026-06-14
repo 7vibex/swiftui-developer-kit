@@ -9,6 +9,8 @@
 - State owner:
 - Data dependencies:
 - OS support strategy:
+- API availability:
+- Fallback strategy:
 
 ## Files Changed
 - `path`: reason
@@ -17,6 +19,7 @@
 - Key decisions:
 - Tradeoffs:
 - iOS 17/older OS fallback:
+- Accessibility impact:
 
 ## Accessibility Considerations
 - Labels:

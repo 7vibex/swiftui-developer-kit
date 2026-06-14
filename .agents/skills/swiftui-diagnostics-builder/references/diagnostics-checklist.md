@@ -15,6 +15,14 @@ Use this checklist when adding or auditing an app diagnostics system.
 9. Signposts around expensive render, save, load, export, and AI request operations.
 10. Optional Crashlytics, Sentry, or remote upload after privacy review.
 
+## Architecture Contract
+
+- Keep diagnostics behind an app diagnostics service or similarly narrow boundary.
+- Do not scatter `MXMetricManager`, signpost setup, or export assembly through feature views.
+- Use one subsystem naming policy and stable category names such as `canvas`, `persistence`, `navigation`, `ai`, `rendering`, and `release`.
+- Make the report bundle reproducible from local data and user-approved attachments.
+- Treat MetricKit and future metric APIs as replaceable collection layers.
+
 ## Structured Logs
 
 Use Apple `Logger` categories that match app subsystems. Typical categories:
@@ -86,6 +94,8 @@ app-issue-report.zip
 
 Only include `screenshot.png` after explicit consent.
 
+The `issue-report.json` file should follow `report-issue-schema.md` when the report is intended for AI-assisted debugging or support triage.
+
 ## MetricKit And Signposts
 
 Use MetricKit for crashes, hangs, watchdog terminations, CPU issues, memory pressure, launch performance, and responsiveness. Use signposts to measure expensive operations:
@@ -96,6 +106,8 @@ Use MetricKit for crashes, hangs, watchdog terminations, CPU issues, memory pres
 - Thumbnail generation.
 - AI request.
 - Export diagnostics.
+
+Signpost summaries should include interval name, subsystem/category, start/end timestamps, duration, success/failure state, and redacted correlation ids.
 
 ## TestFlight And UI Tests
 

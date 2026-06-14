@@ -26,6 +26,9 @@ Prefer targeted search, project maps, and bundled scripts before reading many fi
 - Missing regression tests.
 - Missing async tests.
 - Missing persistence tests.
+- Missing save/reopen, migration, and destructive-flow tests.
+- Missing canvas, PDF overlay, and Apple Pencil regression tests.
+- Missing accessibility common-task tests for store-facing claims.
 - Missing UI state tests.
 
 ## Workflow
@@ -33,7 +36,8 @@ Prefer targeted search, project maps, and bundled scripts before reading many fi
 1. Detect test targets manually or with `scripts/detect-test-targets.sh`.
 2. Map high-risk code to existing tests.
 3. Prioritize tests that catch regressions in user-visible behavior.
-4. Provide example test cases and verification commands.
+4. Separate stable model/repository tests from fragile screenshot-only tests.
+5. Provide example test cases and verification commands.
 
 ## Output
 

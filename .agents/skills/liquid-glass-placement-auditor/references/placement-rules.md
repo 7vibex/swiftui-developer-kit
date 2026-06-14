@@ -2,7 +2,19 @@
 
 ## Core Rule
 
-Use Liquid Glass for controls and chrome. Avoid it for primary content.
+Use Liquid Glass for controls and chrome. Avoid it for primary content. For learning, notes, PDF, tutor, flashcard, and planner apps, treat the rule as chrome-only unless code, screenshots, and product intent prove a narrow exception.
+
+## Surface Classification Rule
+
+Classify the surface before recommending glass:
+
+- **Primary content**: reading, writing, drawing, PDF, transcript, flashcard, form, table, and warning text. Default: avoid.
+- **Chrome**: toolbars, tab bars, command bars, filters, sidebars, and compact mode switchers. Default: use when useful.
+- **Transient overlay**: popovers, inspectors, search, minimaps, and short-lived palettes. Default: use carefully.
+- **Navigation**: sidebars, split-view chrome, page switchers, and document switchers. Default: use system components first.
+- **Warning or destructive UI**: alerts, destructive confirmations, error banners, billing/privacy text. Default: avoid.
+
+If a surface mixes content and chrome, split it before adding glass. Do not wrap the whole mixed surface in one translucent container.
 
 ## OS Availability Rule
 
@@ -21,6 +33,8 @@ Do not silently delete the older implementation or assume the fallback is unwant
 | Primary reading, writing, studying, or answering content | Avoid | Content needs stable contrast and low fatigue |
 | Navigation chrome and compact controls | Use | Glass can separate controls without adding heavy panels |
 | Transient overlays | Use carefully | Works when brief, small, and legible |
+| Canvas, PDF, or document body | Avoid | The work surface needs stable coordinates, contrast, and visual ownership |
+| Transcript, flashcard, and long explanation text | Avoid | Text comprehension should not depend on what is behind the surface |
 | Dense forms, tables, and long lists | Avoid | Transparency makes scanning harder |
 | Destructive or warning actions | Avoid | These need stable, unmistakable emphasis |
 
@@ -41,6 +55,7 @@ Do not silently delete the older implementation or assume the fallback is unwant
 
 ## Use Carefully
 
+- Clear glass variants, especially around text.
 - Planner cards
 - Dashboard widgets
 - AI tutor panels
@@ -52,7 +67,9 @@ Do not silently delete the older implementation or assume the fallback is unwant
 
 - Main notebook writing pages
 - PDF content areas
+- Canvas drawing planes
 - Flashcard question or answer content
+- AI tutor transcripts and generated answer bodies
 - Long text explanations
 - Forms with many fields
 - Primary study content
@@ -65,9 +82,17 @@ Do not silently delete the older implementation or assume the fallback is unwant
 ## Severity Guidance
 
 - Critical: Glass or blur makes primary content unreadable, hides destructive actions, or breaks accessibility.
-- High: Glass competes with dense study content or fails Reduce Transparency expectations.
+- High: Glass competes with dense study content, appears inside scrolling reading content, lacks API availability policy, or fails Reduce Transparency expectations.
 - Medium: Placement is plausible but needs hierarchy, contrast, or safe-area tuning.
 - Low: Cosmetic mismatch or minor polish issue.
+
+## Fail Signals
+
+- Paragraph text, PDF pages, note bodies, flashcard faces, or transcript rows sit directly on glass.
+- `.glassEffect`, `GlassEffectContainer`, or glass button styles appear without an explicit availability and fallback policy.
+- Clear glass is used behind text without a legibility treatment.
+- Glass appears inside `ScrollView`, `List`, `TextEditor`, or document body containers instead of fixed chrome.
+- Reduce Transparency collapses hierarchy or makes controls/content indistinguishable.
 
 ## Confidence Guidance
 

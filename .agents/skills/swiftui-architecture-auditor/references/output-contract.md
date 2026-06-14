@@ -7,6 +7,7 @@
 - Overall risk level:
 - Main architectural theme:
 - Recommended first fix:
+- Evidence gaps:
 
 ## Critical Issues
 - Issue:
@@ -20,11 +21,19 @@
 - Evidence:
 - Why it matters:
 - Fix direction:
+- Boundary affected:
 
 ## Medium Priority Issues
 - Issue:
 - Evidence:
 - Fix direction:
+
+## Ownership Maps
+- State ownership:
+- Navigation ownership:
+- Persistence ownership:
+- Async boundary:
+- Scene/window ownership:
 
 ## Dead Code / Red Flags
 - Item:

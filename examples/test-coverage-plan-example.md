@@ -37,5 +37,5 @@
 ## Verification Commands
 
 ```bash
-xcodebuild test -workspace StudyOS.xcworkspace -scheme StudyOS -destination 'platform=iOS Simulator,name=iPad Pro (11-inch)'
+xcodebuild test -workspace StudyOS.xcworkspace -scheme StudyOS -destination 'platform=iOS Simulator,name=iPad mini (A17 Pro)'
 ```

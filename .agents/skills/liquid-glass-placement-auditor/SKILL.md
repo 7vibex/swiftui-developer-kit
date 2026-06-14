@@ -34,6 +34,7 @@ Do not capture or operate anything until the user answers.
 - Use `references/platform-version-matrix.md` when the request names platform version rules directly.
 - Use `references/studyos-placement-map.md` when the project resembles StudyOS or the user asks for StudyOS-specific placement.
 - Use `references/apple-liquid-glass-links.md` for official links.
+- Use `../../../docs/apple-source-map.md` and `../../../docs/apple-api-inventory.md` before naming new Liquid Glass APIs.
 - Use `references/output-contract.md` for the report.
 
 Prefer targeted search, project maps, and bundled scripts before reading many files.
@@ -71,13 +72,15 @@ Inspect SwiftUI files for glass candidates. State lower confidence because scree
 Use this mode when the user asks to apply Liquid Glass, convert a surface, or provide implementation-ready guidance.
 
 1. Complete the placement audit first, even if it is code-only.
-2. Create a minimal file-by-file implementation plan.
-3. Check current Apple or Xcode documentation for exact API names before editing.
-4. Add availability guards for Liquid Glass-only APIs.
-5. Add Reduce Transparency and older-OS fallback behavior.
-6. Build the latest app version after code changes.
-7. Run the app in Simulator after a successful iOS or iPadOS build.
-8. Ask before screenshots, Appshots, Computer Use, or Simulator capture.
+2. Classify each candidate as primary content, chrome, transient overlay, navigation, inspector, or warning/destructive UI.
+3. Reject glass on reading, writing, drawing, PDF, flashcard, transcript, table, form, and warning content unless the user has a strong product reason and the accessibility risk is documented.
+4. Create a minimal file-by-file implementation plan.
+5. Check current Apple or Xcode documentation for exact API names before editing.
+6. Add availability guards for Liquid Glass-only APIs.
+7. Add Reduce Transparency and older-OS fallback behavior.
+8. Build the latest app version after code changes.
+9. Run the app in Simulator after a successful iOS or iPadOS build.
+10. Ask before screenshots, Appshots, Computer Use, or Simulator capture.
 
 If another specialist skill would be a better next step, recommend an explicit handoff prompt instead of claiming this skill automatically invokes it.
 
@@ -88,8 +91,11 @@ Every recommendation must include:
 - Evidence source: screenshot, code path, or both.
 - Confidence: high, medium, or low.
 - Placement decision: use, use carefully, avoid, or needs screenshot verification.
+- Surface classification: primary content, chrome, transient overlay, navigation, inspector, or warning/destructive UI.
+- Glass variant decision: regular, clear, none, or needs SDK verification.
 - Accessibility risk: none, low, medium, or high.
 - OS support decision: ask before implementation whether iOS 17 keeps its existing UI, gets a new non-glass fallback, or is intentionally dropped by raising the minimum OS.
+- Fallback decision: older OS and Reduce Transparency behavior.
 - A concrete SwiftUI direction, not just visual advice.
 
 Prioritize readability and control discoverability over decorative effect. A good Liquid Glass recommendation should explain what remains opaque, what becomes chrome, how the design behaves with Reduce Transparency, and what older OS users see.

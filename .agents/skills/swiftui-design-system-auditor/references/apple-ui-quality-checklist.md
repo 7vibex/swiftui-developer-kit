@@ -30,6 +30,8 @@
 - Materials are used for chrome and transient surfaces, not primary content.
 - Contrast is sufficient in normal, Increase Contrast, and Reduce Transparency states.
 - Hardcoded colors are avoided unless they are part of an intentional semantic palette.
+- Liquid Glass and blur are not used to compensate for unclear hierarchy.
+- Clear glass is avoided around text unless extra legibility treatment is present.
 
 ## Output Signals
 

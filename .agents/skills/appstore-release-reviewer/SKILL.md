@@ -13,6 +13,8 @@ Review release readiness for TestFlight and App Store submission.
 - `references/privacy-manifest-checklist.md`
 - `references/testflight-checklist.md`
 - `references/screenshots-metadata-checklist.md`
+- `references/accessibility-labels-checklist.md`
+- `../../../docs/apple-source-map.md`
 - `references/output-contract.md`
 
 ## Check
@@ -29,14 +31,16 @@ Review release readiness for TestFlight and App Store submission.
 - Debug flags.
 - Crash risk.
 - Basic accessibility.
+- Accessibility Nutrition Label evidence.
 
 ## Workflow
 
 1. Detect project files safely.
 2. Inspect release settings and app metadata where available.
-3. Separate submission blockers from cleanup.
-4. Draft release notes if requested.
-5. Return a final go/no-go with evidence and remaining risks.
+3. Review privacy and accessibility metadata against implemented behavior.
+4. Separate submission blockers from cleanup.
+5. Draft release notes if requested.
+6. Return a final go/no-go with evidence and remaining risks.
 
 ## Output
 

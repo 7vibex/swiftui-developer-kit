@@ -11,6 +11,8 @@
 ## Integration Tests
 - Repository save/restore for canvas documents.
 - Import PDF/image, annotate, reopen.
+- PDF overlay export and reopen for rotated, cropped, reordered, and mixed-size pages.
+- PaperKit save/load, duplicate, and migration fixtures when PaperKit is adopted.
 - SwiftData/file storage migration/version fallback.
 - Dirty-state debounce and background-save behavior.
 
@@ -23,9 +25,10 @@
 - Undo/redo.
 - Change page/layer.
 - Relaunch and verify restore.
+- Export annotated PDF or markup document and reopen it.
 
 ## Visual/Screenshot Verification
 Use screenshots for layout, overlay placement, toolbar readability, minimap visibility, and PDF/background alignment. Do not rely on screenshot pixel equality for raw Pencil strokes unless the project has a controlled deterministic renderer.
 
 ## Manual Apple Pencil Device Verification
-For Apple Pencil-specific issues, simulator is not enough. Mark device-only verification clearly when pressure, hover, squeeze, roll, palm rejection, or real latency matters.
+For Apple Pencil-specific issues, simulator is not enough. Mark device-only verification clearly when pressure, hover, squeeze, roll, palm rejection, haptic/canvas feedback, or real latency matters.

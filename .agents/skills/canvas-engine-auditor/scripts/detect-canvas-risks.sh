@@ -24,12 +24,20 @@ fi
 echo "# Canvas Risk Scan"
 echo
 
-echo "## Canvas/PencilKit Entry Points"
-grep -HnE "\b(PKCanvasView|PencilKit|PKToolPicker|PKDrawing|PKStroke|UIViewRepresentable|Canvas\s*\{|GraphicsContext)\b" "${swift_files[@]}" || true
+echo "## Canvas/PencilKit/PaperKit Entry Points"
+grep -HnE "\b(PKCanvasView|PencilKit|PaperKit|PaperMarkup|PaperMarkupViewController|PKToolPicker|PKDrawing|PKStroke|UIViewRepresentable|Canvas\s*\{|GraphicsContext)\b" "${swift_files[@]}" || true
 echo
 
 echo "## Gesture And Coordinate Hotspots"
 grep -HnE "\b(DragGesture|MagnificationGesture|SpatialTapGesture|GestureState|simultaneousGesture|highPriorityGesture|coordinateSpace|GeometryReader|contentOffset|zoomScale|minimumScale|maximumScale)\b" "${swift_files[@]}" || true
+echo
+
+echo "## PDF Overlay And Export Hotspots"
+grep -HnE "\b(PDFKit|PDFView|PDFPage|PDFPageOverlayViewProvider|pageOverlayViewProvider|PDFAnnotation|write|export|dataRepresentation)\b" "${swift_files[@]}" || true
+echo
+
+echo "## Apple Pencil Pro Hotspots"
+grep -HnE "\b(UIPencilInteraction|preferredTapAction|preferredSqueezeAction|squeeze|hover|roll|UIPencilHoverPose|UICanvasFeedbackGenerator)\b" "${swift_files[@]}" || true
 echo
 
 echo "## Persistence / Undo Hotspots"

@@ -19,6 +19,8 @@ Treat recipe snippets as shape guidance only until API names are verified.
 
 - Keep study, reading, writing, drawing, PDF, flashcard, table, and warning content opaque.
 - Apply Liquid Glass to compact controls, chrome, transient panels, and navigation surfaces.
+- Prefer regular glass for text-bearing controls. Treat clear glass as a special case that needs extra contrast or dimming.
+- Keep glass out of `ScrollView`, `List`, `TextEditor`, PDF body, notebook body, flashcard face, and transcript body content.
 - Guard Liquid Glass-only APIs with platform availability.
 - Preserve the current non-glass UI path for older supported OS versions unless the user explicitly chooses a new fallback or minimum OS increase.
 - Respect Reduce Transparency with an opaque or system-material fallback.
@@ -61,6 +63,35 @@ CanvasToolbar(selection: $tool)
 ```
 
 Check: controls keep visible labels or VoiceOver labels, hit targets stay at least 44 points, and Reduce Transparency makes the toolbar stable and opaque enough.
+
+## Availability-Guarded Chrome Wrapper
+
+Use this shape after confirming the exact SDK API. Keep the wrapper limited to chrome and compact controls.
+
+```swift
+struct StudyChromePill<Content: View>: View {
+    @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
+    @ViewBuilder var content: Content
+
+    var body: some View {
+        content
+            .padding(.horizontal, 14)
+            .padding(.vertical, 10)
+            .background {
+                if reduceTransparency {
+                    Capsule().fill(.background)
+                } else if #available(iOS 26.0, iPadOS 26.0, macOS 26.0, *) {
+                    // Verify the exact Liquid Glass API in the local SDK first.
+                    Capsule().fill(.clear)
+                } else {
+                    Capsule().fill(.regularMaterial)
+                }
+            }
+    }
+}
+```
+
+Do not use this wrapper for note text, text editors, flashcard faces, PDF pages, warning banners, or long generated answers.
 
 ## Bottom Navigation Chrome
 

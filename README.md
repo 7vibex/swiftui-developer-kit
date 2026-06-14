@@ -45,6 +45,12 @@ Codex skills are structured workflow folders. Each skill has a `SKILL.md` file w
 
 The repository also includes `scripts/validate-skills.sh` and a GitHub Actions workflow to validate skill frontmatter, required references, shell syntax, examples, and safety gates.
 
+## Release Notes
+
+Current release: [v0.2.0 - Canvas and Diagnostics Workflows](docs/releases/v0.2.0.md).
+
+Previous release: [v0.1.0 - Initial SwiftUI Codex Skill Pack](docs/releases/v0.1.0.md).
+
 ## Command Vocabulary And CLI
 
 For broad requests, use `swiftui-project-router` with a short command:
@@ -143,6 +149,8 @@ Install the Codex skills from https://github.com/7vibex/codex-swiftui-developer-
 ```
 
 Codex should clone or inspect the repository, run the local installer, and confirm the skills are available in `~/.agents/skills`.
+
+The v0.2.0 installer defaults to `~/.agents/skills`. Use `./scripts/install-local.sh --target /path/to/codex/skills` only when your Codex environment expects a different user skill directory.
 
 For local Codex installs, use the installer:
 

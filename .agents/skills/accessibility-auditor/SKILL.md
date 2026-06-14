@@ -13,6 +13,8 @@ Audit accessibility from code and screenshots when available. If screenshots are
 - `references/dynamic-type-checklist.md`
 - `references/voiceover-checklist.md`
 - `references/reduce-motion-transparency-checklist.md`
+- `references/store-label-readiness.md`
+- `../../../docs/apple-source-map.md`
 - `references/output-contract.md`
 
 ## Check
@@ -26,6 +28,7 @@ Audit accessibility from code and screenshots when available. If screenshots are
 - Reduce Transparency.
 - Focus order.
 - Custom controls.
+- Common-task coverage for Accessibility Nutrition Label claims.
 - Screenshot evidence if available.
 
 ## Workflow
@@ -33,7 +36,8 @@ Audit accessibility from code and screenshots when available. If screenshots are
 1. Inspect SwiftUI views, custom controls, and high-traffic screens.
 2. Review screenshots only if the user provides or approves them.
 3. Classify critical barriers before polish issues.
-4. Recommend verification steps using Simulator, Accessibility Inspector, or code review.
+4. Map common tasks to assistive technologies when the audit may support App Store accessibility claims.
+5. Recommend verification steps using Simulator, Accessibility Inspector, device testing, or code review.
 
 ## Output
 

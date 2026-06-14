@@ -7,6 +7,14 @@
 - Overall persistence risk:
 - Highest data-loss risk:
 - Highest performance risk:
+- Highest migration or reopen risk:
+
+## Schema Map
+- Model:
+- Identity:
+- Relationships and delete rules:
+- Attachments or external files:
+- Migration version:
 
 ## Data Loss Risks
 - Risk:
@@ -14,6 +22,8 @@
 - Severity:
 - User impact:
 - Safer behavior:
+- Save or transaction boundary:
+- Undo or recovery:
 - Verification:
 
 ## Performance Risks
@@ -27,6 +37,14 @@
 - Evidence:
 - Existing-store scenario:
 - Migration direction:
+- Fixture or test needed:
+
+## Reopen Contracts
+- Object or flow:
+- Commit point:
+- Reopen scenario:
+- Expected persisted state:
+- Missing test:
 
 ## Model Relationship Issues
 - Model:
@@ -47,4 +65,5 @@
 ## Codex Fix Prompts
 - Prompt:
 - Files to inspect first:
+- Verification command or manual flow:
 ```

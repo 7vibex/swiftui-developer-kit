@@ -27,6 +27,9 @@ Diagnostics are useful only if users can trust them.
 - Boolean state.
 - Error domains and codes.
 - Redacted IDs.
+- Hashed local document or entity IDs when correlation matters.
+- Accessibility settings and input mode when they affect reproduction.
+- Signpost durations and MetricKit payload ids instead of raw content.
 - Coarse timestamps.
 - App version, build number, device, OS, and configuration.
 
@@ -42,3 +45,11 @@ Before adding remote upload, analytics, crash SDKs, or session-style replay:
 ## Report Export Review
 
 Before treating the diagnostics feature as done, inspect an exported report. Confirm it explains the bug context and excludes private content unless the user chose to include it.
+
+The export review must explicitly answer:
+
+- Which fields are redacted?
+- Which fields are hashed?
+- Which sensitive categories are never collected?
+- Which attachments required consent?
+- Which release metadata or privacy labels may need review if remote upload is enabled?

@@ -15,6 +15,14 @@
 
 ## Motion/Transparency Concerns
 
+## Store Label Readiness
+- Common tasks reviewed:
+- Supported feature claims:
+- Unsupported or untested features:
+- Blocking bugs:
+- Device families:
+- Metadata risk:
+
 ## Recommended Fixes
 
 ## Verification Checklist

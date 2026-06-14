@@ -12,6 +12,11 @@ Return concise, actionable output.
 ## Files Changed
 
 ## State And Routing Decisions
+- Source of truth:
+- Navigation model:
+- Modal model:
+- Adaptive behavior:
+- Command/menu/window behavior:
 
 ## Accessibility And Previews
 
@@ -26,6 +31,10 @@ Return concise, actionable output.
 # SwiftUI UI Patterns Review
 
 ## Recommended Pattern
+- Primary navigation:
+- Presentation:
+- State owner:
+- Adaptation:
 
 ## Why
 
