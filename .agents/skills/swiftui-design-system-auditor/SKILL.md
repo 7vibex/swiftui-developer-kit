@@ -10,6 +10,7 @@ Use this skill when the user wants an Apple-platform design review that is broad
 ## References
 
 - Read `references/apple-ui-quality-checklist.md` for layout, typography, spacing, controls, density, and hierarchy checks.
+- Read `references/anti-slop-checklist.md` before giving redesign, visual-polish, or taste advice.
 - Read `references/platform-interaction-checklist.md` for iPad, macOS, pointer, keyboard, Apple Pencil, sidebar, toolbar, and split-view behavior.
 - Use `../../../docs/apple-source-map.md` when a finding depends on official Apple UI, Liquid Glass, accessibility, or App Store guidance.
 - Read `references/output-contract.md` before reporting.
