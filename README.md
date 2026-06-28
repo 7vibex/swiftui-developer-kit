@@ -130,8 +130,8 @@ For a code-only static scan, see the worked [`detect-risks` example](examples/de
 Clone the repository:
 
 ```bash
-git clone https://github.com/7vibex/codex-swiftui-developer-kit.git
-cd codex-swiftui-developer-kit
+git clone https://github.com/7vibex/swiftui-developer-kit.git
+cd swiftui-developer-kit
 ```
 
 Use the skills by pointing Codex at this repository, or copy `.agents/skills/` into a Codex-compatible skills location if your environment supports local skill discovery. Current Codex skill locations are:
@@ -145,7 +145,7 @@ Admin: /etc/codex/skills
 You can also give Codex the repository link and ask it to install the pack for local use:
 
 ```text
-Install the Codex skills from https://github.com/7vibex/codex-swiftui-developer-kit so I can use them locally.
+Install the Codex skills from https://github.com/7vibex/swiftui-developer-kit so I can use them locally.
 ```
 
 Codex should clone or inspect the repository, run the local installer, and confirm the skills are available in `~/.agents/skills`.
