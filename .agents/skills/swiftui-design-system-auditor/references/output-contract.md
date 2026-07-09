@@ -61,3 +61,6 @@
 ```
 
 Avoid vague praise or taste-only criticism. Tie every finding to a screen, symbol, component, or stated product workflow when evidence is available.
+# Required Quality Fields
+
+For each finding or decision, include severity, evidence, user impact, concrete fix or next action, verification, confidence, and missing evidence. State safety, privacy, approval, and not-inspected boundaries where relevant.

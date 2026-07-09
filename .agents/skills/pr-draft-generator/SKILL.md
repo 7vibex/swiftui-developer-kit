@@ -21,6 +21,18 @@ Generate clear pull request material from the actual diff and project context.
 4. Call out risks, screenshots needed, accessibility impact, release metadata impact, and Apple-source claims.
 5. Draft reviewer checklist and release notes.
 
+## Do Not Use When
+
+- There is no diff, branch, change summary, or release note material to draft from.
+- The user needs code review findings or implementation work before PR text.
+
+## Done When
+
+- Title, summary, testing, risk, reviewer notes, and release notes match inspected changes.
+- Unverified tests, screenshots, Apple API claims, and release risks are called out honestly.
+
 ## Output
 
 Use `references/output-contract.md`.
+
+Follow `../../../docs/skill-quality-standard.md` and compare `../../../examples/skill-outputs/pr-draft-generator-bad-output.md` with `../../../examples/skill-outputs/pr-draft-generator-good-output.md`.

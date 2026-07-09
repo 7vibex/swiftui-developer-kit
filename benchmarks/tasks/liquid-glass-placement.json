@@ -1,0 +1,7 @@
+{
+  "id": "liquid-glass-placement",
+  "skill": "liquid-glass-placement-auditor",
+  "prompt": "Review the positive fixture for Liquid Glass availability and fallback evidence.",
+  "artifact": "scanner/Fixtures/Positive.swift",
+  "expected_finding": "glassEffect has no availability guard or fallback."
+}

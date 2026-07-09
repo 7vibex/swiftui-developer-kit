@@ -39,6 +39,19 @@ Prefer targeted search, project maps, and bundled scripts before reading many fi
 - Do not silently remove iOS 17 support when adding Liquid Glass or iOS 26 UI. Ask whether to keep the iOS 17 UI path, build a separate non-glass fallback, or intentionally raise the minimum OS.
 - Do not implement APIs absent from the current SDK or marked future-looking without stating that constraint and choosing a fallback.
 
+## Do Not Use When
+
+- The user wants only an audit, PR draft, screenshot review, or release checklist.
+- The requested change lacks enough app context to identify target files and verification.
+
+## Done When
+
+- Success criteria, target files, state ownership, data flow, accessibility, and API availability are addressed.
+- Changes are scoped to existing architecture and include focused tests or verification where safe.
+- Output reports edits, tests, verification, risks, and follow-up work.
+
 ## Output
 
 Use `references/output-contract.md`.
+
+Follow `../../../docs/skill-quality-standard.md` and compare `../../../examples/skill-outputs/swiftui-feature-builder-bad-output.md` with `../../../examples/skill-outputs/swiftui-feature-builder-good-output.md`.

@@ -54,3 +54,6 @@
 - Fail if the audit cannot identify a single source of truth for canvas state.
 - Fail if persistence behavior is untested for at least one draw → close → reopen flow.
 - Fail if a proposed fix lacks a verification step.
+# Required Quality Fields
+
+For each finding or decision, include severity, evidence, user impact, concrete fix or next action, verification, confidence, and missing evidence. State safety, privacy, approval, and not-inspected boundaries where relevant.

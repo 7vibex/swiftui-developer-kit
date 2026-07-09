@@ -54,22 +54,23 @@ If the user asks for the menu, show the commands above with one-line guidance an
 7. Ask only for missing routing information that changes the workflow choice.
 8. Return the selected command, selected workflow, and next action.
 
+## Do Not Use When
+
+- The user already named the exact specialist skill and the task is narrow.
+- The request is not about SwiftUI, Apple app development, release workflows, diagnostics, screenshots, tests, or PR drafting.
+
+## Done When
+
+- The narrowest command and specialist workflow are selected with routing confidence.
+- Required evidence, explicit unknowns, inputs, stop conditions, and next action are stated.
+- No build, launch, screenshot, capture, or specialist handoff is claimed as automatic.
+
+## Orchestration Contract
+
+Use `references/orchestration-contract.md` for routing confidence, specialist sequence, stop conditions, and the evidence budget.
+
 ## Output
 
-```md
-# SwiftUI Project Router
+Use `references/output-contract.md`.
 
-## Selected Command
-
-## Selected Workflow
-
-## Why Selected
-
-## Evidence Needed
-
-## Explicit Unknowns
-
-## Inputs Needed
-
-## Next Action
-```
+Follow `../../../docs/skill-quality-standard.md` and compare `../../../examples/skill-outputs/swiftui-project-router-bad-output.md` with `../../../examples/skill-outputs/swiftui-project-router-good-output.md`.

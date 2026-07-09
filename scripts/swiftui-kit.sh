@@ -12,8 +12,11 @@ Commands:
   list       List included skills.
   install    Install skills locally. Passes options to scripts/install-local.sh.
   validate   Run repository validation, including local tests.
+  lint       Run skill, policy, link, freshness, and API inventory checks.
   doctor     Check local skill-pack structure without changing files.
   detect     Scan SwiftUI files for deterministic anti-patterns.
+  structured-scan Run the SwiftSyntax scanner with schema, baseline, and CI support.
+  benchmarks Validate deterministic behavior benchmark fixtures.
   bundle     Generate provider install bundles.
   help       Show this help.
 USAGE
@@ -42,6 +45,13 @@ case "$command" in
   validate)
     scripts/validate-skills.sh
     ;;
+  lint)
+    scripts/lint-skills.sh
+    scripts/detect-instruction-conflicts.sh
+    scripts/check-links.sh
+    scripts/check-doc-freshness.sh
+    scripts/check-apple-api-inventory.sh
+    ;;
   doctor)
     [[ -d .agents/skills ]] || { echo "missing .agents/skills" >&2; exit 1; }
     [[ -f README.md ]] || { echo "missing README.md" >&2; exit 1; }
@@ -53,6 +63,12 @@ case "$command" in
     ;;
   detect)
     scripts/detect-swiftui-antipatterns.sh "$@"
+    ;;
+  structured-scan)
+    scripts/run-structured-scanner.sh "$@"
+    ;;
+  benchmarks)
+    scripts/validate-benchmarks.sh
     ;;
   bundle)
     scripts/build-provider-bundles.sh "$@"

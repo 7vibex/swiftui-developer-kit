@@ -4,21 +4,19 @@ The StudyOS examples are fictional by design. They show audit shape, confidence 
 
 ## Next Demo Step
 
-Add a tiny public sample SwiftUI app and run the workflows against it:
+Add a compact set of public, synthetic audit fixtures and run the workflows against them:
 
-- Home dashboard.
-- Notebook or canvas-like editor.
-- AI-style assistant panel with fictional text.
-- Flashcard review screen.
-- Settings form.
+- Architecture and presentation fixture.
+- Persistence and destructive-flow fixture.
+- Canvas and PencilKit fixture.
+- Diagnostics and redaction fixture.
+- Accessibility and release-evidence fixture.
 
 ## Evidence To Include
 
-- User-approved screenshots from the public sample app.
-- Screenshot inventory with privacy status.
-- Code-backed findings with file paths.
-- Before/after Liquid Glass placement notes.
-- Design-system audit output.
-- Validation commands and build status.
+- Code-backed findings with fixture file paths.
+- Expected scanner rules and false-positive boundaries.
+- Good and bad output comparisons.
+- Validation commands and benchmark scores.
 
-Keep the sample small enough that the audit demonstrates the workflow instead of becoming a second product.
+Keep fixtures small enough that they prove skill behavior without becoming an application project.

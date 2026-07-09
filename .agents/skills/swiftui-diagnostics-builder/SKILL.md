@@ -43,6 +43,21 @@ Use this skill for diagnostic feature work, not general bug fixing. If the user 
 - Mark every user-content field as redacted, hashed, omitted, or explicitly user-attached.
 - Hide MetricKit and future diagnostics API choices behind an app diagnostics service rather than coupling feature code to one collection API.
 
+## Do Not Use When
+
+- The user only needs a one-off root-cause diagnosis, build fix, or release review.
+- Diagnostics would require collecting private content without a consent and redaction plan.
+
+## Done When
+
+- Bug classes, diagnostic surface, privacy boundaries, schema, retention, and export behavior are defined.
+- Redaction and consent rules cover screenshots, logs, user content, tokens, and remote upload.
+- Output includes implementation slices, tests, and verification for useful but privacy-safe reports.
+
 ## Output
 
 Use `references/output-contract.md`.
+
+Follow `../../../docs/skill-quality-standard.md` and compare `../../../examples/skill-outputs/swiftui-diagnostics-builder-bad-output.md` with `../../../examples/skill-outputs/swiftui-diagnostics-builder-good-output.md`.
+
+Validate compatible report examples with `../../../scripts/validate-diagnostic-schema.sh` against `../../../schemas/diagnostic-report.schema.json`.

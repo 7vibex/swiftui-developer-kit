@@ -1,0 +1,39 @@
+name: Skill improvement
+description: Propose a tighter trigger, workflow, reference, example, or output contract.
+title: "Skill: "
+labels:
+  - skill
+body:
+  - type: input
+    id: skill
+    attributes:
+      label: Skill name
+      description: Example: swiftui-architecture-auditor
+    validations:
+      required: true
+  - type: textarea
+    id: gap
+    attributes:
+      label: Gap
+      description: What currently produces weak, vague, unsafe, or incomplete output?
+    validations:
+      required: true
+  - type: textarea
+    id: proposed
+    attributes:
+      label: Proposed change
+      description: Keep the SKILL.md concise; detailed guidance should usually move into references.
+    validations:
+      required: true
+  - type: textarea
+    id: output
+    attributes:
+      label: Expected output contract impact
+      description: Describe the evidence, confidence, severity, verification, or follow-up prompt sections this change should improve.
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Safety check
+      options:
+        - label: This proposal does not make screenshots, Appshots, Simulator capture, Computer Use, destructive commands, or private-data capture automatic.
+          required: true

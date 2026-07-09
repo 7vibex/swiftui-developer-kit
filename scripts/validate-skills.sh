@@ -24,11 +24,42 @@ require_file CONTRIBUTING.md
 require_file CODE_OF_CONDUCT.md
 require_file LICENSE
 require_file SECURITY.md
+require_file CHANGELOG.md
+require_file .github/pull_request_template.md
+require_file .github/ISSUE_TEMPLATE/bug_report.yml
+require_file .github/ISSUE_TEMPLATE/docs_bug.yml
+require_file .github/ISSUE_TEMPLATE/scanner_rule.yml
+require_file .github/ISSUE_TEMPLATE/skill_improvement.yml
 require_file docs/claude-code-usage.md
 require_file docs/commands.md
 require_file docs/demo-roadmap.md
 require_file docs/demo-site/index.html
 require_file docs/detector-roadmap.md
+require_file docs/threat-model.md
+require_file docs/compatibility.md
+require_file docs/sdk-verification.md
+require_file docs/skill-quality-standard.md
+require_file docs/trust-roadmap.md
+require_file docs/issue-backlog.md
+require_file docs/releases/v0.3.0.md
+require_file docs/releases/v0.4.0.md
+require_file docs/releases/v0.5.0.md
+require_file docs/releases/v0.6.0.md
+require_file docs/releases/v1.0.0.md
+require_file scripts/check-links.sh
+require_file scripts/check-doc-freshness.sh
+require_file scripts/check-apple-api-inventory.sh
+require_file scripts/validate-diagnostic-schema.sh
+require_file scripts/validate-benchmarks.sh
+require_file scripts/check-structured-scanner.sh
+require_file scripts/run-structured-scanner.sh
+require_file schemas/scanner-output.schema.json
+require_file benchmarks/rubric.json
+require_file benchmarks/results.json
+require_file schemas/diagnostic-report.schema.json
+require_file examples/diagnostic-report.sample.json
+require_file scripts/detect-instruction-conflicts.sh
+require_file scripts/lint-skills.sh
 require_dir .agents/skills
 require_dir docs
 require_dir examples
@@ -163,11 +194,20 @@ grep -q "implementation-recipes.md" .agents/skills/liquid-glass-placement-audito
 grep -q "platform-version-matrix.md" .agents/skills/liquid-glass-placement-auditor/SKILL.md || fail "Liquid Glass skill lacks platform version matrix reference"
 grep -q "API Verification Required" .agents/skills/liquid-glass-placement-auditor/references/swiftui-liquid-glass-recipes.md || fail "Liquid Glass recipes lack API verification workflow"
 grep -qi "multiple booleans" docs/detector-roadmap.md || fail "Detector roadmap lacks sheet boolean candidate"
-grep -q "public sample SwiftUI app" docs/demo-roadmap.md || fail "Demo roadmap lacks public sample app plan"
+grep -q "synthetic audit fixtures" docs/demo-roadmap.md || fail "Demo roadmap lacks public synthetic fixture plan"
 
 if grep -RInE --exclude validate-skills.sh '\b(TBD|TODO|FIXME|placeholder)\b' README.md AGENTS.md CONTRIBUTING.md docs .agents examples scripts; then
   fail "placeholder text found"
 fi
+
+scripts/lint-skills.sh
+scripts/detect-instruction-conflicts.sh
+scripts/check-links.sh
+scripts/check-doc-freshness.sh
+scripts/check-apple-api-inventory.sh
+scripts/validate-diagnostic-schema.sh
+scripts/validate-benchmarks.sh
+scripts/check-structured-scanner.sh
 
 bash tests/run-tests.sh
 

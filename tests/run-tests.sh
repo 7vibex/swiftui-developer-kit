@@ -28,7 +28,7 @@ fi
 assert_contains() {
   local needle="$1"
   local haystack="$2"
-  if ! grep -Fq "$needle" "$haystack"; then
+  if ! grep -Fq -- "$needle" "$haystack"; then
     fail "expected $haystack to contain $needle"
   fi
 }
@@ -158,9 +158,36 @@ done
 echo "test: Codex install target uses current agents directory"
 scripts/install-local.sh --help > "$tmp_dir/install-help.txt"
 assert_contains '$HOME/.agents/skills' "$tmp_dir/install-help.txt"
+assert_contains '--refresh' "$tmp_dir/install-help.txt"
 assert_contains '$HOME/.agents/skills' scripts/install-local.sh
+assert_contains '--refresh' scripts/install-local.sh
 assert_contains '$HOME/.agents/skills' docs/installation.md
+assert_contains './scripts/install-local.sh --refresh' docs/installation.md
 assert_contains '~/.agents/skills' README.md
+assert_contains './scripts/install-local.sh --refresh' README.md
+
+echo "test: local installer refreshes existing symlinks safely"
+install_target="$tmp_dir/install-target"
+scripts/install-local.sh --target "$install_target" > "$tmp_dir/install-initial.txt"
+[[ -L "$install_target/swiftui-project-router" ]] || fail "installer did not create router symlink"
+mkdir -p "$tmp_dir/stale-router"
+ln -sfn "$tmp_dir/stale-router" "$install_target/swiftui-project-router"
+scripts/install-local.sh --target "$install_target" > "$tmp_dir/install-skip.txt"
+[[ "$(readlink "$install_target/swiftui-project-router")" == "$tmp_dir/stale-router" ]] || fail "default install replaced an existing symlink"
+scripts/install-local.sh --refresh --target "$install_target" > "$tmp_dir/install-refresh.txt"
+[[ "$(readlink "$install_target/swiftui-project-router")" == "$repo_root/.agents/skills/swiftui-project-router" ]] || fail "refresh did not relink router skill"
+assert_contains "refresh-link: swiftui-project-router" "$tmp_dir/install-refresh.txt"
+
+echo "test: local installer refresh preserves replaced directories"
+copy_target="$tmp_dir/copy-target"
+mkdir -p "$copy_target/swiftui-project-router"
+printf 'local edit\n' > "$copy_target/swiftui-project-router/local-note.txt"
+scripts/install-local.sh --copy --refresh --target "$copy_target" > "$tmp_dir/install-copy-refresh.txt"
+[[ -f "$copy_target/swiftui-project-router/SKILL.md" ]] || fail "copy refresh did not install router skill"
+[[ ! -f "$copy_target/swiftui-project-router/local-note.txt" ]] || fail "copy refresh left old directory in place"
+backup_count="$(find "$copy_target" -maxdepth 1 -type d -name 'swiftui-project-router.backup-*' | wc -l | tr -d ' ')"
+[[ "$backup_count" == "1" ]] || fail "copy refresh did not preserve old router directory as a backup"
+assert_contains "backup: swiftui-project-router" "$tmp_dir/install-copy-refresh.txt"
 
 echo "test: command vocabulary exists"
 assert_contains "review-screenshots" docs/commands.md
@@ -251,17 +278,62 @@ assert_contains "apple-ui-quality-checklist.md" .agents/skills/swiftui-design-sy
 assert_contains "platform-interaction-checklist.md" .agents/skills/swiftui-design-system-auditor/SKILL.md
 assert_contains "SwiftUI Design System Audit" examples/full-studyos-design-audit.md
 
+echo "test: every skill has boundaries and done criteria"
+for skill_file in .agents/skills/*/SKILL.md; do
+  assert_contains "## Do Not Use When" "$skill_file"
+  assert_contains "## Done When" "$skill_file"
+done
+
 echo "test: security and Claude adapter exist"
 assert_contains "Do not capture" SECURITY.md
 assert_contains "swiftui-design-system-auditor" CLAUDE.md
 assert_contains "Claude Code Usage" docs/claude-code-usage.md
 assert_contains "Claude Prompt Examples" examples/claude-prompts.md
 
+echo "test: diagnostic schema and release evidence validate"
+scripts/validate-diagnostic-schema.sh > "$tmp_dir/diagnostic-schema.txt"
+assert_contains "Diagnostic schema validation passed" "$tmp_dir/diagnostic-schema.txt"
+assert_contains "release-evidence-matrix.md" .agents/skills/appstore-release-reviewer/SKILL.md
+assert_contains "App Store Connect" .agents/skills/appstore-release-reviewer/references/app-store-connect-fields.md
+assert_contains "Accessibility Nutrition Label" .agents/skills/appstore-release-reviewer/references/accessibility-claims-risk.md
+
+echo "test: behavior benchmark fixtures validate"
+scripts/validate-benchmarks.sh > "$tmp_dir/benchmarks.txt"
+assert_contains "Behavior benchmark validation passed: 8 tasks" "$tmp_dir/benchmarks.txt"
+assert_contains '"live_model_claim": false' benchmarks/results.json
+
+echo "test: structured scanner package and schema exist"
+scripts/check-structured-scanner.sh > "$tmp_dir/structured-scanner.txt"
+assert_contains "Structured scanner checks passed" "$tmp_dir/structured-scanner.txt"
+assert_contains "swift-syntax.git" scanner/Package.swift
+assert_contains "scanner-output.schema.json" scripts/check-structured-scanner.sh
+
+echo "test: repo hardening checks exist"
+[[ -f scripts/lint-skills.sh ]] || fail "missing skill lint script"
+[[ -f scripts/detect-instruction-conflicts.sh ]] || fail "missing instruction conflict detector"
+[[ -f scripts/check-links.sh ]] || fail "missing Markdown link checker"
+scripts/lint-skills.sh > "$tmp_dir/skill-lint.txt"
+scripts/detect-instruction-conflicts.sh > "$tmp_dir/instruction-conflicts.txt"
+scripts/check-links.sh > "$tmp_dir/link-check.txt"
+assert_contains "Skill lint passed" "$tmp_dir/skill-lint.txt"
+assert_contains "Instruction conflict checks passed" "$tmp_dir/instruction-conflicts.txt"
+assert_contains "Markdown link checks passed" "$tmp_dir/link-check.txt"
+
+echo "test: GitHub contribution templates and threat model exist"
+[[ -f .github/pull_request_template.md ]] || fail "missing pull request template"
+[[ -f .github/ISSUE_TEMPLATE/bug_report.yml ]] || fail "missing bug report issue template"
+[[ -f .github/ISSUE_TEMPLATE/skill_improvement.yml ]] || fail "missing skill improvement issue template"
+[[ -f .github/ISSUE_TEMPLATE/scanner_rule.yml ]] || fail "missing scanner rule issue template"
+[[ -f docs/threat-model.md ]] || fail "missing threat model"
+assert_contains "Safety/privacy impact" .github/pull_request_template.md
+assert_contains "No automatic screenshot capture" docs/threat-model.md
+assert_contains "Prompt injection through repository files" docs/threat-model.md
+
 echo "test: docs demo exists"
 [[ -f docs/demo-site/index.html ]] || fail "missing docs demo site"
 assert_contains "Codex SwiftUI Developer Kit" docs/demo-site/index.html
 assert_contains "detect-risks" docs/demo-site/index.html
 assert_contains "multiple booleans" docs/detector-roadmap.md
-assert_contains "public sample SwiftUI app" docs/demo-roadmap.md
+assert_contains "synthetic audit fixtures" docs/demo-roadmap.md
 
 echo "All tests passed."

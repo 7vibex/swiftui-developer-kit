@@ -58,6 +58,19 @@ Prefer targeted search, project maps, and bundled scripts before reading many fi
 
 Every finding should cite a file path, symbol, or search result. Do not report generic SwiftUI advice unless it is tied to this project.
 
+## Do Not Use When
+
+- The user only needs a narrow build fix, screenshot review, release checklist, or PR draft.
+- The request lacks SwiftUI app code or project structure to inspect.
+
+## Done When
+
+- State owners, navigation, async work, persistence boundaries, and high-risk files are mapped where relevant.
+- Critical and high findings cite evidence and are separated from maintainability cleanup.
+- Fix order starts with data loss, crashes, broken navigation, async corruption, or test-blocking issues.
+
 ## Output
 
 Use `references/output-contract.md`.
+
+Follow `../../../docs/skill-quality-standard.md` and compare `../../../examples/skill-outputs/swiftui-architecture-auditor-bad-output.md` with `../../../examples/skill-outputs/swiftui-architecture-auditor-good-output.md`.

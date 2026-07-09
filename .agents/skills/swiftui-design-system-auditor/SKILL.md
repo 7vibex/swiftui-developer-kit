@@ -37,6 +37,19 @@ Use `liquid-glass-placement-auditor` only when the question is specifically abou
 - Do not report generic Apple advice without tying it to observed screens, files, or stated product goals.
 - Do not capture screenshots, Appshots, Simulator output, or use Computer Use without explicit user approval.
 
+## Do Not Use When
+
+- The request is specifically Liquid Glass placement, build debugging, persistence correctness, or PR drafting.
+- No UI code, screenshots, screen list, or product context is available.
+
+## Done When
+
+- Platform fit, hierarchy, spacing, typography, controls, empty states, adaptation, and interaction risks are covered.
+- Findings cite screenshots, code, stated goals, or explicit evidence gaps.
+- Output prioritizes user impact and gives SwiftUI-oriented fixes and verification steps.
+
 ## Output
 
 Use `references/output-contract.md`.
+
+Follow `../../../docs/skill-quality-standard.md` and compare `../../../examples/skill-outputs/swiftui-design-system-auditor-bad-output.md` with `../../../examples/skill-outputs/swiftui-design-system-auditor-good-output.md`.

@@ -1,0 +1,9 @@
+{
+  "evaluated_on": "2026-07-09",
+  "method": "deterministic fixture evaluation",
+  "live_model_claim": false,
+  "task_count": 8,
+  "baseline_total": 0,
+  "with_skill_total": 64,
+  "invalid_fixtures_rejected": 3
+}

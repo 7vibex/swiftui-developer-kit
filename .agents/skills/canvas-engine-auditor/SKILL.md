@@ -60,5 +60,16 @@ Prefer targeted search, project maps, existing tests, simulator evidence, and bu
 - PaperKit is ignored for a markup-heavy product that needs shapes, images, text boxes, and consistent document save/load.
 - Custom Apple Pencil Pro squeeze or hover behavior ignores the user's preferred action or lacks hardware-only verification.
 
+## Do Not Use When
+- The app has no drawing, handwriting, PDF annotation, zoom/pan, PencilKit, PaperKit, or canvas-like surface.
+- The request is only visual polish, release readiness, or generic SwiftUI architecture.
+
+## Done When
+- Input, coordinate, render, persistence, undo/redo, and restore paths are mapped or marked missing.
+- Data-loss, coordinate, gesture, tool-state, performance, and verification risks are prioritized.
+- Each finding cites code, tests, screenshots, scripts, or an explicit evidence gap.
+
 ## Output
 Use `references/output-contract.md`.
+
+Follow `../../../docs/skill-quality-standard.md` and compare `../../../examples/skill-outputs/canvas-engine-auditor-bad-output.md` with `../../../examples/skill-outputs/canvas-engine-auditor-good-output.md`.

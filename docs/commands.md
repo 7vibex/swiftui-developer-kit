@@ -22,6 +22,8 @@ The repo-local CLI wraps the same workflows:
 ```bash
 scripts/swiftui-kit.sh list
 scripts/swiftui-kit.sh doctor
+scripts/swiftui-kit.sh lint
+scripts/swiftui-kit.sh benchmarks
 scripts/swiftui-kit.sh detect Sources/
 scripts/swiftui-kit.sh bundle --output .tmp/swiftui-kit-dist
 scripts/swiftui-kit.sh validate
@@ -31,10 +33,13 @@ scripts/swiftui-kit.sh validate
 
 ```bash
 scripts/swiftui-kit.sh detect --format markdown .
+scripts/swiftui-kit.sh structured-scan --format json .
 scripts/swiftui-kit.sh detect --format json .
 ```
 
 The scanner is read-only. It does not build, launch, operate Simulator, capture screenshots, inspect private windows, or modify source files.
+
+`scripts/swiftui-kit.sh lint` runs the skill-size and frontmatter checks, instruction-conflict detector, and local Markdown link checker without modifying files.
 
 For canvas-specific apps, use `canvas-audit` directly or run the bundled canvas scanner from the app root:
 

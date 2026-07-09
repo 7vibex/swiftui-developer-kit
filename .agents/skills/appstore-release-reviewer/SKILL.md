@@ -14,6 +14,10 @@ Review release readiness for TestFlight and App Store submission.
 - `references/testflight-checklist.md`
 - `references/screenshots-metadata-checklist.md`
 - `references/accessibility-labels-checklist.md`
+- `references/release-evidence-matrix.md`
+- `references/app-store-connect-fields.md`
+- `references/privacy-review-output.md`
+- `references/accessibility-claims-risk.md`
 - `../../../docs/apple-source-map.md`
 - `references/output-contract.md`
 
@@ -42,6 +46,19 @@ Review release readiness for TestFlight and App Store submission.
 5. Draft release notes if requested.
 6. Return a final go/no-go with evidence and remaining risks.
 
+## Do Not Use When
+
+- The task is only build debugging, feature work, or code architecture review.
+- App Store, TestFlight, privacy, signing, metadata, or release evidence is not in scope.
+
+## Done When
+
+- Go/no-go status is stated with blockers, risks, and missing evidence.
+- Bundle, version, privacy, permissions, screenshots, signing, notes, and accessibility claims are checked where available.
+- Output names exact files, metadata, or evidence gaps and gives verification steps.
+
 ## Output
 
 Use `references/output-contract.md`.
+
+Follow `../../../docs/skill-quality-standard.md` and compare `../../../examples/skill-outputs/appstore-release-reviewer-bad-output.md` with `../../../examples/skill-outputs/appstore-release-reviewer-good-output.md`.

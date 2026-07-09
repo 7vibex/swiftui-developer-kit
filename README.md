@@ -4,6 +4,27 @@ Codex SwiftUI Developer Kit is an open-source Codex skill pack for building, aud
 
 It includes `liquid-glass-placement-auditor`, a dedicated skill for reviewing where Apple Liquid Glass should be applied or avoided in SwiftUI, iOS, iPadOS, and macOS apps.
 
+## Quick Start
+
+```bash
+./scripts/install-local.sh
+scripts/swiftui-kit.sh list
+scripts/swiftui-kit.sh lint
+scripts/swiftui-kit.sh benchmarks
+./scripts/validate-skills.sh
+```
+
+## Quality Evidence
+
+- Every skill has an explicit output contract, `Do Not Use When`, and `Done When`.
+- Every skill has paired fictional good and bad output examples.
+- Eight deterministic behavior fixtures compare weak baseline output with contract-compliant output.
+- Skill lint, instruction-conflict checks, Markdown links, docs freshness, schemas, and scanner fixtures run from `./scripts/validate-skills.sh`.
+
+## Safety
+
+Scripts are non-destructive. Builds and launches follow host-project approval. Screenshots, Appshots, Simulator capture, and Computer Use always require explicit approval, and examples contain no private project data.
+
 ## Why SwiftUI Developers Need This
 
 Apple app work often repeats the same review loops: inspect SwiftUI state, check navigation, debug Xcode schemes, build useful diagnostics, review Simulator screenshots, decide where Liquid Glass belongs, audit SwiftData risk, and prepare App Store releases. This repository packages those workflows as reusable Codex skills so the same checks can be run consistently across projects.
@@ -47,9 +68,9 @@ The repository also includes `scripts/validate-skills.sh` and a GitHub Actions w
 
 ## Release Notes
 
-Current release: [v0.2.0 - Canvas and Diagnostics Workflows](docs/releases/v0.2.0.md).
+Upcoming release: [v0.2.0 - Canvas and Diagnostics Workflows](docs/releases/v0.2.0.md).
 
-Previous release: [v0.1.0 - Initial SwiftUI Codex Skill Pack](docs/releases/v0.1.0.md).
+Current release: [v0.1.0 - Initial SwiftUI Codex Skill Pack](docs/releases/v0.1.0.md).
 
 ## Command Vocabulary And CLI
 
@@ -87,12 +108,15 @@ The repo-local CLI wraps common maintenance workflows:
 ```bash
 scripts/swiftui-kit.sh list
 scripts/swiftui-kit.sh detect --format markdown .
+scripts/swiftui-kit.sh lint
 scripts/swiftui-kit.sh doctor
 scripts/swiftui-kit.sh bundle --output .tmp/swiftui-kit-dist
 scripts/swiftui-kit.sh validate
 ```
 
 `scripts/detect-swiftui-antipatterns.sh` is read-only. It flags deterministic SwiftUI risk signals such as oversized SwiftUI view files, unlabeled symbol-only buttons, lifecycle-created unstructured tasks, hardcoded colors, and suspicious SwiftData delete paths.
+
+`scripts/swiftui-kit.sh lint` is also read-only. It checks skill size and trigger descriptions, detects instruction conflicts such as broad build/run approval, and verifies local Markdown links.
 
 Worked output:
 
@@ -121,7 +145,7 @@ Example:
 
 The key behavior is not a generic answer. The skills push Codex toward structured output with severity, confidence, file evidence when available, and a practical next action.
 
-The StudyOS examples are fictional. See [docs/demo-roadmap.md](docs/demo-roadmap.md) for the next step toward a public sample-app screenshot demo.
+The StudyOS examples are fictional. See [docs/demo-roadmap.md](docs/demo-roadmap.md) for the implemented public demo and optional future visual evidence.
 
 For a code-only static scan, see the worked [`detect-risks` example](examples/detect-risks-example.md).
 
@@ -150,7 +174,7 @@ Install the Codex skills from https://github.com/7vibex/swiftui-developer-kit so
 
 Codex should clone or inspect the repository, run the local installer, and confirm the skills are available in `~/.agents/skills`.
 
-The v0.2.0 installer defaults to `~/.agents/skills`. Use `./scripts/install-local.sh --target /path/to/codex/skills` only when your Codex environment expects a different user skill directory.
+The upcoming v0.2.0 installer defaults to `~/.agents/skills`. Use `./scripts/install-local.sh --target /path/to/codex/skills` only when your Codex environment expects a different user skill directory.
 
 For local Codex installs, use the installer:
 
@@ -159,6 +183,14 @@ For local Codex installs, use the installer:
 ```
 
 It symlinks the 15 skills into `~/.agents/skills` by default, skips existing skills, and prints the next prompt to try. Restart Codex after installing.
+
+For an already-installed local setup, refresh symlinks from the current checkout:
+
+```bash
+./scripts/install-local.sh --refresh
+```
+
+`--refresh` relinks existing symlinks. If an existing entry is a real file or directory, the installer moves it to a timestamped backup path before replacing it.
 
 See [docs/installation.md](docs/installation.md) for more detail.
 
@@ -266,7 +298,6 @@ Use the appstore-release-reviewer skill. Check whether my iOS app is ready for T
 
 - Add a watchOS skill for watch app audits and release readiness.
 - Add visionOS examples that show spatial UI review prompts and output contracts.
-- Add a tiny public sample SwiftUI app demo with screenshot-backed audits.
 - Expand deterministic SwiftUI risk detection with additional rules once the first scanner rules prove useful.
 
 ## Contributing

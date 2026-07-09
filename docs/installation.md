@@ -49,13 +49,21 @@ That means future `git pull` updates apply to the installed user skills. If a us
 ./scripts/install-local.sh --copy
 ```
 
+Existing skill entries are skipped by default. To refresh an already-installed local setup after moving this repository, changing install modes, or adding new skills, pass `--refresh`:
+
+```bash
+./scripts/install-local.sh --refresh
+```
+
+In symlink mode, `--refresh` unlinks each existing skill symlink and recreates it from the current checkout. For copied or otherwise real files/directories, it first moves the existing entry to a `*.backup-YYYYMMDDHHMMSS` path next to the target, then installs the new entry.
+
 To install into a custom directory:
 
 ```bash
 ./scripts/install-local.sh --target /path/to/codex/skills
 ```
 
-The script is non-destructive. If a skill already exists at the target path, it skips that skill instead of replacing it.
+The script is non-destructive by default. If a skill already exists at the target path, it skips that skill instead of replacing it unless `--refresh` is provided.
 
 After installing, restart Codex so the new skills are discovered. Then use a prompt like:
 
@@ -118,13 +126,13 @@ scripts/swiftui-kit.sh validate
 
 ```bash
 git pull --ff-only
-./scripts/install-local.sh
+./scripts/install-local.sh --refresh
 scripts/swiftui-kit.sh list
 ./scripts/validate-skills.sh
 ```
 
-After pulling a new release, reinstall or refresh the skill symlinks and restart Codex so local skill discovery sees newly added skills.
+After pulling a new release, refresh the skill symlinks and restart Codex so local skill discovery sees newly added skills.
 
-For release-specific upgrade notes, see [v0.2.0 - Canvas and Diagnostics Workflows](releases/v0.2.0.md).
+For upcoming v0.2.0 upgrade notes, see [v0.2.0 - Canvas and Diagnostics Workflows](releases/v0.2.0.md).
 
 Do not commit generated screenshots, audit folders, logs, build products, or private project data.

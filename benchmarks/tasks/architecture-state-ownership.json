@@ -1,0 +1,7 @@
+{
+  "id": "architecture-state-ownership",
+  "skill": "swiftui-architecture-auditor",
+  "prompt": "Audit presentation and async ownership in the positive SwiftUI fixture.",
+  "artifact": "scanner/Fixtures/Positive.swift",
+  "expected_finding": "Multiple boolean-driven sheets and an unstructured lifecycle task concentrate presentation and async behavior in one view."
+}

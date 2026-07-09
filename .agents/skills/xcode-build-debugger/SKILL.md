@@ -31,6 +31,19 @@ Prefer targeted detection scripts before reading many project files.
 - Do not change signing settings without explaining the risk.
 - Do not build or launch the app when the user requested code-only diagnosis.
 
+## Do Not Use When
+
+- The task is feature design, UI review, persistence audit, App Store readiness, or PR drafting without a build error.
+- The build or launch command would be ambiguous or side-effectful and the user has not approved it.
+
+## Done When
+
+- Project type, scheme, destination, command, and failing error category are identified or marked missing.
+- Root cause is separated from secondary log noise.
+- Output gives a scoped fix plan and the smallest verification command that proves the result.
+
 ## Output
 
 Use `references/output-contract.md`.
+
+Follow `../../../docs/skill-quality-standard.md` and compare `../../../examples/skill-outputs/xcode-build-debugger-bad-output.md` with `../../../examples/skill-outputs/xcode-build-debugger-good-output.md`.

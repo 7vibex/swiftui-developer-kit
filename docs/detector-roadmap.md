@@ -1,6 +1,24 @@
-# SwiftUI Detector Roadmap
+# SwiftUI Detector And Structured Scanner
 
-`scripts/detect-swiftui-antipatterns.sh` is intentionally conservative. It only flags deterministic source patterns that are unlikely to be false positives.
+`scripts/detect-swiftui-antipatterns.sh` remains the dependency-light shell fallback. `scripts/run-structured-scanner.sh` uses SwiftSyntax 603.x for syntax-scoped rules, stable JSON fingerprints, inline suppressions, baselines, and CI severity exits.
+
+## Structured Scanner
+
+```bash
+scripts/run-structured-scanner.sh --format json scanner/Fixtures
+scripts/run-structured-scanner.sh --baseline scanner/Fixtures/baseline.json scanner/Fixtures
+scripts/run-structured-scanner.sh --write-baseline /path/to/baseline.json scanner/Fixtures
+scripts/run-structured-scanner.sh --ci scanner/Fixtures
+```
+
+Inline suppression:
+
+```swift
+// swiftui-kit:disable fixed-frame-dynamic-type-risk
+.frame(width: 80)
+```
+
+Use suppression only after documenting why the flagged behavior is safe. Baselines contain stable fingerprints and should be reviewed like source changes.
 
 ## Current Rules
 
@@ -19,7 +37,7 @@
 - Logger usage near sensitive fields without obvious privacy handling.
 - multiple booleans controlling SwiftUI sheets.
 
-## Candidate Rules
+## Remaining Candidate Rules
 
 Add these only when the scanner can keep false positives low:
 
