@@ -1,0 +1,7 @@
+{
+  "id": "accessibility-sidebar",
+  "skill": "accessibility-auditor",
+  "prompt": "Check whether a decorative image next to a labeled button creates a false accessibility finding.",
+  "artifact": "scanner/Fixtures/Negative.swift",
+  "expected_finding": "The labeled button and separate decorative image should not be reported as an unlabeled symbol button."
+}

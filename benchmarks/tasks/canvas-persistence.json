@@ -1,0 +1,7 @@
+{
+  "id": "canvas-persistence",
+  "skill": "canvas-engine-auditor",
+  "prompt": "Audit the PencilKit bridge and drawing persistence path.",
+  "artifact": "scanner/Fixtures/Positive.swift",
+  "expected_finding": "PKCanvasView is declared without a drawing-change callback."
+}

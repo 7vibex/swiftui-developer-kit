@@ -46,3 +46,6 @@ Return concise, actionable output.
 ```
 
 Use file paths, symbol names, and concrete next steps when local code is available. Mark assumptions when code was not inspected.
+# Required Quality Fields
+
+For each finding or decision, include severity, evidence, user impact, concrete fix or next action, verification, confidence, and missing evidence. State safety, privacy, approval, and not-inspected boundaries where relevant.

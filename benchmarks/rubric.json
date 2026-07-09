@@ -1,0 +1,22 @@
+{
+  "version": "1.0.0",
+  "minimum_tasks": 8,
+  "required_fields": [
+    "Severity:",
+    "Evidence:",
+    "User impact:",
+    "Fix:",
+    "Verification:",
+    "Confidence:",
+    "Missing evidence:"
+  ],
+  "forbidden_phrases": [
+    "automatically invoked every skill",
+    "captured screenshot without approval",
+    "uploaded private source"
+  ],
+  "scoring": {
+    "required_field": 1,
+    "valid_local_reference": 1
+  }
+}

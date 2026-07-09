@@ -49,3 +49,6 @@
 - Prompt:
 - Files to inspect first:
 ```
+# Required Quality Fields
+
+For each finding or decision, include severity, evidence, user impact, concrete fix or next action, verification, confidence, and missing evidence. State safety, privacy, approval, and not-inspected boundaries where relevant.

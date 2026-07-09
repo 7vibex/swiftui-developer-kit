@@ -43,6 +43,19 @@ Prefer existing project conventions. When the app already has a clear architectu
 - Do not leave document or multiwindow scenes unnamed when the app supports multiple windows.
 - Do not silently remove iOS 17 or earlier support when adopting newer Observation or SwiftUI APIs.
 
+## Do Not Use When
+
+- The main task is broad architecture audit, persistence correctness, build debugging, release review, or PR drafting.
+- The user wants visual taste review without changing SwiftUI structure or interaction patterns.
+
+## Done When
+
+- State ownership, navigation, sheets, async UI state, adaptation, previews, and accessibility are addressed.
+- Recommendations fit existing project conventions and avoid unnecessary architecture changes.
+- Output includes concrete SwiftUI changes and safe verification steps.
+
 ## Output
 
 Use `references/output-contract.md`.
+
+Follow `../../../docs/skill-quality-standard.md` and compare `../../../examples/skill-outputs/swiftui-ui-patterns-bad-output.md` with `../../../examples/skill-outputs/swiftui-ui-patterns-good-output.md`.

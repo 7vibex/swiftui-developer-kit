@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/swiftui-developer-kit/diagnostic-report.schema.json",
+  "title": "Privacy-Safe Diagnostic Report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "app_version", "build_number", "device_family", "os_version", "screen", "breadcrumbs", "state_snapshot", "logs", "redactions", "user_attached_files", "privacy_review"],
+  "properties": {
+    "schema_version": { "const": "1.0.0" },
+    "app_version": { "type": "string", "minLength": 1 },
+    "build_number": { "type": "string", "minLength": 1 },
+    "device_family": { "type": "string", "minLength": 1 },
+    "os_version": { "type": "string", "minLength": 1 },
+    "screen": { "type": "string", "minLength": 1 },
+    "breadcrumbs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["timestamp", "event"],
+        "properties": {
+          "timestamp": { "type": "string", "format": "date-time" },
+          "event": { "type": "string", "minLength": 1 },
+          "metadata": { "type": "object" }
+        }
+      }
+    },
+    "state_snapshot": { "type": "object" },
+    "logs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["level", "category", "message"],
+        "properties": {
+          "level": { "enum": ["debug", "info", "notice", "warning", "error", "critical"] },
+          "category": { "type": "string", "minLength": 1 },
+          "message": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "redactions": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "user_attached_files": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "privacy_review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["contains_user_content", "contains_tokens", "contains_screenshots"],
+      "properties": {
+        "contains_user_content": { "const": false },
+        "contains_tokens": { "const": false },
+        "contains_screenshots": { "const": false }
+      }
+    }
+  }
+}

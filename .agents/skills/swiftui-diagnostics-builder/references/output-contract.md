@@ -48,3 +48,6 @@ Return diagnostics work in this shape.
 - Optional production tooling.
 - Additional UI tests.
 - More diagnostics needed for hard-to-reproduce bugs.
+# Required Quality Fields
+
+For each finding or decision, include severity, evidence, user impact, concrete fix or next action, verification, confidence, and missing evidence. State safety, privacy, approval, and not-inspected boundaries where relevant.

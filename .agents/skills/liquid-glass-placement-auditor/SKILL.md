@@ -100,6 +100,19 @@ Every recommendation must include:
 
 Prioritize readability and control discoverability over decorative effect. A good Liquid Glass recommendation should explain what remains opaque, what becomes chrome, how the design behaves with Reduce Transparency, and what older OS users see.
 
+## Do Not Use When
+
+- The request is not about Liquid Glass, chrome placement, modern UI surfaces, or transparency fallbacks.
+- The user needs a broad design audit, feature implementation, or build diagnosis first.
+
+## Done When
+
+- Every candidate is classified as content, chrome, navigation, inspector, transient overlay, or warning/destructive UI.
+- Each glass recommendation includes evidence, confidence, availability, fallback, and accessibility risk.
+- Primary reading, writing, drawing, PDF, form, transcript, and warning content are protected or explicitly justified.
+
 ## Output
 
 Use `references/output-contract.md`.
+
+Follow `../../../docs/skill-quality-standard.md` and compare `../../../examples/skill-outputs/liquid-glass-placement-auditor-bad-output.md` with `../../../examples/skill-outputs/liquid-glass-placement-auditor-good-output.md`.

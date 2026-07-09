@@ -1,0 +1,7 @@
+{
+  "id": "router-detect-risks",
+  "skill": "swiftui-project-router",
+  "prompt": "Route a broad detect-risks request for the public audit fixture.",
+  "artifact": "scanner/Fixtures/Positive.swift",
+  "expected_finding": "The request should start with the read-only scanner, then route confirmed architecture and persistence findings."
+}

@@ -1,5 +1,9 @@
 # Apple API Inventory
 
+Last verified: 2026-07-09
+
+Compiler evidence: Xcode 26.5 and Swift 6.3.2. Run `./scripts/check-apple-api-inventory.sh --sdk` to refresh it.
+
 Use this inventory before recommending platform-specific implementation. If an API is absent here or the local SDK disagrees, verify it before writing code and state the uncertainty in the report.
 
 | API Or Surface | Source | Status For Skill Guidance | Skill-Pack Rule |

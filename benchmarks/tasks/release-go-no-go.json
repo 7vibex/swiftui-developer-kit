@@ -1,0 +1,7 @@
+{
+  "id": "release-go-no-go",
+  "skill": "appstore-release-reviewer",
+  "prompt": "Review whether the release evidence contract supports a defensible go or no-go.",
+  "artifact": ".agents/skills/appstore-release-reviewer/references/release-evidence-matrix.md",
+  "expected_finding": "A local release review must separate inspected evidence from App Store Connect and real-device gaps."
+}

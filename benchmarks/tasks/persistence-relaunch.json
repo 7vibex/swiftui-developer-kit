@@ -1,0 +1,7 @@
+{
+  "id": "persistence-relaunch",
+  "skill": "swiftdata-persistence-auditor",
+  "prompt": "Audit the positive fixture for destructive SwiftData behavior.",
+  "artifact": "scanner/Fixtures/Positive.swift",
+  "expected_finding": "ModelContext delete has no confirmation or recovery signal."
+}

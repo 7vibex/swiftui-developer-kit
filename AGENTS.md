@@ -29,10 +29,7 @@ This repository contains Codex skills for Apple app development. Treat it as a w
 
 ## Apple App Verification Rules
 
-- When working in a SwiftUI, iOS, iPadOS, macOS, SwiftData, or Xcode app project and code changes are made, build the latest app version before reporting completion.
-- For iOS or iPadOS app changes, run the latest build in Simulator after a successful build.
-- If Simulator is not running, start it and boot an iPad mini (A17 Pro) simulator.
-- Always prefer `iPad mini (A17 Pro)` on the newest installed runtime.
-- If no iPad mini (A17 Pro) simulator is installed, stop and report that instead of silently using another device.
-- This standing approval covers normal build, boot, install, and launch steps needed to verify SwiftUI app code changes. It does not cover screenshots, Appshots, Computer Use, DerivedData cleanup, signing changes, destructive commands, or private-data capture; ask before those.
 - For this repository itself, which is a skill library rather than an app, use `./scripts/validate-skills.sh` as the required verification command unless the user is explicitly working inside a separate Apple app project.
+- For separate SwiftUI, iOS, iPadOS, macOS, SwiftData, or Xcode app projects, build and run verification is expected after code changes only when the user or host repository has approved that workflow.
+- For approved iOS or iPadOS app verification, prefer `iPad mini (A17 Pro)` on the newest installed runtime. If no iPad mini (A17 Pro) simulator is installed, stop and report that instead of silently using another device.
+- Build/run approval does not include screenshots, Appshots, Simulator capture, Computer Use, DerivedData cleanup, signing changes, destructive commands, or private-data capture; ask before those.

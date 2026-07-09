@@ -57,6 +57,19 @@ Prefer targeted search, project maps, and bundled scripts before reading many fi
 
 Every finding should identify a model, query, context use, delete path, save boundary, reopen path, or migration concern. Mark code-only assumptions clearly when no fixture or running app evidence is available.
 
+## Do Not Use When
+
+- The project does not use SwiftData or persistence is not part of the request.
+- The issue is only UI layout, App Store metadata, or build configuration.
+
+## Done When
+
+- Models, queries, delete paths, save boundaries, migrations, and reopen flows are mapped where relevant.
+- Data-loss and migration risks are separated from performance and maintainability issues.
+- Findings include evidence, severity, fix direction, and verification commands or manual flows.
+
 ## Output
 
 Use `references/output-contract.md`.
+
+Follow `../../../docs/skill-quality-standard.md` and compare `../../../examples/skill-outputs/swiftdata-persistence-auditor-bad-output.md` with `../../../examples/skill-outputs/swiftdata-persistence-auditor-good-output.md`.

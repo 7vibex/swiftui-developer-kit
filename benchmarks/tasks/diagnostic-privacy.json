@@ -1,0 +1,7 @@
+{
+  "id": "diagnostic-privacy",
+  "skill": "swiftui-diagnostics-builder",
+  "prompt": "Review the sample diagnostic report for privacy-safe export.",
+  "artifact": "examples/diagnostic-report.sample.json",
+  "expected_finding": "Privacy flags are false and redactions are listed, but schema validation remains required."
+}
