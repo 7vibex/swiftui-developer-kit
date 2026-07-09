@@ -17,6 +17,12 @@ require_dir() {
   [[ -d "$1" ]] || fail "missing required directory: $1"
 }
 
+require_command() {
+  command -v "$1" >/dev/null 2>&1 || fail "missing required command: $1"
+}
+
+require_command rg
+
 require_file README.md
 require_file AGENTS.md
 require_file CLAUDE.md
