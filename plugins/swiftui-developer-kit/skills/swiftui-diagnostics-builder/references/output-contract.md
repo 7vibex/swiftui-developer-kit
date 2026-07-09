@@ -1,0 +1,53 @@
+# Output Contract
+
+Return diagnostics work in this shape.
+
+## Summary
+
+- Goal.
+- App area or bug class.
+- Confidence and evidence reviewed.
+
+## Diagnostic Design
+
+- Logging categories.
+- Breadcrumb events.
+- Snapshot fields.
+- Report issue flow.
+- Report Issue schema version.
+- Export bundle files.
+- MetricKit, signpost, TestFlight, or third-party tooling decisions.
+- Correlation strategy across feature, state snapshot, breadcrumbs, logs, signposts, and feedback ids.
+
+## Privacy And Consent
+
+- Data excluded by default.
+- Redacted fields.
+- Hashed fields.
+- Never-collected fields.
+- User consent points.
+- Redaction strategy.
+- Remote upload or SDK implications, if any.
+
+## Implementation Plan Or Changes
+
+- Files to add or modify.
+- State ownership and data flow.
+- Tests or identifiers to add.
+- Release-review impacts.
+
+## Verification
+
+- Build, run, or test commands.
+- Exported report inspection result.
+- Reproduction flow.
+- Remaining risks.
+
+## Follow-Up
+
+- Optional production tooling.
+- Additional UI tests.
+- More diagnostics needed for hard-to-reproduce bugs.
+# Required Quality Fields
+
+For each finding or decision, include severity, evidence, user impact, concrete fix or next action, verification, confidence, and missing evidence. State safety, privacy, approval, and not-inspected boundaries where relevant.

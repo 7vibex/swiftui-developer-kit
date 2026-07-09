@@ -1,0 +1,8 @@
+{
+  "id": "screenshot-consent",
+  "skill": "simulator-screenshot-reviewer",
+  "prompt": "Review the capture protocol before taking a Simulator screenshot.",
+  "artifact": ".agents/skills/simulator-screenshot-reviewer/references/screenshot-workflow.md",
+  "expected_finding": "Capture requires explicit approval, a target screen, a privacy confirmation, and a saved inventory.",
+  "required_terms": ["explicit approval", "privacy state"]
+}

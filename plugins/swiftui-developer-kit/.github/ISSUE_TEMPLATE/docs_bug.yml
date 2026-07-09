@@ -1,0 +1,32 @@
+name: Docs bug
+description: Report stale, confusing, broken, or unsafe documentation.
+title: "Docs: "
+labels:
+  - docs
+body:
+  - type: textarea
+    id: location
+    attributes:
+      label: Location
+      description: Link or path to the affected documentation.
+    validations:
+      required: true
+  - type: textarea
+    id: issue
+    attributes:
+      label: Issue
+      description: Explain what is stale, confusing, broken, or unsafe.
+    validations:
+      required: true
+  - type: textarea
+    id: correction
+    attributes:
+      label: Suggested correction
+      description: Prefer short summaries with official links instead of copied documentation.
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Safety check
+      options:
+        - label: This issue does not include private app data, generated audit output, screenshots, secrets, or personal documents.
+          required: true

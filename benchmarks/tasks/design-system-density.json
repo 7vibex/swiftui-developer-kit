@@ -1,0 +1,8 @@
+{
+  "id": "design-system-density",
+  "skill": "swiftui-design-system-auditor",
+  "prompt": "Review the content-versus-controls guidance for a dense iPad interface.",
+  "artifact": "docs/design-principles.md",
+  "expected_finding": "Primary content should stay stable while controls remain secondary.",
+  "required_terms": ["stable content surfaces", "accessibility text sizes"]
+}

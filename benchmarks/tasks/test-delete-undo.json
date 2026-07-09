@@ -1,0 +1,8 @@
+{
+  "id": "test-delete-undo",
+  "skill": "test-coverage-improver",
+  "prompt": "Identify the most valuable persistence regression test.",
+  "artifact": "examples/skill-outputs/swiftdata-persistence-auditor-good-output.md",
+  "expected_finding": "A delete, undo, and reopen regression test protects against permanent data loss.",
+  "required_terms": ["delete, undo, and reopen", "production store"]
+}

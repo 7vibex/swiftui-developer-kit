@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0.0",
+  "releases": [
+    {
+      "version": "0.1.0",
+      "status": "released",
+      "tag": "v0.1.0",
+      "notes": "docs/releases/v0.1.0.md",
+      "shipped_artifacts": [
+        "13-skill initial pack",
+        "local installer",
+        "repository validation workflow"
+      ]
+    },
+    {
+      "version": "0.2.0",
+      "status": "unreleased-planning",
+      "tag": null,
+      "notes": "docs/releases/v0.2.0.md",
+      "shipped_artifacts": []
+    },
+    {
+      "version": "0.3.0",
+      "status": "unreleased-planning",
+      "tag": null,
+      "notes": "docs/releases/v0.3.0.md",
+      "shipped_artifacts": []
+    },
+    {
+      "version": "0.4.0",
+      "status": "unreleased-planning",
+      "tag": null,
+      "notes": "docs/releases/v0.4.0.md",
+      "shipped_artifacts": []
+    },
+    {
+      "version": "0.5.0",
+      "status": "unreleased-planning",
+      "tag": null,
+      "notes": "docs/releases/v0.5.0.md",
+      "shipped_artifacts": []
+    },
+    {
+      "version": "0.6.0",
+      "status": "unreleased-planning",
+      "tag": null,
+      "notes": "docs/releases/v0.6.0.md",
+      "shipped_artifacts": []
+    },
+    {
+      "version": "1.0.0",
+      "status": "release-criteria",
+      "tag": null,
+      "notes": "docs/releases/v1.0.0.md",
+      "shipped_artifacts": []
+    }
+  ]
+}

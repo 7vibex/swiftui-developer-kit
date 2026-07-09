@@ -1,0 +1,41 @@
+name: Scanner rule
+description: Propose a deterministic SwiftUI or Apple app risk detector.
+title: "Scanner rule: "
+labels:
+  - scanner
+body:
+  - type: input
+    id: rule
+    attributes:
+      label: Rule name
+      description: Use lowercase words separated by hyphens.
+    validations:
+      required: true
+  - type: textarea
+    id: signal
+    attributes:
+      label: Static signal
+      description: What exact source pattern should the scanner detect?
+    validations:
+      required: true
+  - type: textarea
+    id: false_positives
+    attributes:
+      label: False-positive controls
+      description: When should this rule stay silent?
+    validations:
+      required: true
+  - type: textarea
+    id: route
+    attributes:
+      label: Specialist route
+      description: Which skill should review the finding after detection?
+    validations:
+      required: true
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Safety check
+      options:
+        - label: This rule can run read-only without building, launching Simulator, capturing screens, or uploading source.
+          required: true

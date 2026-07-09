@@ -1,0 +1,8 @@
+{
+  "id": "pr-evidence-draft",
+  "skill": "pr-draft-generator",
+  "prompt": "Draft review material without inventing tests or screenshots.",
+  "artifact": ".github/pull_request_template.md",
+  "expected_finding": "The PR draft must distinguish executed validation from screenshots or device proof that still need approval.",
+  "required_terms": ["executed validation", "pending approval"]
+}

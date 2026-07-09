@@ -1,0 +1,8 @@
+{
+  "id": "ui-patterns-sheet-routing",
+  "skill": "swiftui-ui-patterns",
+  "prompt": "Refactor mutually exclusive sheet state in the public SwiftUI fixture.",
+  "artifact": "scanner/Fixtures/Positive.swift",
+  "expected_finding": "Multiple Boolean-driven sheets should become one item-backed presentation route.",
+  "required_terms": ["Identifiable", ".sheet(item:)"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "xcode-target-graph",
+  "skill": "xcode-build-debugger",
+  "prompt": "Diagnose the fictional missing-module build failure safely.",
+  "artifact": "examples/skill-outputs/xcode-build-debugger-good-output.md",
+  "expected_finding": "A missing test-target dependency can produce a No such module error and needs a target-graph fix.",
+  "required_terms": ["target dependency", "do not alter signing"]
+}

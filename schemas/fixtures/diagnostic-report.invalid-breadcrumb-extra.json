@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0.0",
+  "app_version": "0.3.0",
+  "build_number": "42",
+  "device_family": "iPad",
+  "os_version": "26.5",
+  "screen": "flashcard-review",
+  "breadcrumbs": [
+    {
+      "timestamp": "2026-07-09T10:15:00Z",
+      "event": "review_started",
+      "private_note": "This field is not in the diagnostic report contract."
+    }
+  ],
+  "state_snapshot": { "route": "review" },
+  "logs": [
+    { "level": "error", "category": "review", "message": "save_failed domain=SampleStudy code=17" }
+  ],
+  "redactions": ["card_front"],
+  "user_attached_files": [],
+  "privacy_review": {
+    "contains_user_content": false,
+    "contains_tokens": false,
+    "contains_screenshots": false
+  }
+}

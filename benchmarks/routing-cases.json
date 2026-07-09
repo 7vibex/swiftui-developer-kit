@@ -1,0 +1,48 @@
+{
+  "version": "1.0.0",
+  "purpose": "Curated routing-regression cases. They document expected skill selection and must not be presented as live model-evaluation results.",
+  "cases": [
+    {
+      "id": "feature-domain-data-flow",
+      "prompt": "Add offline favorites that persist after relaunch and appear on a second screen.",
+      "expected_skill": "swiftui-feature-builder",
+      "not_skill": "swiftui-ui-patterns",
+      "reason": "The request adds domain behavior, persistence, and cross-screen data flow."
+    },
+    {
+      "id": "screen-presentation-refactor",
+      "prompt": "Replace two conflicting sheet booleans in this one editor screen with one route.",
+      "expected_skill": "swiftui-ui-patterns",
+      "not_skill": "swiftui-feature-builder",
+      "reason": "The request changes one screen's presentation structure without new domain behavior."
+    },
+    {
+      "id": "localization-runtime",
+      "prompt": "Audit every language for String Catalog coverage, Arabic RTL, date formatting, and widget language switching.",
+      "expected_skill": "swiftui-localization-auditor",
+      "not_skill": "accessibility-auditor",
+      "reason": "The primary scope is localization ownership and runtime language behavior."
+    },
+    {
+      "id": "app-security-data-flow",
+      "prompt": "Audit my iOS app's Keychain, OAuth callback, deep links, API transport, and privacy manifest.",
+      "expected_skill": "apple-app-security-privacy-auditor",
+      "not_skill": "appstore-release-reviewer",
+      "reason": "The primary scope is app-side security and data-flow risk, not submission readiness."
+    },
+    {
+      "id": "liquid-glass-placement",
+      "prompt": "Decide whether glass belongs on this canvas toolbar and how it falls back on older OS versions.",
+      "expected_skill": "liquid-glass-placement-auditor",
+      "not_skill": "swiftui-design-system-auditor",
+      "reason": "The decision specifically concerns Liquid Glass placement and fallback."
+    },
+    {
+      "id": "release-go-no-go",
+      "prompt": "Decide whether this iOS build is ready for TestFlight and App Store submission.",
+      "expected_skill": "appstore-release-reviewer",
+      "not_skill": "apple-app-security-privacy-auditor",
+      "reason": "The primary output is a release go/no-go with metadata and submission evidence."
+    }
+  ]
+}

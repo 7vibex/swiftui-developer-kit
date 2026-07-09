@@ -1,0 +1,39 @@
+{
+  "name": "swiftui-developer-kit",
+  "version": "0.2.0-dev.0",
+  "description": "Privacy-conscious SwiftUI, iOS, iPadOS, and macOS development workflows for Codex.",
+  "author": {
+    "name": "7vibex",
+    "url": "https://github.com/7vibex"
+  },
+  "homepage": "https://github.com/7vibex/swiftui-developer-kit",
+  "repository": "https://github.com/7vibex/swiftui-developer-kit",
+  "license": "MIT",
+  "keywords": [
+    "swiftui",
+    "ios",
+    "ipados",
+    "macos",
+    "swiftdata",
+    "accessibility",
+    "app-store"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "SwiftUI Developer Kit",
+    "shortDescription": "Plan, build, audit, and verify Apple-platform apps",
+    "longDescription": "Focused Codex workflows for SwiftUI architecture, accessibility, persistence, canvas interactions, diagnostics, release readiness, tests, and Xcode troubleshooting.",
+    "developerName": "7vibex",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Audit my SwiftUI app and prioritize the most important fixes.",
+      "Plan a production-ready SwiftUI feature with tests and accessibility.",
+      "Review my iPad canvas implementation for reliability risks."
+    ],
+    "brandColor": "#007AFF"
+  }
+}

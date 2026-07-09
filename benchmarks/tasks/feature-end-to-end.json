@@ -1,0 +1,8 @@
+{
+  "id": "feature-end-to-end",
+  "skill": "swiftui-feature-builder",
+  "prompt": "Choose the right implementation workflow for a persisted, cross-screen feature.",
+  "artifact": "examples/swiftui-feature-builder-example.md",
+  "expected_finding": "Offline favorites spans domain behavior, persistence, and cross-screen data flow, so it needs an end-to-end feature plan.",
+  "required_terms": ["repository and route boundaries", "persistence tests"]
+}
